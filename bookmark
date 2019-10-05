@@ -1,0 +1,4 @@
+#!/bin/bash
+
+python ~/bin/bookmark.py $1 2>&1 | tail -1
+echo "output: $script_output cool"
