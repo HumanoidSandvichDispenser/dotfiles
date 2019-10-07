@@ -17,6 +17,7 @@ call plug#end()
 set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
+Plugin 'scrooloose/nerdtree'
 Plugin 'itchyny/lightline.vim'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
@@ -74,6 +75,7 @@ map <ScrollWheelUp> <C-Y>
 map <S-ScrollWheelUp> <C-U>
 map <ScrollWheelDown> <C-E>
 map <S-ScrollWheelDown> <C-D>
+map <C-n> :NERDTreeToggle<CR>
 
 set mouse=a
 highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
