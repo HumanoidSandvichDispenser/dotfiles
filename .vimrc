@@ -69,6 +69,8 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 let g:lightline = { 'colorscheme': 'nord' }
 
+let NERDTreeShowHidden=1
+
 map <S-Down> <C-E>
 map <S-Up> <C-Y>
 map <ScrollWheelUp> <C-Y>
