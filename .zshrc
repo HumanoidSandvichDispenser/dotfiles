@@ -111,9 +111,14 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 
+# Commands to run on startup
 cd ~
-neofetch
-fortune | cowsay
+toilet -f term -F border --gay " Ubuntu 18.04 on Windows "
+fortune -o | cowthink
+bash ~/bin/autorun.sh
+
+
+# Aliases and Exports
 export PATH=$PATH:/mnt/c/Windows/System32
 alias hyper="cmd.exe /c hyper"
 alias start="cmd.exe /c"
@@ -121,4 +126,5 @@ alias home="cd /mnt/c/Users/justi/"
 alias restart="clear; . ~/.zshrc"
 alias reload=". ~/.zshrc"
 alias bookmark=". ~/bin/bookmark"
+#alias note=". ~/bin/note"
 LS_COLORS="di=34;43:*rc=32"; export LS_COLORS
