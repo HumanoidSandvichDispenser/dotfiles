@@ -17,6 +17,7 @@ call plug#end()
 set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
+Plugin 'Yggdroot/indentLine'
 Plugin 'scrooloose/nerdtree'
 Plugin 'itchyny/lightline.vim'
 Plugin 'VundleVim/Vundle.vim'
@@ -68,6 +69,8 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 let g:lightline = { 'colorscheme': 'nord' }
+
+let g:indentLine_color_term=8
 
 let NERDTreeShowHidden=1
 
