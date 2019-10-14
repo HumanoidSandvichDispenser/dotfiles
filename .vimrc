@@ -55,6 +55,7 @@ filetype plugin indent on    " required
 set ruler
 set number
 set showcmd
+set encoding=utf-8
 highlight Pmenu ctermfg=15 ctermbg=8
 highlight PmenuSel ctermfg=14 ctermbg=NONE
 syntax on
