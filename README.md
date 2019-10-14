@@ -1,12 +1,14 @@
 # dotfiles
 
-Dotfiles
+HumanoidSandvichDispenser's Dotfiles and Scripts
 
+## Preview
 
+![image](https://imgur.com/YB89wcX.png)
 
 ## Requirements
 
-`zsh`, `oh-my-zsh`, `neofetch`, `fortune`, `cowsay`
+`zsh`, `oh-my-zsh`, `neofetch`, `fortune`, `cowthink`, `vim-plug`, `vundle`
 
 
 
