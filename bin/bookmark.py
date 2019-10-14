@@ -13,7 +13,16 @@ from pprint import pprint
 def GetPath():
     return os.path.dirname(os.path.realpath(__file__))
 
+def CheckFiles():
+    if not os.path.exists(GetPath() + "/.script_config/"):
+        print("Created path for " + GetPath() + "/.script_config")
+        os.makedirs(GetPath() + "/.script_config/")
+    if not os.path.isfile(GetPath() + "/.script_config/bookmarks.json"):
+        print("Created file for " + GetPath() + "/.script_config/bookmarks.json")
+        os.mknod(GetPath() + "/.script_config/bookmarks.json")
+
 def Read():
+    CheckFiles()
     with open(GetPath() + "/.script_config/bookmarks.json") as json_file:
         if not json_file is None:
             try:
@@ -55,12 +64,6 @@ questions = [
     }
 ]
 
-def CheckFiles():
-    if not os.path.exists(GetPath() + "/.script_config/"):
-        os.makedirs(GetPath() + "/.script_config/")
-    if not os.path.isfile(GetPath() + "/.script_config/bookmarks.json"):
-        os.mknod(GetPath() + "/.script_config/bookmarks.json")
-
 @click.command()
 @click.argument("bookmarkname", nargs=1, required=False)
 def Main(bookmarkname):
@@ -101,5 +104,4 @@ def Confirm(msg):
     return prompt(confirmation)["confirmation"]
 
 if __name__ == '__main__':
-    CheckFiles()
     Main()
