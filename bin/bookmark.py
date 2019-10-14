@@ -58,7 +58,7 @@ questions = [
 def CheckFiles():
     if not os.path.exists(GetPath() + "/.script_config/"):
         os.makedirs(GetPath() + "/.script_config/")
-    if not os.path.isfile(GetPath() + "/.script_config/bookmarks.json")
+    if not os.path.isfile(GetPath() + "/.script_config/bookmarks.json"):
         os.mknod(GetPath() + "/.script_config/bookmarks.json")
 
 @click.command()
