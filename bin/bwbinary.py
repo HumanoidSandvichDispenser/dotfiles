@@ -31,7 +31,7 @@ def Main(file, destination):
         text += '\n'
 
     destinationFile = open(destination, "w+")
-    destinationFile.write(binary)
+    destinationFile.write(text)
     destinationFile.close()
 
 if __name__ == "__main__":
