@@ -26,6 +26,7 @@ Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'valloric/youcompleteme'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Bundle 'takac/vim-hardtime'
 call vundle#end()            " required
 
 filetype plugin indent on    " required

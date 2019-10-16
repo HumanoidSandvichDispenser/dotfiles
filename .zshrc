@@ -20,8 +20,8 @@ POWERLEVEL9K_DIR_ETC_BACKGROUND='6'
 POWERLEVEL9K_STATUS_ERROR_BACKGROUND='167'
 POWERLEVEL9K_STATUS_ERROR_FOREGROUND='000'
 POWERLEVEL9K_STATUS_OK_BACKGROUND='238'
-
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status dir vcs)
+POWERLEVEL9K_VI_INSERT_MODE_BACKGROUND='7'
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status vi_mode dir vcs)
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
@@ -117,14 +117,17 @@ toilet -f term -F border --gay " Ubuntu 18.04 on Windows "
 fortune -o | cowthink
 bash ~/bin/autorun.sh
 
+# Options
+set -o vi
 
 # Aliases and Exports
 export PATH=$PATH:/mnt/c/Windows/System32
+export TERM=rxvt-256color
 alias hyper="cmd.exe /c hyper"
 alias start="cmd.exe /c"
 alias home="cd /mnt/c/Users/justi/"
 alias restart="clear; . ~/.zshrc"
 alias reload=". ~/.zshrc"
-alias bookmark=". ~/bin/bookmark"
+alias bookmark="source  ~/bin/bookmark"
 #alias note=". ~/bin/note"
 LS_COLORS="di=34;43:*rc=32"; export LS_COLORS
