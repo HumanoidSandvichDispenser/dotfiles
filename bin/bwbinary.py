@@ -7,9 +7,10 @@ def GetValue(r, g, b):
     return max(r, max(g, b))
 
 @click.command()
+@click.option("-o", "--output",  default=False)
 @click.argument("file")
 @click.argument("destination")
-def Main(file, destination):
+def Main(output, file, destination):
     image = Image.open(file).convert("RGB")
     picture = image.load()
     width, height = image.size
@@ -29,7 +30,9 @@ def Main(file, destination):
             else:
                 text += '1'
         text += '\n'
-
+    
+    if (output):
+        print(text)
     destinationFile = open(destination, "w+")
     destinationFile.write(text)
     destinationFile.close()
