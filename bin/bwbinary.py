@@ -7,7 +7,7 @@ def GetValue(r, g, b):
     return max(r, max(g, b))
 
 @click.command()
-@click.option("-o", "--output",  default=False)
+@click.option("-o", "--output", is_flag=True)
 @click.argument("file")
 @click.argument("destination")
 def Main(output, file, destination):
