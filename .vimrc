@@ -17,6 +17,8 @@ call plug#end()
 set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
+Plugin 'aperezdc/vim-template'
+Plugin 'Raimondi/delimitMate'
 Plugin 'Yggdroot/indentLine'
 Plugin 'scrooloose/nerdtree'
 Plugin 'itchyny/lightline.vim'
@@ -57,24 +59,24 @@ set ruler
 set number
 set showcmd
 set encoding=utf-8
+set laststatus=2
+set tabstop=4
+set shiftwidth=4
+set noshowmode
 highlight Pmenu ctermfg=15 ctermbg=8
 highlight PmenuSel ctermfg=14 ctermbg=NONE
 syntax on
 
 colorscheme nord
 
-set laststatus=2
 "let g:deoplete#enable_at_startup = 1
 "let g:neosnippet#enable_completed_snippet = 1
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
-
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
 let g:lightline = { 'colorscheme': 'nord' }
-
 let g:indentLine_color_term=8
-
 let NERDTreeShowHidden=1
+let delimitMate_expand_cr = 1
 
 map <S-Down> <C-E>
 map <S-Up> <C-Y>
@@ -83,6 +85,8 @@ map <S-ScrollWheelUp> <C-U>
 map <ScrollWheelDown> <C-E>
 map <S-ScrollWheelDown> <C-D>
 map <C-n> :NERDTreeToggle<CR>
+inoremap <C-e> <C-o>A
+inoremap jj <Esc>
 
 set mouse=a
 highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000

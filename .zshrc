@@ -113,9 +113,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Commands to run on startup
 cd ~
-toilet -f term -F border --gay " Ubuntu 18.04 on Windows "
-fortune -o | cowthink
-bash ~/bin/autorun.sh
+bash ~/bin/autoalias.sh
 
 # Options
 set -o vi
