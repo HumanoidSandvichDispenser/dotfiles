@@ -7,6 +7,3 @@ for file in $files; do
 	echo "Creating symlink for $file"
 	#ln -s $dir/$file ~/$file
 done
-
-echo "Installing Vundle..."
-#git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
