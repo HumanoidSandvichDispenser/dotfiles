@@ -10,7 +10,7 @@ HumanoidSandvichDispenser's Dotfiles and Scripts
 
 `zsh`, `oh-my-zsh`, `neofetch`, `vim-plug`, `vundle`
 
-*Some of these packages will be included in the autoinstall script*
+*Some of these packages will be included in the autoinstall script soon*
 
 
 ## Installation
