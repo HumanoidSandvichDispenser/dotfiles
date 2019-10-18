@@ -8,8 +8,9 @@ HumanoidSandvichDispenser's Dotfiles and Scripts
 
 ## Requirements
 
-`zsh`, `oh-my-zsh`, `neofetch`, `fortune`, `cowthink`, `vim-plug`, `vundle`
+`zsh`, `oh-my-zsh`, `neofetch`, `vim-plug`, `vundle`
 
+*Some of these packages will be included in the autoinstall script soon*
 
 
 ## Installation
