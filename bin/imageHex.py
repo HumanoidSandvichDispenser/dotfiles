@@ -20,10 +20,8 @@ def Main(output, file, destination, bitsize=2):
     # Loop through each pixel of the image
     for y in range(width):
         for x in range(height):
-            # Set r, g, b to increase readability
-            # r, g, b = picture[x, y][0], picture[x, y][1], picture[x, y][2]  
             rgb = picture[x, y]
-            hexColor = "".join([format(val, '02X') for val in rgb])
+            hexColor = "".join([format(val, "02X") for val in rgb])
             
             if bitsize == 1:
                 hexArray = list(hexColor)
