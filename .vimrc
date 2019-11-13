@@ -4,6 +4,7 @@ filetype off                  " required
 
 call plug#begin()
 Plug 'arcticicestudio/nord-vim'
+Plug 'morhetz/gruvbox'
 "Plug 'wokalski/autocomplete-flow'
 "Plug 'Shougo/deoplete.nvim'
 "Plug 'roxma/nvim-yarp'
@@ -28,6 +29,8 @@ Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'valloric/youcompleteme'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 Bundle 'takac/vim-hardtime'
 call vundle#end()            " required
 
@@ -63,6 +66,9 @@ set laststatus=2
 set tabstop=4
 set shiftwidth=4
 set noshowmode
+set linebreak
+set breakindent
+
 highlight Pmenu ctermfg=15 ctermbg=8
 highlight PmenuSel ctermfg=14 ctermbg=NONE
 syntax on
@@ -77,13 +83,16 @@ let g:lightline = { 'colorscheme': 'nord' }
 let g:indentLine_color_term=8
 let NERDTreeShowHidden=1
 let delimitMate_expand_cr = 1
+let g:vim_markdown_conceal_code_blocks = 0
 
 map <S-Down> <C-E>
 map <S-Up> <C-Y>
-map <ScrollWheelUp> <C-Y>
+map <ScrollWheelUp> 3<C-Y>
 map <S-ScrollWheelUp> <C-U>
-map <ScrollWheelDown> <C-E>
+map <ScrollWheelDown> 3<C-E>
 map <S-ScrollWheelDown> <C-D>
+map <ScrollWheelLeft> 3<C-H>
+map <ScrollWheelRight> 3<C-L>
 map <C-n> :NERDTreeToggle<CR>
 inoremap <C-e> <C-o>A
 inoremap jj <Esc>
@@ -93,3 +102,5 @@ highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
 "if !has('gui_running')
 "	set t_Co=256
 "endif
+
+source local.vimrc
