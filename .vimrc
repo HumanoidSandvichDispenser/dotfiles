@@ -5,6 +5,9 @@ filetype off                  " required
 call plug#begin()
 Plug 'arcticicestudio/nord-vim'
 Plug 'morhetz/gruvbox'
+Plug 'ryanoasis/vim-devicons'
+Plug 'ap/vim-buftabline'
+Plug 'jistr/vim-nerdtree-tabs'
 "Plug 'wokalski/autocomplete-flow'
 "Plug 'Shougo/deoplete.nvim'
 "Plug 'roxma/nvim-yarp'
@@ -31,6 +34,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'posva/vim-vue'
 Bundle 'takac/vim-hardtime'
 call vundle#end()            " required
 
@@ -68,34 +72,44 @@ set shiftwidth=4
 set noshowmode
 set linebreak
 set breakindent
+set timeoutlen=250
+"set ttimeoutlen=0
 
 highlight Pmenu ctermfg=15 ctermbg=8
 highlight PmenuSel ctermfg=14 ctermbg=NONE
 syntax on
 
-colorscheme nord
+colorscheme gruvbox
 
 "let g:deoplete#enable_at_startup = 1
 "let g:neosnippet#enable_completed_snippet = 1
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:lightline = { 'colorscheme': 'nord' }
+let g:lightline = { 'colorscheme': 'gruvbox' }
 let g:indentLine_color_term=8
 let NERDTreeShowHidden=1
 let delimitMate_expand_cr = 1
 let g:vim_markdown_conceal_code_blocks = 0
+"let g:loaded_scrollbar = 1
 
 map <S-Down> <C-E>
 map <S-Up> <C-Y>
 map <ScrollWheelUp> 3<C-Y>
-map <S-ScrollWheelUp> <C-U>
 map <ScrollWheelDown> 3<C-E>
-map <S-ScrollWheelDown> <C-D>
 map <ScrollWheelLeft> 3<C-H>
 map <ScrollWheelRight> 3<C-L>
+map <C-s> :w<CR>
 map <C-n> :NERDTreeToggle<CR>
+noremap <Left> :bprevious<CR>
+noremap <Right> :bnext<CR>
+noremap <C-w> :bd<CR>
+noremap <C-t> :enew<CR>
 inoremap <C-e> <C-o>A
 inoremap jj <Esc>
+
+" Do not change buffers in NERDTree
+autocmd FileType nerdtree noremap <buffer> <Left> <nop>
+autocmd FileType nerdtree noremap <buffer> <Right> <nop>
 
 set mouse=a
 highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000

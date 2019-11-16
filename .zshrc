@@ -113,7 +113,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Commands to run on startup
 cd ~
-bash ~/bin/autoalias.sh
+source ~/bin/autoalias.sh
 
 # Options
 set -o vi
