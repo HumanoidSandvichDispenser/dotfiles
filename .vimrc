@@ -9,6 +9,10 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'ap/vim-buftabline'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'qpkorr/vim-bufkill'
+
+" Discord Rich Presence
+Plug 'vbe0201/vimdiscord'
+
 "Plug 'wokalski/autocomplete-flow'
 "Plug 'Shougo/deoplete.nvim'
 "Plug 'roxma/nvim-yarp'
@@ -99,6 +103,7 @@ set linebreak
 set breakindent
 set timeoutlen=250
 set hidden
+set clipboard=unnamedplus
 
 highlight Pmenu ctermfg=15 ctermbg=8
 highlight PmenuSel ctermfg=14 ctermbg=NONE
@@ -125,6 +130,10 @@ map <ScrollWheelLeft> 3<C-H>
 map <ScrollWheelRight> 3<C-L>
 map <C-s> :w<CR>
 map <C-n> :NERDTreeTabsToggle<CR>
+vmap <C-c> "+yi
+vmap <C-x> "+c
+vmap <C-v> c<ESC>"+p
+imap <C-v> <ESC>"+pa
 noremap <Left> :bprevious<CR>
 noremap <Right> :bnext<CR>
 noremap <S-Left> :bprevious<CR>
