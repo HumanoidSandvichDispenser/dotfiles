@@ -8,5 +8,5 @@
 
 
 for file in `ls $HOME/bin/autorun/`; do
-	sh $file &
+	source $file &
 done
