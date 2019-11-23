@@ -8,6 +8,7 @@ Plug 'morhetz/gruvbox'
 Plug 'ryanoasis/vim-devicons'
 Plug 'ap/vim-buftabline'
 Plug 'jistr/vim-nerdtree-tabs'
+Plug 'qpkorr/vim-bufkill'
 "Plug 'wokalski/autocomplete-flow'
 "Plug 'Shougo/deoplete.nvim'
 "Plug 'roxma/nvim-yarp'
@@ -58,6 +59,8 @@ Plugin 'qpkorr/vim-bufkill'
 " Language Support
 Plugin 'plasticboy/vim-markdown'
 Plugin 'posva/vim-vue'
+Plugin 'pangloss/vim-javascript'
+Plugin 'prettier/vim-prettier'
 call vundle#end()            " required
 
 filetype plugin indent on    " required
@@ -95,24 +98,24 @@ set noshowmode
 set linebreak
 set breakindent
 set timeoutlen=250
-"set ttimeoutlen=0
+set hidden
 
 highlight Pmenu ctermfg=15 ctermbg=8
 highlight PmenuSel ctermfg=14 ctermbg=NONE
+highlight function ctermfg=Yellow
+"highlight Keyword ctermfg=Red
 syntax on
 
 colorscheme gruvbox
 
-"let g:deoplete#enable_at_startup = 1
-"let g:neosnippet#enable_completed_snippet = 1
+let g:UltiSnipsExpandTrigger = "<c-a>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:lightline = { 'colorscheme': 'gruvbox' }
-let g:indentLine_color_term=8
-let NERDTreeShowHidden=1
+let g:indentLine_color_term = 8
+let NERDTreeShowHidden = 1
 let delimitMate_expand_cr = 1
 let g:vim_markdown_conceal_code_blocks = 0
-"let g:loaded_scrollbar = 1
 
 map <S-Down> <C-E>
 map <S-Up> <C-Y>
@@ -121,11 +124,15 @@ map <ScrollWheelDown> 3<C-E>
 map <ScrollWheelLeft> 3<C-H>
 map <ScrollWheelRight> 3<C-L>
 map <C-s> :w<CR>
-map <C-n> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeTabsToggle<CR>
 noremap <Left> :bprevious<CR>
 noremap <Right> :bnext<CR>
+noremap <S-Left> :bprevious<CR>
+noremap <S-Right> :bnext<CR>
 noremap <C-w> :BD<CR>
 noremap <C-t> :enew<CR>
+noremap j gj
+noremap k gk
 inoremap <C-e> <C-o>A
 inoremap jj <Esc>
 
@@ -134,9 +141,9 @@ autocmd FileType nerdtree noremap <buffer> <Left> <nop>
 autocmd FileType nerdtree noremap <buffer> <Right> <nop>
 
 set mouse=a
-highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
+
 "if !has('gui_running')
 "	set t_Co=256
 "endif
 
-source local.vimrc
+source ~/local.vimrc

@@ -7,7 +7,7 @@
 #
 
 echo Shell Commands
-echo ==============
+echo "=============="
 ls /bin/
 echo ""
 echo "Aliases"
