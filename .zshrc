@@ -80,7 +80,7 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status vi_mode dir vcs)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -113,6 +113,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Commands to run on startup
 cd ~
+stty -ixon
 source ~/bin/autoalias.sh
 
 # Options
@@ -121,11 +122,5 @@ set -o vi
 # Aliases and Exports
 export PATH=$PATH:/mnt/c/Windows/System32
 export TERM=rxvt-256color
-alias hyper="cmd.exe /c hyper"
-alias start="cmd.exe /c"
-alias home="cd /mnt/c/Users/justi/"
-alias restart="clear; . ~/.zshrc"
-alias reload=". ~/.zshrc"
-alias bookmark="source  ~/bin/bookmark"
 #alias note=". ~/bin/note"
 LS_COLORS="di=34;43:*rc=32"; export LS_COLORS
