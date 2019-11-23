@@ -21,21 +21,43 @@ call plug#end()
 set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
-Plugin 'aperezdc/vim-template'
-Plugin 'Raimondi/delimitMate'
-Plugin 'Yggdroot/indentLine'
-Plugin 'scrooloose/nerdtree'
-Plugin 'itchyny/lightline.vim'
+" Required for Vundle to run
 Plugin 'VundleVim/Vundle.vim'
+
+" Templates for new files
+Plugin 'aperezdc/vim-template'
+
+" Autocomplete (, [, {, ", etc.
+Plugin 'Raimondi/delimitMate'
+
+" Show indents
+Plugin 'Yggdroot/indentLine'
+
+" Project drawer
+Plugin 'scrooloose/nerdtree'
+
+" Status line
+Plugin 'itchyny/lightline.vim'
+
+" Git
 Plugin 'tpope/vim-fugitive'
-Plugin 'git://git.wincent.com/command-t.git'
+
+" Autocomplete
 Plugin 'valloric/youcompleteme'
+
+" Snippets
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+
+" Auto tabbing
 Plugin 'godlygeek/tabular'
+
+" Kill buffers without closing splits
+Plugin 'qpkorr/vim-bufkill'
+
+" Language Support
 Plugin 'plasticboy/vim-markdown'
 Plugin 'posva/vim-vue'
-Bundle 'takac/vim-hardtime'
 call vundle#end()            " required
 
 filetype plugin indent on    " required
@@ -102,7 +124,7 @@ map <C-s> :w<CR>
 map <C-n> :NERDTreeToggle<CR>
 noremap <Left> :bprevious<CR>
 noremap <Right> :bnext<CR>
-noremap <C-w> :bd<CR>
+noremap <C-w> :BD<CR>
 noremap <C-t> :enew<CR>
 inoremap <C-e> <C-o>A
 inoremap jj <Esc>
