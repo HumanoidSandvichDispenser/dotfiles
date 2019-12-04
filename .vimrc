@@ -61,6 +61,7 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'posva/vim-vue'
 Plugin 'pangloss/vim-javascript'
 Plugin 'prettier/vim-prettier'
+Plugin 'octol/vim-cpp-enhanced-highlight'
 call vundle#end()            " required
 
 filetype plugin indent on    " required
