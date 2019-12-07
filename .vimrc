@@ -108,7 +108,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:indentLine_color_term = 8
 let NERDTreeShowHidden = 1
 let delimitMate_expand_cr = 1
-"let g:vim_markdown_conceal_code_blocks = 1
+let g:vim_markdown_conceal_code_blocks = 1
 let g:vim_markdown_folding_disabled = 1
 
 let g:ycm_autoclose_preview_window_after_insertion = 1
