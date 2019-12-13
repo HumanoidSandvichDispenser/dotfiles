@@ -12,13 +12,6 @@ Plug 'qpkorr/vim-bufkill'
 
 " Discord Rich Presence
 Plug 'vbe0201/vimdiscord'
-
-"Plug 'wokalski/autocomplete-flow'
-"Plug 'Shougo/deoplete.nvim'
-"Plug 'roxma/nvim-yarp'
-"Plug 'roxma/vim-hug-neovim-rpc'
-"Plug 'Shougo/neosnippet-snippets'
-"Plug 'Shougo/neosnippet'
 call plug#end()
 
 " set the runtime path to include Vundle and initialize
@@ -28,7 +21,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " Required for Vundle to run
 Plugin 'VundleVim/Vundle.vim'
-
+:
 " Templates for new files
 Plugin 'aperezdc/vim-template'
 
@@ -108,11 +101,15 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:indentLine_color_term = 8
 let NERDTreeShowHidden = 1
 let delimitMate_expand_cr = 1
-let g:vim_markdown_conceal_code_blocks = 1
+let g:vim_markdown_conceal_code_blocks = 0
 let g:vim_markdown_folding_disabled = 1
+let g:cpp_class_scope_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_concepts_highlight = 1
 
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_filetype_blacklist={'notes': 1, 'unite': 1, 'tagbar': 1, 'pandoc': 1, 'qf': 1, 'vimwiki': 1, 'text': 1, 'infolog': 1, 'mail': 1}
 
 " Lightline Config
 let g:lightline = { 
@@ -161,6 +158,8 @@ autocmd FileType nerdtree noremap <buffer> <Right> <nop>
 autocmd filetype python nnoremap <F7> :w <bar> exec '!python '.shellescape('%')<CR>
 autocmd filetype c nnoremap <F7> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
 autocmd filetype cpp nnoremap <F7> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
+
+vmap <Leader><Bslash> :EasyAlign*<Bar><Enter>
 
 set mouse=a
 
