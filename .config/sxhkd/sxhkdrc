@@ -8,7 +8,7 @@ super + Return
 
 # program launcher
 super + @space
-	zsh ~/rofi.sh # do nothing
+	zsh ~/bin/rofi.sh # do nothing
 
 # make sxhkd reload its configuration files:
 super + Escape
