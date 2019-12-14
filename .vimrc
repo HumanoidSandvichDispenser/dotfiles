@@ -101,6 +101,7 @@ syntax on
 
 colorscheme gruvbox
 
+" UltiSnips
 let g:UltiSnipsExpandTrigger = "<c-a>"
 let g:UltiSnipsJumpForwardTrigger="<c-x>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
@@ -108,9 +109,14 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:indentLine_color_term = 8
 let NERDTreeShowHidden = 1
 let delimitMate_expand_cr = 1
+
+" Language
 let g:vim_markdown_conceal_code_blocks = 1
 let g:vim_markdown_folding_disabled = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_concepts_highlight = 1
 
+" YCM
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 
