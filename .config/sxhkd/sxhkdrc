@@ -4,15 +4,18 @@
 
 # terminal emulator
 super + Return
-	konsole
+	st
 
 # program launcher
 super + @space
-	zsh ~/bin/rofi.sh # do nothing
+	zsh ~/bin/rofi.sh
 
-# make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
+
+# snipping tool
+super + shift + s
+	spectacle -brc # does something
 
 #
 # bspwm hotkeys
@@ -46,8 +49,8 @@ super + g
 #
 
 # set the window state
-super + {t,shift + t,s,f}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+super + {t,shift + t,f}
+	bspc node -t {tiled,pseudo_tiled,floating}
 
 # set the node flags
 super + ctrl + {m,x,y,z}
