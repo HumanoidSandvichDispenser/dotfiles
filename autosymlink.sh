@@ -2,7 +2,7 @@
 
 currDir="$HOME/git/dotfiles"
 declare -a files=(".bashrc" ".zshrc" ".vimrc")
-declare -a directories=(".config/bspwm" ".config/sxhkd")
+declare -a directories=(".config/bspwm" ".config/sxhkd" ".config/ncmpcpp")
 
 for file in ${files[@]}; do
 	if [ ! -f "$file" ]; then
