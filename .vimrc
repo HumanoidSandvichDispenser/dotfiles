@@ -6,9 +6,9 @@ call plug#begin()
 Plug 'arcticicestudio/nord-vim'
 Plug 'morhetz/gruvbox'
 Plug 'ryanoasis/vim-devicons'
-Plug 'ap/vim-buftabline'
+"Plug 'ap/vim-buftabline'
 Plug 'jistr/vim-nerdtree-tabs'
-Plug 'qpkorr/vim-bufkill'
+"Plug 'qpkorr/vim-bufkill'
 
 " Discord Rich Presence
 Plug 'vbe0201/vimdiscord'
@@ -61,11 +61,11 @@ Plugin 'gregsexton/VimCalc'
 Plugin 'vbe0201/vimdiscord'
 
 " Language Support
-Plugin 'plasticboy/vim-markdown'
-Plugin 'posva/vim-vue'
-Plugin 'pangloss/vim-javascript'
-Plugin 'prettier/vim-prettier'
-Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'sheerun/vim-polyglot'
+
+" Search StackOverflow
+Plugin 'hienvd/vim-stackoverflow'
+
 call vundle#end()            " required
 
 filetype plugin indent on    " required
@@ -100,8 +100,9 @@ let g:UltiSnipsJumpForwardTrigger="<c-x>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 let g:indentLine_color_term = 8
-let NERDTreeShowHidden = 1
 let delimitMate_expand_cr = 1
+let NERDTreeShowHidden = 1
+let NERDTreeMapOpenInTab='<ENTER>'
 
 " Language
 let g:vim_markdown_conceal_code_blocks = 1
@@ -136,28 +137,33 @@ let g:lightline.subseparator = {
 	\   'left': '', 'right': ''
 \}
 
+" Scrolling
 map <S-Down> <C-E>
 map <S-Up> <C-Y>
 map <ScrollWheelUp> 3<C-Y>
 map <ScrollWheelDown> 3<C-E>
 map <ScrollWheelLeft> 3<C-H>
 map <ScrollWheelRight> 3<C-L>
+
+" Editor shortcuts
 map <C-s> :w<CR>
+map <C-f> /
 map <C-n> :NERDTreeTabsToggle<CR>
-vmap <C-c> "+yi
-vmap <C-x> "+c
-vmap <C-v> c<ESC>"+p
-imap <C-v> <ESC>"+pa
-noremap <C-Q> <C-W><C-W>
-noremap <Left> :bprevious<CR>
-noremap <Right> :bnext<CR>
-noremap <C-w> :BD<CR>
-noremap <C-t> :enew<CR>
-noremap j gj
-noremap k gk
+nmap <S-Left>  :tabmove -1<CR>
+nmap <S-Right> :tabmove +1<CR>
+nmap <silent> <C-h> :noh<CR>
+noremap <C-q> <C-w><C-w>
+noremap <C-w> :tabclose<CR>
+noremap <C-t> :tabnew<CR>
+
+" Remappings
+noremap <silent> j gj
+noremap <silent> k gk
 inoremap <C-e> <C-o>A
 inoremap jj <Esc>
 nnoremap <C-p> :YcmShowDetailedDiagnostic<CR>
+nnoremap <Left> :tabprevious<CR>
+nnoremap <Right> :tabnext<CR>
 
 " Do not change buffers in NERDTree
 autocmd FileType nerdtree noremap <buffer> <Left> <nop>

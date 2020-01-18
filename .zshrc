@@ -13,15 +13,31 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 POWERLEVEL9K_DISABLE_RPROMPT=true
 
 # 110
-POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='6'
-POWERLEVEL9K_DIR_HOME_BACKGROUND='6'
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='6'
+POWERLEVEL9K_USER_FOREGROUND='#949494'
+POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='#ffdeaf'
+POWERLEVEL9K_DIR_HOME_FOREGROUND='#949494' # 6
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='#ffdeaf'
+POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='#4E4E4E'
+POWERLEVEL9K_DIR_HOME_BACKGROUND='#4E4E4E' # 6
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='#4E4E4E'
 POWERLEVEL9K_DIR_ETC_BACKGROUND='6'
+POWERLEVEL9K_HOME_ICON='\uF015 '
+POWERLEVEL9K_HOME_SUB_ICON='\uF015 '
+POWERLEVEL9K_FOLDER_ICON='\uF07C '
+POWERLEVEL9K_ETC_ICON='⚙ '
+POWERLEVEL9K_SUDO_ICON=$'\uF09C '
+
 POWERLEVEL9K_STATUS_ERROR_BACKGROUND='167'
 POWERLEVEL9K_STATUS_ERROR_FOREGROUND='000'
 POWERLEVEL9K_STATUS_OK_BACKGROUND='238'
-POWERLEVEL9K_VI_INSERT_MODE_BACKGROUND='7'
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status vi_mode dir vcs)
+
+POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND='0'
+POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND='0'
+POWERLEVEL9K_VI_MODE_INSERT_BACKGROUND='#87AFAF'
+POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND='#949494'
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir dir_writable vcs)
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
@@ -112,7 +128,6 @@ source $ZSH/oh-my-zsh.sh
 #
 
 # Commands to run on startup
-cd ~
 stty -ixon
 source ~/bin/autoalias.sh
 
@@ -120,7 +135,21 @@ source ~/bin/autoalias.sh
 set -o vi
 
 # Aliases and Exports
-export PATH=$PATH:/mnt/c/Windows/System32
-export TERM=rxvt-256color
-#alias note=". ~/bin/note"
+export LC_ALL="en_US.UTF-8"
+alias edit=nvim
+alias qe=vim # Vim is quicker to load
+alias ncmpcpp="ncmpcpp -b ~/.config/ncmpcpp/keybinds"
+export PATH=$PATH:$HOME/bin
+export PYTHONPATH=$PYTHONPATH:/usr/lib/python3.8/site-packages
+#export TERM=rxvt-256color
+export VISUAL=nvim
+export EDITOR=nvim
+export CALCRC=$HOME/.calcrc
+
+# Keybinds
+bindkey -M vicmd "?" history-incremental-search-backward # https://github.com/dule/dotenv/blob/master/zshrc
+bindkey -M vicmd "/" history-incremental-search-forward
+bindkey -M viins 'jj' vi-cmd-mode
+bindkey -M vicmd 'u' undo
+
 LS_COLORS="di=34;43:*rc=32"; export LS_COLORS
