@@ -14,6 +14,7 @@ POWERLEVEL9K_DISABLE_RPROMPT=true
 
 # 110
 POWERLEVEL9K_USER_FOREGROUND='#949494'
+POWERLEVEL9K_USER_BACKGROUND='#262626'
 POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='#ffdeaf'
 POWERLEVEL9K_DIR_HOME_FOREGROUND='#949494' # 6
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='#ffdeaf'
@@ -27,16 +28,17 @@ POWERLEVEL9K_FOLDER_ICON='\uF07C '
 POWERLEVEL9K_ETC_ICON='⚙ '
 POWERLEVEL9K_SUDO_ICON=$'\uF09C '
 
-POWERLEVEL9K_STATUS_ERROR_BACKGROUND='167'
-POWERLEVEL9K_STATUS_ERROR_FOREGROUND='000'
-POWERLEVEL9K_STATUS_OK_BACKGROUND='238'
+POWERLEVEL9K_STATUS_ERROR_BACKGROUND='#262626'
+POWERLEVEL9K_STATUS_ERROR_FOREGROUND='167'
+POWERLEVEL9K_STATUS_OK_BACKGROUND='#262626'
+POWERLEVEL9K_STATUS_VERBOSE='false'
 
 POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND='0'
 POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND='0'
 POWERLEVEL9K_VI_MODE_INSERT_BACKGROUND='#87AFAF'
 POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND='#949494'
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir dir_writable vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status user joined dir dir_writable vcs)
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -127,24 +129,51 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 
-# Commands to run on startup
-stty -ixon
-source ~/bin/autoalias.sh
-
-# Options
-set -o vi
-
 # Aliases and Exports
 export LC_ALL="en_US.UTF-8"
-alias edit=nvim
-alias qe=vim # Vim is quicker to load
-alias ncmpcpp="ncmpcpp -b ~/.config/ncmpcpp/keybinds"
 export PATH=$PATH:$HOME/bin
 export PYTHONPATH=$PYTHONPATH:/usr/lib/python3.8/site-packages
-#export TERM=rxvt-256color
 export VISUAL=nvim
 export EDITOR=nvim
 export CALCRC=$HOME/.calcrc
+
+export RESTORE=$(echo -en '\033[0m')
+export RED=$(echo -en '\033[00;31m')
+export GREEN=$(echo -en '\033[00;32m')
+export YELLOW=$(echo -en '\033[00;33m')
+export BLUE=$(echo -en '\033[00;34m')
+export MAGENTA=$(echo -en '\033[00;35m')
+export PURPLE=$(echo -en '\033[00;35m')
+export CYAN=$(echo -en '\033[00;36m')
+export LIGHTGRAY=$(echo -en '\033[00;37m')
+export LRED=$(echo -en '\033[01;31m')
+export LGREEN=$(echo -en '\033[01;32m')
+export LYELLOW=$(echo -en '\033[01;33m')
+export LBLUE=$(echo -en '\033[01;34m')
+export LMAGENTA=$(echo -en '\033[01;35m')
+export LPURPLE=$(echo -en '\033[01;35m')
+export LCYAN=$(echo -en '\033[01;36m')
+export WHITE=$(echo -en '\033[01;37m')
+
+alias edit=nvim
+alias qe=vim # Vim is quicker to load
+alias ncmpcpp="ncmpcpp -b ~/.config/ncmpcpp/keybinds"
+alias update="pamac update && checkUpdates.sh"
+alias pacman_clear_cache="sudo pacman -Sc"
+alias pamac_clear_cache="pacman_clear_cache; paccache -r -vuk0; paccache -r -v"
+alias lock="qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock"
+
+# Commands to run on startup
+stty -ixon
+updates=$(<$HOME/bin/updates.txt) # Read from text file since the check updates command takes a long time and handled by cron.
+if [ $updates != "1" -a $updates != "0" ]; then
+	echo -e "${LCYAN}[pamac] ${RESTORE}$updates available package updates. ${BLUE}'update' ${RESTORE}to install."
+elif [ "$updates" "==" "1" ]; then
+	echo "${LCYAN}[pamac] ${RESTORE}1 availabe package update. ${BLUE}'update' ${RESTORE}to install."
+fi
+
+# Options
+set -o vi
 
 # Keybinds
 bindkey -M vicmd "?" history-incremental-search-backward # https://github.com/dule/dotenv/blob/master/zshrc
