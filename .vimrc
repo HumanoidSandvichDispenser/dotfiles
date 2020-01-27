@@ -3,16 +3,61 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 call plug#begin()
+" Themes
 Plug 'arcticicestudio/nord-vim'
 Plug 'morhetz/gruvbox'
-Plug 'ryanoasis/vim-devicons'
-"Plug 'ap/vim-buftabline'
-Plug 'jistr/vim-nerdtree-tabs'
-"Plug 'qpkorr/vim-bufkill'
+
+" Templates for new files
+Plug 'aperezdc/vim-template'
+
+" Autocomplete (, [, {, ", etc.
+Plug 'Raimondi/delimitMate'
+
+" Show indents
+Plug 'Yggdroot/indentLine'
+
+" Project drawer
+Plug 'scrooloose/nerdtree'
+
+" Status line
+Plug 'itchyny/lightline.vim'
+
+" Git
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'christoomey/vim-conflicted'
+
+" Autocomplete
+Plug 'valloric/youcompleteme'
+
+" Snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+" Auto tabbing / Alignment
+Plug 'godlygeek/tabular'
+Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/goyo.vim'
+
+" Kill buffers without closing splits
+Plug 'qpkorr/vim-bufkill'
+
+" Calculator
+Plug 'gregsexton/VimCalc'
 
 " Discord Rich Presence
 Plug 'vbe0201/vimdiscord'
+
+" Language Support
+Plug 'sheerun/vim-polyglot'
+
+" Search StackOverflow
+Plug 'hienvd/vim-stackoverflow'
+
+" Other Utilities
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'ryanoasis/vim-devicons'
+
 call plug#end()
 
 " set the runtime path to include Vundle and initialize
@@ -22,51 +67,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " Required for Vundle to run
 Plugin 'VundleVim/Vundle.vim'
-:
-" Templates for new files
-Plugin 'aperezdc/vim-template'
-
-" Autocomplete (, [, {, ", etc.
-Plugin 'Raimondi/delimitMate'
-
-" Show indents
-Plugin 'Yggdroot/indentLine'
-
-" Project drawer
-Plugin 'scrooloose/nerdtree'
-
-" Status line
-Plugin 'itchyny/lightline.vim'
-
-" Git
-Plugin 'tpope/vim-fugitive'
-
-" Autocomplete
-Plugin 'valloric/youcompleteme'
-
-" Snippets
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-
-" Auto tabbing / Alignment
-Plugin 'godlygeek/tabular'
-Plugin 'junegunn/vim-easy-align'
-
-" Kill buffers without closing splits
-Plugin 'qpkorr/vim-bufkill'
-
-" Calculator
-Plugin 'gregsexton/VimCalc'
-
-" Discord Rich Presence
-Plugin 'vbe0201/vimdiscord'
-
-" Language Support
-Plugin 'sheerun/vim-polyglot'
-
-" Search StackOverflow
-Plugin 'hienvd/vim-stackoverflow'
-
 call vundle#end()            " required
 
 filetype plugin indent on    " required
@@ -90,10 +90,13 @@ set titlestring="[VIM] %t"
 highlight Pmenu ctermfg=15 ctermbg=8
 highlight PmenuSel ctermfg=14 ctermbg=NONE
 highlight function ctermfg=Yellow
+highlight Comment cterm=italic
 "highlight Keyword ctermfg=Red
 syntax on
 
 colorscheme gruvbox
+
+let g:loaded_python_provider = 0
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger = "<c-a>"
