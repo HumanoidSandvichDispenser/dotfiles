@@ -9,6 +9,7 @@ Plug 'ryanoasis/vim-devicons'
 "Plug 'ap/vim-buftabline'
 Plug 'jistr/vim-nerdtree-tabs'
 "Plug 'qpkorr/vim-bufkill'
+Plug 'junegunn/goyo.vim'
 
 " Discord Rich Presence
 Plug 'vbe0201/vimdiscord'
@@ -148,7 +149,6 @@ map <ScrollWheelRight> 3<C-L>
 " Editor shortcuts
 map <C-s> :w<CR>
 map <C-f> /
-map <C-n> :NERDTreeTabsToggle<CR>
 nmap <S-Left>  :tabmove -1<CR>
 nmap <S-Right> :tabmove +1<CR>
 nmap <silent> <C-h> :noh<CR>
@@ -157,10 +157,16 @@ noremap <C-w> :tabclose<CR>
 noremap <C-t> :tabnew<CR>
 
 " Remappings
+nmap ; :
 noremap <silent> j gj
 noremap <silent> k gk
 inoremap <C-e> <C-o>A
 inoremap jj <Esc>
+
+" Plugin Shortcuts
+map <C-n> :NERDTreeTabsToggle<CR>
+nnoremap m :Goyo 75%x100%-4<CR>
+nnoremap M :Goyo!<CR>
 nnoremap <C-p> :YcmShowDetailedDiagnostic<CR>
 nnoremap <Left> :tabprevious<CR>
 nnoremap <Right> :tabnext<CR>
