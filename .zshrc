@@ -38,7 +38,20 @@ POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND='0'
 POWERLEVEL9K_VI_MODE_INSERT_BACKGROUND='#87AFAF'
 POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND='#949494'
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status user joined dir dir_writable vcs)
+POWERLEVEL9K_CUSTOM_PACKAGES="zsh_packages"
+POWERLEVEL9K_CUSTOM_PACKAGES_BACKGROUND='#262626'
+POWERLEVEL9K_CUSTOM_PACKAGES_FOREGROUND='#8ec07c'
+
+zsh_packages() {
+	if [ -z "$updates" ]; then return; fi
+	if [ "$updates" != "1" -a "$updates" != "0" ]; then
+		echo "  $updates"
+	elif [ "$updates" "==" "1" ]; then
+		echo " "
+	fi
+}
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status user custom_packages dir dir_writable vcs)
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -104,30 +117,15 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
+export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-#
+# Functions
+checkUpdates() {
+	echo $(<$HOME/bin/updates.txt)
+}
 
 # Aliases and Exports
 export LC_ALL="en_US.UTF-8"
@@ -158,18 +156,19 @@ export WHITE=$(echo -en '\033[01;37m')
 alias edit=nvim
 alias qe=vim # Vim is quicker to load
 alias ncmpcpp="ncmpcpp -b ~/.config/ncmpcpp/keybinds"
-alias update="pamac update && checkUpdates.sh"
+alias update="pamac update && checkUpdates.sh && updates=$(checkUpdates)"
 alias pacman_clear_cache="sudo pacman -Sc"
 alias pamac_clear_cache="pacman_clear_cache; paccache -r -vuk0; paccache -r -v"
 alias lock="qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock"
+alias vibrant="nvidia-settings -a 'DigitalVibrance=300'"
 
 # Commands to run on startup
 stty -ixon
-updates=$(<$HOME/bin/updates.txt) # Read from text file since the check updates command takes a long time and handled by cron.
-if [ $updates != "1" -a $updates != "0" ]; then
-	echo -e "${LCYAN}[pamac] ${RESTORE}$updates available package updates. ${BLUE}'update' ${RESTORE}to install."
+updates=$(checkUpdates)
+if [ "$updates" != "1" -a "$updates" != "0" ]; then
+	echo -e "${CYAN}  Pamac ${RESTORE}$updates available package updates. ${BLUE}'update' ${RESTORE}to install."
 elif [ "$updates" "==" "1" ]; then
-	echo "${LCYAN}[pamac] ${RESTORE}1 availabe package update. ${BLUE}'update' ${RESTORE}to install."
+	echo "${CYAN}  Pamac ${RESTORE}1 availabe package update. ${BLUE}'update' ${RESTORE}to install."
 fi
 
 # Options
