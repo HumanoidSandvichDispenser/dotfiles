@@ -18,6 +18,8 @@ Plug 'Yggdroot/indentLine'
 
 " Project drawer
 Plug 'scrooloose/nerdtree'
+Plug 'Nopik/vim-nerdtree-direnter'
+Plug 'jistr/vim-nerdtree-tabs'
 
 " Status line
 Plug 'itchyny/lightline.vim'
@@ -39,9 +41,6 @@ Plug 'godlygeek/tabular'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/goyo.vim'
 
-" Kill buffers without closing splits
-Plug 'qpkorr/vim-bufkill'
-
 " Calculator
 Plug 'gregsexton/VimCalc'
 
@@ -50,24 +49,18 @@ Plug 'vbe0201/vimdiscord'
 
 " Language Support
 Plug 'sheerun/vim-polyglot'
+Plug 'plasticboy/vim-markdown'
 
 " Search StackOverflow
 Plug 'hienvd/vim-stackoverflow'
 
 " Other Utilities
-Plug 'jistr/vim-nerdtree-tabs'
-Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons' " Icons for NERDTree
+Plug 'psliwka/vim-smoothie' " Smooth scrolling
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'idanarye/vim-vebugger' " Debugger
 
 call plug#end()
-
-" set the runtime path to include Vundle and initialize
-
-set rtp+=~/.vim/bundle/Vundle.vim
-
-call vundle#begin()
-" Required for Vundle to run
-Plugin 'VundleVim/Vundle.vim'
-call vundle#end()            " required
 
 filetype plugin indent on    " required
 
@@ -91,7 +84,6 @@ highlight Pmenu ctermfg=15 ctermbg=8
 highlight PmenuSel ctermfg=14 ctermbg=NONE
 highlight function ctermfg=Yellow
 highlight Comment cterm=italic
-"highlight Keyword ctermfg=Red
 syntax on
 
 colorscheme gruvbox
@@ -146,15 +138,16 @@ map <S-Down> <C-E>
 map <S-Up> <C-Y>
 map <ScrollWheelUp> 3<C-Y>
 map <ScrollWheelDown> 3<C-E>
-map <ScrollWheelLeft> 3<C-H>
-map <ScrollWheelRight> 3<C-L>
+map <ScrollWheelLeft> 3zh
+map <ScrollWheelRight> 3zl
 
 " Editor shortcuts
 map <C-s> :w<CR>
-map <C-f> /
+map <silent> ` :VBGtoggleBreakpointThisLine<CR>
+map <silent> <S-`> :VBGclearBreakpints<CR>
 nmap <S-Left>  :tabmove -1<CR>
 nmap <S-Right> :tabmove +1<CR>
-nmap <silent> <C-h> :noh<CR>
+nmap <silent> <C-/> :noh<CR>
 noremap <C-q> <C-w><C-w>
 noremap <C-w> :tabclose<CR>
 noremap <C-t> :tabnew<CR>
@@ -163,8 +156,11 @@ noremap <C-t> :tabnew<CR>
 nmap ; :
 noremap <silent> j gj
 noremap <silent> k gk
-inoremap <C-e> <C-o>A
 inoremap jj <Esc>
+
+" Emacs
+imap <C-a> <Home>
+inoremap <C-e> <End>
 
 " Plugin Shortcuts
 map <C-n> :NERDTreeTabsToggle<CR>
