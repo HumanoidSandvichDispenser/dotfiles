@@ -8,4 +8,4 @@
 
 
 source /etc/locale.conf
-rofi -combi-modi drun,window -show combi -modi combi.drun.window -show-icons -icon-theme Zafiro-Icons-Black-Red
+rofi -combi-modi drun,window -show combi -modi combi,window,drun -show-icons -icon-theme Zafiro-Icons-Black-Red
