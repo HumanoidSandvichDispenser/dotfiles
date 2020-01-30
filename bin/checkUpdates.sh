@@ -6,5 +6,8 @@
 # Distributed under terms of the MIT license.
 #
 
-
-pamac checkupdates -q | wc -l > $HOME/bin/updates.txt
+if [[ "$PACKAGE_MANAGER" == "pamac" ]]; then
+	pamac checkupdates -q | wc -l > $DOTFILES/bin/updates.txt
+elif [[ "$PACKAGE_MANAGER" == "pacman" ]]; then
+	pacman -Qu | wc -l > $DOTFILES/bin/updates.txt
+fi
