@@ -50,6 +50,7 @@ Plug 'vbe0201/vimdiscord'
 " Language Support
 Plug 'sheerun/vim-polyglot'
 Plug 'plasticboy/vim-markdown'
+Plug 'lervag/vimtex'
 
 " Search StackOverflow
 Plug 'hienvd/vim-stackoverflow'
@@ -79,6 +80,7 @@ set hidden
 set clipboard=unnamedplus
 set title
 set titlestring="[VIM] %t"
+set termguicolors
 
 highlight Pmenu ctermfg=15 ctermbg=8
 highlight PmenuSel ctermfg=14 ctermbg=NONE
@@ -109,6 +111,7 @@ let g:cpp_member_variable_highlight = 1
 let g:cpp_class_scope_highlight = 1
 let g:cpp_class_decl_highlight = 1
 let g:cpp_concepts_highlight = 1
+let g:vimtex_compiler_method = 'latexrun'
 
 " YCM
 let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -170,12 +173,15 @@ nnoremap <C-p> :YcmShowDetailedDiagnostic<CR>
 nnoremap <Left> :tabprevious<CR>
 nnoremap <Right> :tabnext<CR>
 
-" Do not change buffers in NERDTree
+" Autocommands
 autocmd FileType nerdtree noremap <buffer> <Left> <nop>
 autocmd FileType nerdtree noremap <buffer> <Right> <nop>
-autocmd filetype python nnoremap <F7> :w <bar> exec '!python '.shellescape('%')<CR>
-autocmd filetype c nnoremap <F7> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
-autocmd filetype cpp nnoremap <F7> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
+autocmd FileType python nnoremap <F7> :w <bar> exec '!python '.shellescape('%')<CR>
+autocmd FileType c nnoremap <F7> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
+autocmd FileType cpp nnoremap <F7> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
+autocmd FileType tex nnoremap <F7> :VimtexCompile<CR>
+autocmd InsertEnter * set conceallevel=0
+autocmd InsertLeave * set conceallevel=1
 
 vmap <Leader><Bslash> :EasyAlign*<Bar><Enter>
 
