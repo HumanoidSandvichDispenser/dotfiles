@@ -7,8 +7,21 @@ super + Return
 	st
 
 # program launcher
-super + @space
+super + space
+#	dmenu_run -nb '#282828' -nf '#ebdbb2' -sb '#83a598' -sf '#282828' 
 	zsh ~/bin/rofi.sh
+
+super + u
+	~/bin/lamp/dmenuLamp.sh
+
+super + z
+	zathura
+
+super + v
+	st nvim
+
+super + r
+	st ranger
 
 super + Escape
 	pkill -USR1 -x sxhkd
@@ -136,3 +149,6 @@ super + {Left,Down,Up,Right}
 # move a tiled window
 super + shift + {Left,Down,Up,Right}
 	euclid_mover {west,south,north,east}
+
+super + n
+	~/bin/dmenu_emojis.sh

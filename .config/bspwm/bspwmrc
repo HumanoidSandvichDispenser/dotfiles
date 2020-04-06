@@ -16,6 +16,10 @@ if ! pgrep -x "lxqt-notificationd" > /dev/null && which "lxqt-notificationd" > /
 	lxqt-notificationd &
 fi
 
+if ! pgrep -x "mpd" > /dev/null; then
+	mpd &
+fi
+
 bspc monitor -d I II III IV V VI VII VIII IX X
 
 bspc config border_width         2
@@ -35,3 +39,4 @@ bspc rule -a yakuake state=floating follow=on
 bspc rule -a latte-dock state=floating follow=on
 bspc rule -a plasma state=floating
 bspc rule -a plasmashell state=floating border=off focus=off
+bspc rule -a Zathura state=tiled

@@ -129,7 +129,19 @@ export LANG=en_US.UTF-8
 
 # Functions
 checkUpdates() {
-	echo $(<$DOTFILES/bin/updates.txt)
+	echo $(</tmp/updates.txt)
+}
+
+viewdoc() {
+	pandoc --to=pdf --pdf-engine=pdflatex -V geometry:margin=0.5in $1 | zathura -
+}
+
+youtubemp3() {
+	if [ $# -eq 2 ]; then
+		youtube-dl -x --audio-format mp3 --output $2 $1
+	elif [ $# -eq 1 ]; then
+		youtube-dl -x --audio-format mp3 $1
+	fi
 }
 
 # Aliases and Exports
@@ -157,6 +169,14 @@ export LMAGENTA=$(echo -en '\033[01;35m')
 export LPURPLE=$(echo -en '\033[01;35m')
 export LCYAN=$(echo -en '\033[01;36m')
 export WHITE=$(echo -en '\033[01;37m')
+
+export LESS_TERMCAP_mb=$CYAN
+export LESS_TERMCAP_md=$LCYAN
+export LESS_TERMCAP_me=$RESTORE
+export LESS_TERMCAP_se=$RESTORE
+export LESS_TERMCAP_so=$LRED
+export LESS_TERMCAP_ue=$RESTORE
+export LESS_TERMCAP_us=$BLUE
 
 alias edit=nvim
 alias qe=vim # Vim is quicker to load

@@ -81,19 +81,27 @@ set clipboard=unnamedplus
 set title
 set titlestring="[VIM] %t"
 set termguicolors
+set cursorline
+
+" Syntax highlighting / theming
+colorscheme gruvbox
+syntax on
 
 highlight Pmenu ctermfg=15 ctermbg=8
 highlight PmenuSel ctermfg=14 ctermbg=NONE
 highlight function ctermfg=Yellow
 highlight Comment cterm=italic
-syntax on
 
-colorscheme gruvbox
+let g:gruvbox_sign_column = "bg0"
+let g:gruvbox_italicize_comments = 1
+let g:gruvbox_italicize_strings = 1
+let g:gruvbox_invert_selection = 0
+
 
 let g:loaded_python_provider = 0
 
 " UltiSnips
-let g:UltiSnipsExpandTrigger = "<c-a>"
+let g:UltiSnipsExpandTrigger = "<c-f>"
 let g:UltiSnipsJumpForwardTrigger="<c-x>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
