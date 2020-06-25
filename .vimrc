@@ -3,6 +3,8 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 call plug#begin()
+" ALL PLUGINS
+
 " Themes
 Plug 'arcticicestudio/nord-vim'
 Plug 'morhetz/gruvbox'
@@ -11,7 +13,7 @@ Plug 'morhetz/gruvbox'
 Plug 'aperezdc/vim-template'
 
 " Autocomplete (, [, {, ", etc.
-Plug 'Raimondi/delimitMate'
+"Plug 'Raimondi/delimitMate'
 
 " Show indents
 Plug 'Yggdroot/indentLine'
@@ -30,11 +32,12 @@ Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-conflicted'
 
 " Autocomplete
-Plug 'valloric/youcompleteme'
+"Plug 'valloric/youcompleteme'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Snippets
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips'
+"Plug 'honza/vim-snippets'
 
 " Auto tabbing / Alignment
 Plug 'godlygeek/tabular'
@@ -60,6 +63,7 @@ Plug 'ryanoasis/vim-devicons' " Icons for NERDTree
 Plug 'psliwka/vim-smoothie' " Smooth scrolling
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'idanarye/vim-vebugger' " Debugger
+Plug 'mhinz/vim-startify' " Startup screen
 
 call plug#end()
 
@@ -121,12 +125,19 @@ let g:cpp_class_decl_highlight = 1
 let g:cpp_concepts_highlight = 1
 let g:vimtex_compiler_method = 'latexrun'
 
-" YCM
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_filetype_blacklist={'notes': 1, 'unite': 1, 'tagbar': 1, 'pandoc': 1, 'qf': 1, 'vimwiki': 1, 'text': 1, 'infolog': 1, 'mail': 1}
+" Autocomplete configuration
+"let g:ycm_autoclose_preview_window_after_insertion = 1
+"let g:ycm_autoclose_preview_window_after_completion = 1
+"let g:ycm_filetype_blacklist={'notes': 1, 'unite': 1, 'tagbar': 1, 'pandoc': 1, 'qf': 1, 'vimwiki': 1, 'text': 1, 'infolog': 1, 'mail': 1}
+let g:coc_global_extensions = [
+\	'coc-snippets',
+\	'coc-pairs',
+\	'coc-tsserver',
+\	'coc-prettier',
+\	'coc-clangd',
+\]
 
-" Lightline Config
+" Lightline configuration
 let g:lightline = { 
 \   'colorscheme': 'gruvbox',
 \	'active': {
@@ -143,6 +154,14 @@ let g:lightline.separator = {
 let g:lightline.subseparator = {
 	\   'left': '', 'right': ''
 \}
+
+" Startify
+let g:startify_bookmarks = [
+\	{ 'v': '$DOTFILES/.vimrc' },
+\	{ 'z': '$DOTFILES/.zshrc' },
+\]
+let g:startify_custom_header = startify#fortune#cowsay('', '─','│','╭','╮','╯','╰')
+highlight StartifyHeader ctermfg=7
 
 " Scrolling
 map <S-Down> <C-E>
@@ -190,6 +209,7 @@ autocmd FileType cpp nnoremap <F7> :w <bar> exec '!g++ '.shellescape('%').' -o '
 autocmd FileType tex nnoremap <F7> :VimtexCompile<CR>
 autocmd InsertEnter * set conceallevel=0
 autocmd InsertLeave * set conceallevel=1
+autocmd User Startified setlocal cursorline
 
 vmap <Leader><Bslash> :EasyAlign*<Bar><Enter>
 
