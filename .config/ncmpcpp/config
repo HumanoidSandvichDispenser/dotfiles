@@ -12,12 +12,12 @@ mpd_port = "7700"
 
 # Display ..
 song_columns_list_format = (20)[blue]{a|A} (50)[224]{t|f:Title} (20)[224]{brE} (7f)[7]{lr}
-song_list_format = "$7{%b }$8{%t}|{%f}$R$8{%a}|{%A} $5{%l}"
+song_list_format = "$7{%b $1• }$8{%t}|{%f}$R$8{%a}|{%A} $5{%l}"
 #song_status_format = " $5%a $1• %t $1• %b "
 playlist_display_mode = "classic" (classic/columns)
 
 # Now Playing ..
-now_playing_prefix = "$4> $b"
+now_playing_prefix = "$4  $b"
 now_playing_suffix = "$/b$(end)"
 
 # Playlist ..

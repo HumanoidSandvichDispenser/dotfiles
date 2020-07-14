@@ -91,10 +91,10 @@ set cursorline
 colorscheme gruvbox
 syntax on
 
-highlight Pmenu ctermfg=15 ctermbg=8
-highlight PmenuSel ctermfg=14 ctermbg=NONE
-highlight function ctermfg=Yellow
-highlight Comment cterm=italic
+hi! Pmenu ctermfg=15 ctermbg=2 guibg=#303030
+hi! PmenuSel ctermfg=14 ctermbg=NONE
+hi! function ctermfg=Yellow
+hi! Comment cterm=italic
 
 let g:gruvbox_sign_column = "bg0"
 let g:gruvbox_italicize_comments = 1
@@ -135,25 +135,54 @@ let g:coc_global_extensions = [
 \	'coc-tsserver',
 \	'coc-prettier',
 \	'coc-clangd',
+\	'coc-sh',
+\	'coc-python',
 \]
+highlight CocErrorHighlight ctermfg=1
 
 " Lightline configuration
 let g:lightline = { 
 \   'colorscheme': 'gruvbox',
 \	'active': {
-\   'left':[ [ 'mode', 'paste' ],
-\       [ 'gitbranch', 'readonly', 'filename', 'modified' ] ] 
+\	   'left': [
+\			[ 'mode', 'paste' ],
+\			[ 'gitbranch', 'readonly', 'filename', 'modified' ]
+\		] 
 \	},
+\
+\	'separator': {
+\  		'left': '', 'right': ''
+\	},
+\
+\	'subseparator': {
+\	   'left': '', 'right': ''
+\	},
+\	
+\	'tabline': {
+\		'left': [ [ 'tabs' ] ],
+\		'right': [ [ 'close' ] ] 
+\	},
+\
+\	'tab': {
+\		'active': [ 'filetypeicon', 'filename', 'modified' ],
+\		'inactive': [ 'tabnum', 'filename', 'modified' ]
+\	},
+\
 \   'component_function': {
-\       'gitbranch': 'fugitive#head',
-\   }
+\		'gitbranch': 'LightlineFugitive',
+\		'filetype': 'MyFiletype',
+\		'fileformat': 'MyFileformat',
+\		'readonly': 'LightlineReadonly',
+\   },
+\
+\	'tab_component_function': {
+\		'filetypeicon': 'LightlineFileicon',
+\		'readonly': 'LightlineReadonly',
+\		'gitbranch': 'LightlineFugitive',
+\		'modified': 'LightlineModified'
+\	}
 \}
-let g:lightline.separator = {
-	\   'left': '', 'right': ''
-\}
-let g:lightline.subseparator = {
-	\   'left': '', 'right': ''
-\}
+"let g:webdevicons_enable_lightline = 1
 
 " Startify
 let g:startify_bookmarks = [
@@ -161,9 +190,12 @@ let g:startify_bookmarks = [
 \	{ 'z': '$DOTFILES/.zshrc' },
 \]
 let g:startify_custom_header = startify#fortune#cowsay('', '─','│','╭','╮','╯','╰')
+let g:webdevicons_enable_startify = 1
 highlight StartifyHeader ctermfg=7
 
 " Scrolling
+let g:smoothie_base_speed = 10
+
 map <S-Down> <C-E>
 map <S-Up> <C-Y>
 map <ScrollWheelUp> 3<C-Y>
@@ -181,6 +213,7 @@ nmap <silent> <C-/> :noh<CR>
 noremap <C-q> <C-w><C-w>
 noremap <C-w> :tabclose<CR>
 noremap <C-t> :tabnew<CR>
+noremap <silent> <Esc><Esc> :Startify<CR>
 
 " Remappings
 nmap ; :
@@ -191,14 +224,17 @@ inoremap jj <Esc>
 " Emacs
 imap <C-a> <Home>
 inoremap <C-e> <End>
+inoremap <C-BS> <C-W>
 
 " Plugin Shortcuts
-map <C-n> :NERDTreeTabsToggle<CR>
+map <silent> <C-n> :NERDTreeTabsToggle<CR>
 nnoremap m :Goyo 75%x100%-4<CR>
 nnoremap M :Goyo!<CR>
-nnoremap <C-p> :YcmShowDetailedDiagnostic<CR>
 nnoremap <Left> :tabprevious<CR>
 nnoremap <Right> :tabnext<CR>
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Autocommands
 autocmd FileType nerdtree noremap <buffer> <Left> <nop>
@@ -218,5 +254,36 @@ set mouse=a
 "if !has('gui_running')
 "	set t_Co=256
 "endif
+
+" Functions
+function! MyFiletype()
+	return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+endfunction
+
+function! MyFileformat()
+	return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+endfunction
+
+function! LightlineFileicon(n)
+	let buflist = tabpagebuflist(a:n)
+	let winnr = tabpagewinnr(a:n)
+	return WebDevIconsGetFileTypeSymbol(expand('#'.buflist[winnr - 1].':p'))
+endfunction
+
+function! LightlineModified(n)
+	return lightline#tab#modified(a:n) == '+' ? '' : ''
+endfunction
+
+function! LightlineReadonly()
+		return &readonly ? '' : ''
+endfunction
+
+function! LightlineFugitive()
+	if exists('*FugitiveHead')
+		let branch = FugitiveHead()
+		return branch !=# '' ? ' '.branch : ''
+	endif
+	return ''
+endfunction
 
 source ~/local.vimrc

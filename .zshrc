@@ -136,11 +136,11 @@ viewdoc() {
 	pandoc --to=pdf --pdf-engine=pdflatex -V geometry:margin=0.5in $1 | zathura -
 }
 
-youtubemp3() {
+youtubeaudio() {
 	if [ $# -eq 2 ]; then
-		youtube-dl -x --audio-format mp3 --output $2 $1
+		youtube-dl -x --audio-format m4a --output $2 $1
 	elif [ $# -eq 1 ]; then
-		youtube-dl -x --audio-format mp3 $1
+		youtube-dl -x --audio-format m4a $1
 	fi
 }
 
