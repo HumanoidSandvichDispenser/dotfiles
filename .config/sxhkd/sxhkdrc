@@ -12,7 +12,7 @@ super + space
 	zsh ~/bin/rofi.sh
 
 super + u
-	~/bin/lamp/dmenuLamp.sh
+	zsh -c "source ~/.zshrc; stminify ~/bin/lamp.py"
 
 super + z
 	zathura

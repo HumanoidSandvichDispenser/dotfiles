@@ -40,3 +40,4 @@ bspc rule -a latte-dock state=floating follow=on
 bspc rule -a plasma state=floating
 bspc rule -a plasmashell state=floating border=off focus=off
 bspc rule -a Zathura state=tiled
+bspc rule -a st-floating state=floating
