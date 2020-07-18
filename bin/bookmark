@@ -1,9 +1,0 @@
-#!/bin/bash
-
-touch $HOME/bin/bookmark_temp.txt
-python3 ~/bin/bookmark.py $1 
-script_output=`cat ~/bin/bookmark_temp.txt`
-rm ~/bin/bookmark_temp.txt
-if [ "$script_output" != "" ]; then
-	cd $script_output	
-fi
