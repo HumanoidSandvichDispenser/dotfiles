@@ -144,6 +144,16 @@ youtubeaudio() {
 	fi
 }
 
+stminify() {
+	if [ $# -eq 1 ]; then
+		st -c st-floating $1
+	fi
+}
+
+type_clipboard() {
+	xdotool type "`xclip -selection c -o`"
+}
+
 # Aliases and Exports
 export LC_ALL="en_US.UTF-8"
 export PATH=$PATH:$HOME/bin
@@ -152,6 +162,7 @@ export VISUAL=nvim
 export EDITOR=nvim
 export CALCRC=$HOME/.calcrc
 
+# Color constants
 export RESTORE=$(echo -en '\033[0m')
 export RED=$(echo -en '\033[00;31m')
 export GREEN=$(echo -en '\033[00;32m')
@@ -186,18 +197,19 @@ alias pacman_clear_cache="sudo pacman -Sc"
 alias pamac_clear_cache="pacman_clear_cache; paccache -r -vuk0; paccache -r -v"
 alias lock="qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock"
 alias vibrant="nvidia-settings -a 'DigitalVibrance=300'" # Nvidia only
+alias betty="~/git/betty/main.rb"
 
 # Commands to run on startup
 stty -ixon
 updates=$(checkUpdates)
 if [ "$updates" != "1" -a "$updates" != "0" ]; then
-	echo -e "${CYAN}  Pamac ${RESTORE}$updates available package updates. ${BLUE}'update' ${RESTORE}to install."
+	echo -e "${CYAN}  $PACKAGE_MANAGER ${RESTORE}$updates available package updates. ${BLUE}'update' ${RESTORE}to install."
 elif [ "$updates" "==" "1" ]; then
-	echo "${CYAN}  Pamac ${RESTORE}1 availabe package update. ${BLUE}'update' ${RESTORE}to install."
+	echo "${CYAN}  $PACKAGE_MANAGER ${RESTORE}1 availabe package update. ${BLUE}'update' ${RESTORE}to install."
 fi
 
 # Options
-set -o vi
+set -o vi # Enable vim keybinds in prompt
 
 # Keybinds
 bindkey -M vicmd "?" history-incremental-search-backward # https://github.com/dule/dotenv/blob/master/zshrc

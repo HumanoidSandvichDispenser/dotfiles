@@ -5,25 +5,36 @@ if ! pgrep -x "sxhkd" > /dev/null; then
 fi
 
 if ! pgrep -x "compton" > /dev/null; then
-	compton &
+	compton --backend glx &
 fi
 
 if ! pgrep -x "polybar" > /dev/null; then
 	polybar --reload main &
 fi
 
-if ! pgrep -x "lxqt-notificationd" > /dev/null && which "lxqt-notificationd" > /dev/null; then # Some of my machines use lxqt-notificationd
-	lxqt-notificationd &
+if ! pgrep -x "dunst" > /dev/null && which "dunst" > /dev/null; then # Some of my machines use dunst
+	dunst &
 fi
 
 if ! pgrep -x "mpd" > /dev/null; then
 	mpd &
 fi
 
+if ! pgrep -x "mpd-notification" > /dev/null; then
+	mpd-notification -H localhost -p 7700 -t 2 &
+fi
+
+xcape -e "Super_L=Escape"
+
+# BSPWM Configuration
+
 bspc monitor -d I II III IV V VI VII VIII
 
 bspc config border_width         2
 bspc config window_gap           4
+bspc config active_border_color  "#D5C4A1"
+bspc config normal_border_color  "#303030"
+bspc config focused_border_color  "#928374"
 
 bspc config split_ratio          0.52
 bspc config borderless_monocle   true
@@ -41,3 +52,4 @@ bspc rule -a plasma state=floating
 bspc rule -a plasmashell state=floating border=off focus=off
 bspc rule -a Zathura state=tiled
 bspc rule -a st-floating state=floating
+bspc rule -a st-dialog focus=on state=floating layer=above

@@ -12,7 +12,7 @@ super + space
 	zsh ~/bin/rofi.sh
 
 super + u
-	zsh -c "source ~/.zshrc; stminify ~/bin/lamp.py"
+	zsh -ic "stminify $DOTFILES/bin/lamp.py"
 
 super + z
 	zathura
@@ -26,9 +26,28 @@ super + r
 super + Escape
 	pkill -USR1 -x sxhkd
 
+# hiding/expanding bar
+#super + x
+#	[[ $(bspc config -m focused top_padding) == 28 ]] && { polybar-msg cmd hide && bspc config -m focused top_padding 0 } || { polybar-msg cmd show && bspc config -m focused top_padding 28 }
+
+# volume
+XF86Audio{Raise,Lower}Volume
+    amixer sset Master {5%+,5%-} unmute
+
+# mpc
+super + {less,greater}
+	mpc --port 7700 seek {-,+}00:00:10
+
+super + shift + {less,greater}
+	mpc --port 7700 {prev,next}
+
 # snipping tool
 super + shift + {s, c}
 	spectacle -{rbc,r} # does something
+
+# snipping tool with ocr
+super + shift + f
+	zsh ~/bin/clip_ocr.sh
 
 #
 # bspwm hotkeys
@@ -81,7 +100,7 @@ super + ctrl + {m,x,y,z}
 super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
-super + {_,shift + }{left,down,up,right}
+super + {_,shift + }{Left,Down,Up,Right}
 	bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
@@ -147,8 +166,11 @@ super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 # move a tiled window
-super + shift + {Left,Down,Up,Right}
-	euclid_mover {west,south,north,east}
+#super + shift + {Left,Down,Up,Right}
+	#euclid_mover {west,south,north,east}
 
 super + n
-	~/bin/dmenu_emojis.sh
+	emojenu
+
+ctrl + alt + @v
+	zsh -ic "type_clipboard"

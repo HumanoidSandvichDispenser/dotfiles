@@ -12,9 +12,6 @@ Plug 'morhetz/gruvbox'
 " Templates for new files
 Plug 'aperezdc/vim-template'
 
-" Autocomplete (, [, {, ", etc.
-"Plug 'Raimondi/delimitMate'
-
 " Show indents
 Plug 'Yggdroot/indentLine'
 
@@ -32,7 +29,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-conflicted'
 
 " Autocomplete
-"Plug 'valloric/youcompleteme'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Snippets
@@ -51,9 +47,11 @@ Plug 'gregsexton/VimCalc'
 Plug 'vbe0201/vimdiscord'
 
 " Language Support
+let g:polyglot_disabled = [ 'python', 'py', 'vimrc', 'sh' ] " Semshi has better support for python files
 Plug 'sheerun/vim-polyglot'
 Plug 'plasticboy/vim-markdown'
 Plug 'lervag/vimtex'
+Plug 'numirias/semshi'
 
 " Search StackOverflow
 Plug 'hienvd/vim-stackoverflow'
@@ -64,6 +62,7 @@ Plug 'psliwka/vim-smoothie' " Smooth scrolling
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'idanarye/vim-vebugger' " Debugger
 Plug 'mhinz/vim-startify' " Startup screen
+Plug 'https://github.com/JMcKiern/vim-shoot', { 'do': '\"./install.py\" geckodriver' } " Code screenshotter
 
 call plug#end()
 
@@ -86,21 +85,17 @@ set title
 set titlestring="[VIM] %t"
 set termguicolors
 set cursorline
+set guifont=Iosevka:h11
+set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %{noscrollbar#statusline()}
 
-" Syntax highlighting / theming
+" Syntax highlighting
 colorscheme gruvbox
 syntax on
-
-hi! Pmenu ctermfg=15 ctermbg=2 guibg=#303030
-hi! PmenuSel ctermfg=14 ctermbg=NONE
-hi! function ctermfg=Yellow
-hi! Comment cterm=italic
 
 let g:gruvbox_sign_column = "bg0"
 let g:gruvbox_italicize_comments = 1
 let g:gruvbox_italicize_strings = 1
 let g:gruvbox_invert_selection = 0
-
 
 let g:loaded_python_provider = 0
 
@@ -110,6 +105,8 @@ let g:UltiSnipsJumpForwardTrigger="<c-x>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 let g:indentLine_color_term = 8
+let g:indentLine_char = '┆'
+let g:indentLine_color_gui = '#504945'
 let delimitMate_expand_cr = 1
 let NERDTreeShowHidden = 1
 let NERDTreeMapOpenInTab='<ENTER>'
@@ -124,6 +121,7 @@ let g:cpp_class_scope_highlight = 1
 let g:cpp_class_decl_highlight = 1
 let g:cpp_concepts_highlight = 1
 let g:vimtex_compiler_method = 'latexrun'
+let g:semshi#excluded_hl_groups = [ 'local', 'unresolved' ]
 
 " Autocomplete configuration
 "let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -137,7 +135,13 @@ let g:coc_global_extensions = [
 \	'coc-clangd',
 \	'coc-sh',
 \	'coc-python',
+\	'coc-html',
+\	'coc-css',
+\	'coc-eslint',
+\	'coc-json',
+\	'coc-rls'
 \]
+
 highlight CocErrorHighlight ctermfg=1
 
 " Lightline configuration
@@ -188,6 +192,9 @@ let g:lightline = {
 let g:startify_bookmarks = [
 \	{ 'v': '$DOTFILES/.vimrc' },
 \	{ 'z': '$DOTFILES/.zshrc' },
+\	{ 's': '$HOME/.config/sxhkd/sxhkdrc' },
+\	{ 'b': '$HOME/.config/bspwm/bspwmrc' },
+\	{ 'd': '$HOME/.config/dunst/dunstrc' },
 \]
 let g:startify_custom_header = startify#fortune#cowsay('', '─','│','╭','╮','╯','╰')
 let g:webdevicons_enable_startify = 1
@@ -207,8 +214,8 @@ map <ScrollWheelRight> 3zl
 map <C-s> :w<CR>
 map <silent> ` :VBGtoggleBreakpointThisLine<CR>
 map <silent> <S-`> :VBGclearBreakpints<CR>
-nmap <S-Left>  :tabmove -1<CR>
-nmap <S-Right> :tabmove +1<CR>
+nmap <silent> <S-Left>  :tabmove -1<CR>
+nmap <silent> <S-Right> :tabmove +1<CR>
 nmap <silent> <C-/> :noh<CR>
 noremap <C-q> <C-w><C-w>
 noremap <C-w> :tabclose<CR>
@@ -224,27 +231,32 @@ inoremap jj <Esc>
 " Emacs
 imap <C-a> <Home>
 inoremap <C-e> <End>
-inoremap <C-BS> <C-W>
+inoremap <C-BS> <C-O>diW
 
 " Plugin Shortcuts
 map <silent> <C-n> :NERDTreeTabsToggle<CR>
+map <silent> <C-x> :CocCommand explorer<CR>
 nnoremap m :Goyo 75%x100%-4<CR>
 nnoremap M :Goyo!<CR>
-nnoremap <Left> :tabprevious<CR>
-nnoremap <Right> :tabnext<CR>
+nnoremap <silent> <Left> :tabprevious<CR>
+nnoremap <silent> <Right> :tabnext<CR>
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <Down> pumvisible() ? "\<C-n>" : "\<Down>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <Up> pumvisible() ? "\<C-p>" : "\<Up>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Autocommands
 autocmd FileType nerdtree noremap <buffer> <Left> <nop>
 autocmd FileType nerdtree noremap <buffer> <Right> <nop>
-autocmd FileType python nnoremap <F7> :w <bar> exec '!python '.shellescape('%')<CR>
-autocmd FileType c nnoremap <F7> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
-autocmd FileType cpp nnoremap <F7> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
-autocmd FileType tex nnoremap <F7> :VimtexCompile<CR>
-autocmd InsertEnter * set conceallevel=0
-autocmd InsertLeave * set conceallevel=1
+autocmd FileType python nnoremap <F5> :w <bar> exec '!python '.shellescape('%')<CR>
+autocmd FileType c nnoremap <F5> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
+autocmd FileType cpp nnoremap <F5> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
+autocmd FileType tex nnoremap <F5> :VimtexCompile<CR>
+autocmd BufWrite *.tex VimtexCompile
+autocmd FileType tex autocmd InsertEnter * set conceallevel=0
+autocmd FileType tex autocmd InsertLeave * set conceallevel=1
+autocmd ColorScheme * call HighlightOverrides()
 autocmd User Startified setlocal cursorline
 
 vmap <Leader><Bslash> :EasyAlign*<Bar><Enter>
@@ -257,7 +269,7 @@ set mouse=a
 
 " Functions
 function! MyFiletype()
-	return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+	return winwidth(-1) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
 endfunction
 
 function! MyFileformat()
@@ -284,6 +296,23 @@ function! LightlineFugitive()
 		return branch !=# '' ? ' '.branch : ''
 	endif
 	return ''
+endfunction
+
+function! HighlightOverrides()
+	hi Pmenu ctermfg=15 ctermbg=2 guibg=#3c3836
+	hi PmenuSel guibg=#8ec07c
+	hi function ctermfg=Yellow
+	hi Comment gui=italic
+
+	hi CursorLine guibg=#32302f
+
+	hi semshiParameter guifg=#83a598
+	hi semshiParameterUnused gui=Underline guifg=#83a598
+	hi semshiSelected guibg=#504945
+	hi semshiImported guifg=#fabd2f
+	hi semshiBuiltin guifg=#fabd1f
+	hi semshiAttribute guifg=#83a598
+	hi semshiSelf guifg=#fb4934
 endfunction
 
 source ~/local.vimrc
