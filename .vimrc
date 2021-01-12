@@ -8,6 +8,7 @@ call plug#begin()
 " Themes
 Plug 'arcticicestudio/nord-vim'
 Plug 'morhetz/gruvbox'
+Plug 'sainnhe/gruvbox-material'
 
 " Templates for new files
 Plug 'aperezdc/vim-template'
