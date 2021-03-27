@@ -12,7 +12,7 @@ for file in ${files[@]}; do
 done
 
 for directory in ${directories[@]}; do
-	if [ ! -f "$directory" ]; then
+	if [ ! -f "~/$directory" ]; then
 		echo "Creating symlink for $directory"
 		ln -s $currDir/$directory ~/$directory
 	fi
