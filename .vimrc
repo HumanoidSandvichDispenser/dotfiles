@@ -196,6 +196,7 @@ let g:startify_bookmarks = [
 \	{ 's': '$HOME/.config/sxhkd/sxhkdrc' },
 \	{ 'b': '$HOME/.config/bspwm/bspwmrc' },
 \	{ 'd': '$HOME/.config/dunst/dunstrc' },
+\	{ 'x': '$HOME/.Xresources' },
 \]
 let g:startify_custom_header = startify#fortune#cowsay('', '─','│','╭','╮','╯','╰')
 let g:webdevicons_enable_startify = 1
