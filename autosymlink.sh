@@ -7,15 +7,22 @@ declare -a files=(".bashrc" ".zshrc" ".vimrc")
 declare -a directories=(".config/bspwm" ".config/sxhkd" ".config/ncmpcpp")
 
 for file in ${files[@]}; do
+	echo $file
 	if [ ! -f "~/$file" ]; then
 		echo "Creating symlink for $file"
-		ln -s $currDir/$file $HOME/file
+		ln -s $currDir/$file $HOME/$file
+	else
+		echo "Oldifying existing file: $file"
+		mv ~/$file ~/$file.old1
 	fi
 done
 
 for directory in ${directories[@]}; do
 	if [ ! -f "~/$directory" ]; then
 		echo "Creating symlink for $directory"
-		ln -s $currDir/$directory $HOME/directory
+		ln -s $currDir/$directory $HOME/$directory
+	else
+		echo "Oldifying existing directory: $directory"
+		mv ~/$file ~/$file.old1
 	fi
 done
