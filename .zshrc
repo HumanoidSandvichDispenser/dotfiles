@@ -138,9 +138,9 @@ viewdoc() {
 
 youtubeaudio() {
 	if [ $# -eq 2 ]; then
-		youtube-dl -x --audio-format m4a --output $2 $1
+		youtube-dl -x --audio-format mp3 --output $2 $1
 	elif [ $# -eq 1 ]; then
-		youtube-dl -x --audio-format m4a $1
+		youtube-dl -x --audio-format mp3 $1
 	fi
 }
 
@@ -152,6 +152,15 @@ stminify() {
 
 type_clipboard() {
 	xdotool type "`xclip -selection c -o`"
+}
+
+oldify() {
+	if [[ "$1" == *.old ]]; then
+		newname=$(basename "$1" .old)
+		mv "$1" "$newname"
+	else
+		mv "$1" "$1.old"
+	fi
 }
 
 # Aliases and Exports

@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-	st
+	xst
 
 # program launcher
 super + space
@@ -18,10 +18,10 @@ super + z
 	zathura
 
 super + v
-	st nvim
+	xst nvim
 
 super + r
-	st ranger
+	xst ranger
 
 super + Escape
 	pkill -USR1 -x sxhkd

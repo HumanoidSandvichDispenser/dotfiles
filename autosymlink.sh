@@ -7,7 +7,7 @@ declare -a files=(".bashrc" ".zshrc" ".vimrc")
 declare -a directories=(".config/bspwm" ".config/sxhkd" ".config/ncmpcpp")
 
 for file in ${files[@]}; do
-	if [ ! -f "./$file" ]; then
+	if [ ! -f "~/$file" ]; then
 		echo "Creating symlink for $file"
 		ln -s $currDir/$file $HOME/file
 	fi
