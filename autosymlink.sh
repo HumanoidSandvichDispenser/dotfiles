@@ -2,7 +2,7 @@
 # This script automatically generates symlinks from the home directory to this directory
 
 currDir="$HOME/git/dotfiles"
-cd currDir
+cd $currDir
 declare -a files=(".bashrc" ".zshrc" ".vimrc")
 declare -a directories=(".config/bspwm" ".config/sxhkd" ".config/ncmpcpp")
 
