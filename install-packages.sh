@@ -16,3 +16,9 @@ sudo pacman -S yay --needed
 echo ${BLUE}----------------------------------${RESTORE}
 echo "${RESTORE}Installing missing packages..."
 yay -S --needed --noconfirm - < ./packages.txt
+echo ${BLUE}----------------------------------${RESTORE}
+echo "Installing ${LGREEN}zsh-autocomplete...${RESTORE}"
+cd $HOME/git
+git clone https://github.com/marlonrichert/zsh-autocomplete.git
+cd ..
+echo "${RESTORE}Installation complete"

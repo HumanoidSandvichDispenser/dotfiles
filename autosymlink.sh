@@ -3,7 +3,7 @@
 
 currDir="$HOME/git/dotfiles"
 cd $currDir
-declare -a files=(".bashrc" ".zshrc" ".vimrc")
+declare -a files=(".bashrc" ".zshrc" ".vimrc" ".Xresources")
 declare -a directories=(".config/bspwm" ".config/sxhkd" ".config/ncmpcpp")
 
 for file in ${files[@]}; do

@@ -1,3 +1,5 @@
+zsh-theme-powerlevel10k-git
+zsh-syntax-highlighting-git
 neovim
 mpd
 ncmpcpp
