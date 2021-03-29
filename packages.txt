@@ -1,0 +1,14 @@
+neovim
+mpd
+ncmpcpp
+polybar
+bspwm
+sxhkd
+rofi
+firefox
+pulseaudio
+python
+feh
+sxiv
+xst
+ffmpeg
