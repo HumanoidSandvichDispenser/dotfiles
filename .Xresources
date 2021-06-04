@@ -5,6 +5,13 @@
 ! Source: https://github.com/morhetz/gruvbox-generalized
 ! Last Modified: 6 Sep 2014
 ! -----------------------------------------------------------------------------
+Xft.antialias: 1
+Xft.hinting: 1
+Xft.autohint: 0
+Xft.hintstyle: hintslight
+Xft.rgba: rgb
+Xft.lcdfilter: lcddefault
+Xft.dpi: 125
 
 ! hard contrast: *background: #1d2021
 *background: #282828
@@ -41,7 +48,7 @@ st.termname:     st-256color
 st.borderless:        0
 
 ! --- The following options options can be reloaded via USR1 signal. ---
-st.font:              Iosevka:pixelsize=14:antialias=true:autohint=true;
+st.font:              Iosevka SS07 Medium:pixelsize=16:antialias=true:autohint=true;
 
 ! window padding
 st.borderpx:          8
@@ -84,7 +91,7 @@ st.bellvolume:        100
 st.boxdraw: 1
 
 ! (0|1) boxdraw(bold) enable toggle
-st.boxdraw_bold: 0
+st.boxdraw_bold: 1
 
 ! braille (U28XX):  1: render as adjacent "pixels",  0: use font
 st.boxdraw_braille: 0
@@ -112,7 +119,7 @@ st.background: #282828
 st.foreground: #ebdbb2
 st.color0:  #282828
 st.color8:  #928374
-st.color1:  #cc241d
+st.color1:  #fb4934
 st.color9:  #fb4934
 st.color2:  #b8bb26
 st.color10: #b8bb26
