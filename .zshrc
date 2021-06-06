@@ -20,13 +20,15 @@ export PACKAGE_MANAGER="pacman"
 # set $DOTFILES to that directory.
 export DOTFILES="$HOME/git/dotfiles"
 
+export TERMINAL=xst
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 [[ -f ~/.p10k.zsh ]] && source $DOTFILES/.p10k.zsh
 
 # Autocomplete
-[[ -d $HOME/git/zsh-autocomplete/ ]] && source $HOME/git/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+#[[ -d $HOME/git/zsh-autocomplete/ ]] && source $HOME/git/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 # User configuration
 export MANPATH="/usr/local/man:$MANPATH"
@@ -71,7 +73,7 @@ oldify() {
 virtual-sink() {
 	pacmd load-module module-null-sink sink_name=VirtualMic
 	pacmd update-sink-proplist VirtualMic device.description=VirtualMic
-	pacmd load-module module-loopback sink=VirtualMic
+	pacmd load-module module-loopback source=VirtualMic
 }
 
 # Aliases and Exports
@@ -129,6 +131,8 @@ export LESS_TERMCAP_so=$LRED
 export LESS_TERMCAP_ue=$RESTORE
 export LESS_TERMCAP_us=$BLUE
 
+export SUDO_PROMPT="${LGREEN}[sudo] ${RESTORE} Password for ${CYAN}%p$RESTORE: "
+
 alias edit=nvim
 alias qe=vim # Vim is quicker to load
 alias ncmpcpp="ncmpcpp -b ~/.config/ncmpcpp/keybinds"
@@ -140,7 +144,7 @@ alias vibrant="nvidia-settings -a 'DigitalVibrance=300'" # Nvidia only
 alias betty="~/git/betty/main.rb"
 
 # Commands to run on startup
-stty -ixon
+[[ $- == "i" ]] && stty -ixon
 updates=$(checkUpdates)
 if [ "$updates" != "1" -a "$updates" != "0" ]; then
 	echo -e "${CYAN}  $PACKAGE_MANAGER ${RESTORE}$updates available package updates. ${BLUE}'update' ${RESTORE}to install."
@@ -152,6 +156,7 @@ setopt autocd
 
 # Options
 set -o vi # Enable vim keybinds in prompt
+HISTFILE=~/.zshrc
 
 # Keybinds
 bindkey -M vicmd "?" history-incremental-search-backward # https://github.com/dule/dotenv/blob/master/zshrc
@@ -160,3 +165,6 @@ bindkey -M viins 'jj' vi-cmd-mode
 bindkey -M vicmd 'u' undo
 
 LS_COLORS="di=34;43:*rc=32"; export LS_COLORS
+
+# node.js version manager
+source /usr/share/nvm/init-nvm.sh

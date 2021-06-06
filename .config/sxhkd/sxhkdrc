@@ -8,8 +8,13 @@ super + Return
 
 # program launcher
 super + space
-#	dmenu_run -nb '#282828' -nf '#ebdbb2' -sb '#83a598' -sf '#282828' 
-	zsh ~/bin/rofi.sh
+	~/git/dotfiles/bin/drun.sh
+
+super + grave
+	polybar-msg cmd show; bspc config top_padding 32
+
+super + shift + grave
+	polybar-msg cmd hide; bspc config top_padding 0
 
 super + u
 	zsh -ic "stminify $DOTFILES/bin/lamp.py"
@@ -24,7 +29,11 @@ super + r
 	xst ranger
 
 super + Escape
+	~/bin/power-menu.sh
+
+super + shift + Escape
 	pkill -USR1 -x sxhkd
+
 
 # hiding/expanding bar
 #super + x
@@ -42,8 +51,9 @@ super + shift + {less,greater}
 	mpc --port 7700 {prev,next}
 
 # snipping tool
-super + shift + {s, c}
-	spectacle -{rbc,r} # does something
+super + shift + s
+	sleep 0.2; scrot -sf '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
+	#spectacle -{rbc,r} # does something
 
 # snipping tool with ocr
 super + shift + f
@@ -170,7 +180,7 @@ super + {Left,Down,Up,Right}
 	#euclid_mover {west,south,north,east}
 
 super + n
-	emojenu
+	rofi -show emoji
 
 ctrl + alt + @v
 	zsh -ic "type_clipboard"
