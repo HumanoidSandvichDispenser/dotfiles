@@ -196,6 +196,7 @@ let g:startify_bookmarks = [
 \	{ 's': '$HOME/.config/sxhkd/sxhkdrc' },
 \	{ 'b': '$HOME/.config/bspwm/bspwmrc' },
 \	{ 'd': '$HOME/.config/dunst/dunstrc' },
+\	{ 'f': '$HOME/.config/vifm/vifmrc' },
 \]
 let g:startify_custom_header = startify#fortune#cowsay('', '─','│','╭','╮','╯','╰')
 let g:webdevicons_enable_startify = 1
@@ -229,9 +230,11 @@ noremap <silent> j gj
 noremap <silent> k gk
 inoremap jj <Esc>
 
-" Emacs
-imap <C-a> <Home>
-inoremap <C-e> <End>
+" Emacs Insert Bindings
+imap <C-a> <C-O>I
+inoremap <C-e> <C-O>A
+inoremap <C-b> <Left>
+inoremap <C-f> <Right>
 inoremap <C-BS> <C-O>diW
 
 " Plugin Shortcuts
