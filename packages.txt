@@ -1,0 +1,16 @@
+zsh-theme-powerlevel10k-git
+zsh-syntax-highlighting-git
+neovim
+mpd
+ncmpcpp
+polybar
+bspwm
+sxhkd
+rofi
+firefox
+pulseaudio
+python
+feh
+sxiv
+xst
+ffmpeg

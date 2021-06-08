@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -5,131 +12,31 @@
 export ZSH="/home/sandvich/.oh-my-zsh"
 
 # Set package manager
-# Arch, Manjaro, Antergos: pacman
+# Arch, Manjaro: pacman
 # Manjaro: pamac
-# Debian, Ubuntu, Mint: apt or apt-get
 export PACKAGE_MANAGER="pacman"
 
 # If you installed the dotfiles to another directory, 
 # set $DOTFILES to that directory.
 export DOTFILES="$HOME/git/dotfiles"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#POWERLEVEL9K_MODE='awesome-fontconfig'
-ZSH_THEME="powerlevel10k/powerlevel10k"
-source $DOTFILES/.p10k.zsh
-#POWERLEVEL9K_DISABLE_RPROMPT=true
-#
-## 110
-#POWERLEVEL9K_USER_FOREGROUND='#949494'
-#POWERLEVEL9K_USER_BACKGROUND='#262626'
-#POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='#ffdeaf'
-#POWERLEVEL9K_DIR_HOME_FOREGROUND='#949494' # 6
-#POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='#ffdeaf'
-#POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='#4E4E4E'
-#POWERLEVEL9K_DIR_HOME_BACKGROUND='#4E4E4E' # 6
-#POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='#4E4E4E'
-#POWERLEVEL9K_DIR_ETC_BACKGROUND='6'
-#POWERLEVEL9K_HOME_ICON='\uF015 '
-#POWERLEVEL9K_HOME_SUB_ICON='\uF015 '
-#POWERLEVEL9K_FOLDER_ICON='\uF07C '
-#POWERLEVEL9K_ETC_ICON='⚙ '
-#POWERLEVEL9K_SUDO_ICON=$'\uF09C '
-#
-#POWERLEVEL9K_STATUS_ERROR_BACKGROUND='#262626'
-#POWERLEVEL9K_STATUS_ERROR_FOREGROUND='167'
-#POWERLEVEL9K_STATUS_OK_BACKGROUND='#262626'
-#POWERLEVEL9K_STATUS_VERBOSE='false'
-#
-#POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND='0'
-#POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND='0'
-#POWERLEVEL9K_VI_MODE_INSERT_BACKGROUND='#87AFAF'
-#POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND='#949494'
-#
-#POWERLEVEL9K_CUSTOM_PACKAGES="zsh_packages"
-#POWERLEVEL9K_CUSTOM_PACKAGES_BACKGROUND='#262626'
-#POWERLEVEL9K_CUSTOM_PACKAGES_FOREGROUND='#8ec07c'
-#
-#zsh_packages() {
-#	if [ -z "$updates" ]; then return; fi
-#	if [ "$updates" != "1" -a "$updates" != "0" ]; then
-#		echo "  $updates"
-#	elif [ "$updates" "==" "1" ]; then
-#		echo " "
-#	fi
-#}
-#
-#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status user custom_packages dir dir_writable vcs)
+export TERMINAL=xst
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+[[ -f ~/.p10k.zsh ]] && source $DOTFILES/.p10k.zsh
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting)
-
-source $ZSH/oh-my-zsh.sh
+# Autocomplete
+#[[ -d $HOME/git/zsh-autocomplete/ ]] && source $HOME/git/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 # User configuration
-
 export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
 # Functions
 checkUpdates() {
-	echo $(</tmp/updates.txt)
+	[ -f /var/tmp/updates.txt ] && echo $(</var/tmp/updates.txt) || echo 0
 }
 
 viewdoc() {
@@ -138,9 +45,9 @@ viewdoc() {
 
 youtubeaudio() {
 	if [ $# -eq 2 ]; then
-		youtube-dl -x --audio-format m4a --output $2 $1
+		youtube-dl -x --audio-format mp3 --output $2 $1
 	elif [ $# -eq 1 ]; then
-		youtube-dl -x --audio-format m4a $1
+		youtube-dl -x --audio-format mp3 $1
 	fi
 }
 
@@ -150,8 +57,23 @@ stminify() {
 	fi
 }
 
-type_clipboard() {
+type-clipboard() {
 	xdotool type "`xclip -selection c -o`"
+}
+
+oldify() {
+	if [[ "$1" == *.old ]]; then
+		newname=$(basename "$1" .old)
+		mv "$1" "$newname"
+	else
+		mv "$1" "$1.old"
+	fi
+}
+
+virtual-sink() {
+	pacmd load-module module-null-sink sink_name=VirtualMic
+	pacmd update-sink-proplist VirtualMic device.description=VirtualMic
+	pacmd load-module module-loopback source=VirtualMic
 }
 
 # Aliases and Exports
@@ -181,6 +103,26 @@ export LPURPLE=$(echo -en '\033[01;35m')
 export LCYAN=$(echo -en '\033[01;36m')
 export WHITE=$(echo -en '\033[01;37m')
 
+if [ "$TERM" = "linux" ]; then
+    echo -en "\e]P0282828" #black
+    echo -en "\e]P8282828" #darkgrey
+    echo -en "\e]P1FB4934" #darkred
+    echo -en "\e]P9FB4934" #red
+    echo -en "\e]P2B8BB26" #darkgreen
+    echo -en "\e]PAB8BB26" #green
+    echo -en "\e]P3FABD2F" #brown
+    echo -en "\e]PBFABD2F" #yellow
+    echo -en "\e]P483A598" #darkblue
+    echo -en "\e]PC83A598" #blue
+    echo -en "\e]P5D3869B" #darkmagenta
+    echo -en "\e]PDD3869B" #magenta
+    echo -en "\e]P68EC07C" #darkcyan
+    echo -en "\e]PE8EC07C" #cyan
+    echo -en "\e]P7EBDBB2" #lightgrey
+    echo -en "\e]PFFBF1C7" #white
+    clear #for background artifacting
+fi
+
 export LESS_TERMCAP_mb=$CYAN
 export LESS_TERMCAP_md=$LCYAN
 export LESS_TERMCAP_me=$RESTORE
@@ -188,6 +130,8 @@ export LESS_TERMCAP_se=$RESTORE
 export LESS_TERMCAP_so=$LRED
 export LESS_TERMCAP_ue=$RESTORE
 export LESS_TERMCAP_us=$BLUE
+
+export SUDO_PROMPT="${LGREEN}[sudo] ${RESTORE} Password for ${CYAN}%p$RESTORE: "
 
 alias edit=nvim
 alias qe=vim # Vim is quicker to load
@@ -200,7 +144,7 @@ alias vibrant="nvidia-settings -a 'DigitalVibrance=300'" # Nvidia only
 alias betty="~/git/betty/main.rb"
 
 # Commands to run on startup
-stty -ixon
+[[ $- == "i" ]] && stty -ixon
 updates=$(checkUpdates)
 if [ "$updates" != "1" -a "$updates" != "0" ]; then
 	echo -e "${CYAN}  $PACKAGE_MANAGER ${RESTORE}$updates available package updates. ${BLUE}'update' ${RESTORE}to install."
@@ -208,8 +152,11 @@ elif [ "$updates" "==" "1" ]; then
 	echo "${CYAN}  $PACKAGE_MANAGER ${RESTORE}1 availabe package update. ${BLUE}'update' ${RESTORE}to install."
 fi
 
+setopt autocd
+
 # Options
 set -o vi # Enable vim keybinds in prompt
+HISTFILE=~/.zshrc
 
 # Keybinds
 bindkey -M vicmd "?" history-incremental-search-backward # https://github.com/dule/dotenv/blob/master/zshrc
@@ -218,3 +165,6 @@ bindkey -M viins 'jj' vi-cmd-mode
 bindkey -M vicmd 'u' undo
 
 LS_COLORS="di=34;43:*rc=32"; export LS_COLORS
+
+# node.js version manager
+source /usr/share/nvm/init-nvm.sh

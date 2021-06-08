@@ -5,14 +5,15 @@ if ! pgrep -x "sxhkd" > /dev/null; then
 fi
 
 if ! pgrep -x "compton" > /dev/null; then
-	compton --backend glx &
+	compton --backend glx --blur-background &
 fi
 
 if ! pgrep -x "polybar" > /dev/null; then
-	polybar --reload main &
+	polybar -c ~/.config/polybar/bar/config main
 fi
 
-if ! pgrep -x "dunst" > /dev/null && which "dunst" > /dev/null; then # Some of my machines use dunst
+# Some machines use dunst instead of the default daemon
+if ! pgrep -x "dunst" > /dev/null && which "dunst" > /dev/null; then 
 	dunst &
 fi
 
@@ -28,21 +29,26 @@ xcape -e "Super_L=Escape"
 
 # BSPWM Configuration
 
-bspc monitor -d I II III IV V VI VII VIII
+bspc monitor -d web code misc discord game VI VII VIII
 
-bspc config border_width         2
-bspc config window_gap           4
+bspc config border_width         4
+bspc config window_gap           8
 bspc config active_border_color  "#D5C4A1"
-bspc config normal_border_color  "#303030"
+bspc config normal_border_color  "#282828"
 bspc config focused_border_color  "#928374"
+bspc config top_padding			 48
+bspc config border_radius 16
 
-bspc config split_ratio          0.52
+bspc config split_ratio          0.55
 bspc config borderless_monocle   true
-bspc config gapless_monocle      true
+bspc config gapless_monocle      false
 bspc config single_monocle       true
 
+bspc config ignore_ewmh_focus    true # window should lose focus when switching to another desktop
+
 bspc rule -a Gimp desktop='^8' state=floating follow=on
-bspc rule -a Chromium desktop='^2'
+bspc rule -a firefox desktop='^1' follow=on
+bspc rule -a discord desktop='^4'
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
