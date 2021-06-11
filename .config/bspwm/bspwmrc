@@ -25,6 +25,9 @@ if ! pgrep -x "mpd-notification" > /dev/null && which "mpd-notification" > /dev/
     mpd-notification -H localhost -p 7700 -t 2 &
 fi
 
+# set default color scheme
+colorscheme.sh gruvbox
+
 xcape -e "Super_L=Escape"
 
 # BSPWM Configuration

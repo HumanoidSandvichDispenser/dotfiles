@@ -1,2 +1,5 @@
 bin/.script_config/*
 bin/old/*
+
+.config/nvim/autoload
+.config/nvim/plugged
