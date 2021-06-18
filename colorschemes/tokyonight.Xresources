@@ -1,0 +1,63 @@
+colorscheme.name: "tokyonight"
+
+#define base0 #1a1b26
+#define base8 #4e5173
+! red
+#define base1 #F7768E
+#define base9 #F7768E
+! green
+#define base2 #9ECE6A
+#define base10 #9ECE6A
+! yellow
+#define base3 #E0AF68
+#define base11 #E0AF68
+! blue
+#define base4 #7AA2F7
+#define base12 #7AA2F7
+! magenta
+#define base5 #9a7ecc
+#define base13 #9a7ecc
+! cyan
+#define base6 #4abaaf
+#define base14 #4abaaf
+! white
+#define base7 #acb0d0
+#define base15 #acb0d0
+
+*background: base0
+*foreground: base15
+*color0: base0
+*color8: base8
+*color1: base1
+*color9: base9
+*color2: base2
+*color10: base10
+*color3: base3
+*color11: base11
+*color4: base4
+*color12: base12
+*color5: base5
+*color13: base13
+*color6: base6
+*color14: base14
+*color7: base7
+*color15: base15
+
+st.background: base0
+st.foreground: base15
+st.color0: base0
+st.color8: base8
+st.color1: base1
+st.color9: base9
+st.color2: base2
+st.color10: base10
+st.color3: base3
+st.color11: base11
+st.color4: base4
+st.color12: base12
+st.color5: base5
+st.color13: base13
+st.color6: base6
+st.color14: base14
+st.color7: base7
+st.color15: base15

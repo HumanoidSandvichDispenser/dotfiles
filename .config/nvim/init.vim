@@ -11,6 +11,8 @@ Plug 'morhetz/gruvbox'
 Plug 'sainnhe/gruvbox-material'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'joshdick/onedark.vim'
+Plug 'ghifarit53/tokyonight-vim'
+Plug 'mhinz/neovim-remote'
 
 " Templates for new files
 Plug 'aperezdc/vim-template'
@@ -101,7 +103,6 @@ set list lcs=tab:▏\
 "set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %{noscrollbar#statusline()}
 
 " Syntax highlighting
-colorscheme gruvbox
 syntax on
 
 let g:gruvbox_sign_column = "bg0"
@@ -163,7 +164,7 @@ source $DOTFILES/barbar-config.vim
 
 " Startify
 let g:startify_bookmarks = [
-\	{ 'v': '$DOTFILES/.vimrc' },
+\	{ 'v': '$DOTFILES/.config/nvim/init.vim' },
 \	{ 'z': '$DOTFILES/.zshrc' },
 \	{ 's': '$HOME/.config/sxhkd/sxhkdrc' },
 \	{ 'b': '$HOME/.config/bspwm/bspwmrc' },
@@ -192,8 +193,6 @@ let g:nvim_tree_indent_markers = 1
 let g:nvim_tree_auto_close = 1
 let g:nvim_tree_lsp_diagnostics = 1
 luafile $DOTFILES/nvim-tree-keybindings.lua
-
-luafile $DOTFILES/lualine-config.lua
 
 " Scrolling
 let g:smoothie_base_speed = 10
@@ -247,17 +246,13 @@ map <silent> <space>e :CocCommand explorer<CR>
 map <silent> <space>f :Files<CR>
 map <silent> <space>t :NvimTreeToggle<CR>
 nnoremap <silent> K :call ShowDocumentation()<CR>
-nnoremap m :Goyo 75%x100%-4<CR>
-nnoremap M :Goyo!<CR>
+nnoremap <silent> m :Goyo<CR>
+
 if !exists('g:vscode')
     nnoremap <silent> <Right> :BufferNext<CR>
     nnoremap <silent> <Left> :BufferPrevious<CR>
     nnoremap <silent> <S-Right> :BufferMoveNext<CR>
     nnoremap <silent> <S-Left> :BufferMovePrevious<CR>
-    "nnoremap <silent> <Left> :tabprevious<CR>
-    "nnoremap <silent> <Right> :tabnext<CR>
-    "nnoremap <silent> <S-Right> :tabmove +1<CR>
-    "nnoremap <silent> <S-Left> :tabmove -1<CR>
 endif
 
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -278,7 +273,7 @@ autocmd FileType *.tex autocmd InsertEnter * set conceallevel=0
 autocmd FileType *.tex autocmd InsertLeave * set conceallevel=1
 autocmd FileType *.json autocmd InsertEnter * set conceallevel=0
 autocmd FileType *.json autocmd InsertLeave * set conceallevel=1
-autocmd ColorScheme * call HighlightOverrides()
+"autocmd ColorScheme * call HighlightOverrides()
 autocmd User Startified setlocal cursorline
 
 vmap <Leader><Bslash> :EasyAlign*<Bar><Enter>
@@ -306,30 +301,17 @@ function! ShowDocumentation()
     endif
 endfunction
 
+" Highlight Overrides
 function! HighlightOverrides()
-    hi Pmenu ctermfg=15 ctermbg=2 guibg=#32302f
-    hi PmenuSel gui=italic guibg=#504945 guifg=#fbf1c7
-    hi function ctermfg=Yellow
-    hi Comment gui=italic
-
-    hi CursorLine guibg=#32302f
-
-    hi semshiParameter guifg=#83a598
-    hi semshiParameterUnused gui=Underline guifg=#83a598
-    hi semshiSelected guibg=#504945
-    hi semshiImported guifg=#fabd2f
-    hi semshiBuiltin guifg=#fabd1f
-    hi semshiAttribute guifg=#83a598
-    hi semshiSelf guifg=#fb4934
-
-    hi GitGutterAdd guifg=#b8bb26
-    hi GitGutterChange guifg=#83a598
-    hi link SignColumn Normal
-
-    hi StartifyHeader guifg=#b8bb26
-    hi StartifySection guifg=#83a598
-
+    call luaeval('require("highlight-overrides").highlight_overrides()')
     call BarbarHighlight()
 endfunction
 
+function! SetColorscheme(scheme)
+    execute 'colorscheme ' . a:scheme
+    call HighlightOverrides()
+endfunction
+
+" Load Configs
 source ~/local.vimrc
+source /tmp/colorscheme.vim

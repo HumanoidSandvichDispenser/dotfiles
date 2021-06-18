@@ -1,0 +1,63 @@
+colorscheme.name: "gruvbox"
+
+#define base0  #282828
+#define base8  #282828
+! DarkRed + Red
+#define base1  #fb4934
+#define base9  #fb4934
+! DarkGreen + Green
+#define base2  #b8bb26
+#define base10 #b8bb26
+! DarkYellow + Yellow
+#define base3  #fabd2f
+#define base11 #fabd2f
+! DarkBlue + Blue
+#define base4  #83a598
+#define base12 #83a598
+! DarkMagenta + Magenta
+#define base5  #d3869b
+#define base13 #d3869b
+! DarkCyan + Cyan
+#define base6  #8ec07c
+#define base14 #8ec07c
+! LightGrey + White
+#define base7  #ebdbb2
+#define base15 #ebdbb2
+
+*background: base0
+*foreground: base15
+*color0: base0
+*color8: base8
+*color1: base1
+*color9: base9
+*color2: base2
+*color10: base10
+*color3: base3
+*color11: base11
+*color4: base4
+*color12: base12
+*color5: base5
+*color13: base13
+*color6: base6
+*color14: base14
+*color7: base7
+*color15: base15
+
+st.background: base0
+st.foreground: base15
+st.color0: base0
+st.color8: base8
+st.color1: base1
+st.color9: base9
+st.color2: base2
+st.color10: base10
+st.color3: base3
+st.color11: base11
+st.color4: base4
+st.color12: base12
+st.color5: base5
+st.color13: base13
+st.color6: base6
+st.color14: base14
+st.color7: base7
+st.color15: base15

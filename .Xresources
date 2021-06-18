@@ -1,46 +1,56 @@
-! -----------------------------------------------------------------------------
-! File: gruvbox-dark.xresources
-! Description: Retro groove colorscheme generalized
-! Author: morhetz <morhetz@gmail.com>
-! Source: https://github.com/morhetz/gruvbox-generalized
-! Last Modified: 6 Sep 2014
-! -----------------------------------------------------------------------------
 Xft.antialias: 1
 Xft.hinting: 1
 Xft.autohint: 0
 Xft.hintstyle: hintslight
 Xft.rgba: rgb
 Xft.lcdfilter: lcddefault
-Xft.dpi: 125
+Xft.dpi: 96
+
+#define base0  #282828
+#define base8  #282828
+! DarkRed + Red
+#define base1  #fb4934
+#define base9  #fb4934
+! DarkGreen + Green
+#define base2  #b8bb26
+#define base10 #b8bb26
+! DarkYellow + Yellow
+#define base3  #fabd2f
+#define base11 #fabd2f
+! DarkBlue + Blue
+#define base4  #83a598
+#define base12 #83a598
+! DarkMagenta + Magenta
+#define base5  #d3869b
+#define base13 #d3869b
+! DarkCyan + Cyan
+#define base6  #8ec07c
+#define base14 #8ec07c
+! LightGrey + White
+#define base7  #ebdbb2
+#define base15 #ebdbb2
 
 ! hard contrast: *background: #1d2021
-*background: #282828
+*background: base0
 ! soft contrast: *background: #32302f
-*foreground: #ebdbb2
+*foreground: base15
 ! Black + DarkGrey
-*color0:  #282828
-*color8:  #928374
-! DarkRed + Red
-*color1:  #cc241d
-*color9:  #fb4934
-! DarkGreen + Green
-*color2:  #98971a
-*color10: #b8bb26
-! DarkYellow + Yellow
-*color3:  #d79921
-*color11: #fabd2f
-! DarkBlue + Blue
-*color4:  #458588
-*color12: #83a598
-! DarkMagenta + Magenta
-*color5:  #b16286
-*color13: #d3869b
-! DarkCyan + Cyan
-*color6:  #689d6a
-*color14: #8ec07c
-! LightGrey + White
-*color7:  #a89984
-*color15: #ebdbb2
+*color0: base0
+*color8: base8
+*color1: base1
+*color9: base9
+*color2: base2
+*color10: base10
+*color3: base3
+*color11: base11
+*color4: base4
+*color12: base12
+*color5: base5
+*color13: base13
+*color6: base6
+*color14: base14
+*color7: base7
+*color15: base15
 
 st.termname:     st-256color
 
@@ -48,7 +58,9 @@ st.termname:     st-256color
 st.borderless:        0
 
 ! --- The following options options can be reloaded via USR1 signal. ---
-st.font:              Iosevka SS07 Medium:pixelsize=16:antialias=true:autohint=true;
+st.font:              Iosevka SS07 Medium:pixelsize=14:antialias=true:autohint=true;
+st.fontalt0:          Twitter Color Emoji:pixelsize=14:antialias=true:autohint=true;
+st.fontalt1:          Iosevka Nerd Font:pixelsize=14:antialias=true:autohint=true
 
 ! window padding
 st.borderpx:          8
@@ -115,21 +127,21 @@ st.color18:      #323537
 st.color19:      #464b50
 st.color20:      #838184
 st.color21:      #c3c3c3
-st.background: #282828
-st.foreground: #ebdbb2
-st.color0:  #282828
-st.color8:  #928374
-st.color1:  #fb4934
-st.color9:  #fb4934
-st.color2:  #b8bb26
-st.color10: #b8bb26
-st.color3:  #fabd2f
-st.color11: #fabd2f
-st.color4:  #83a598
-st.color12: #83a598
-st.color5:  #d3869b
-st.color13: #d3869b
-st.color6:  #8ec07c
-st.color14: #8ec07c
-st.color7:  #fbf1c7
-st.color15: #fbf1c7
+st.background: base0
+st.foreground: base15
+st.color0: base0
+st.color8: base8
+st.color1: base1
+st.color9: base9
+st.color2: base2
+st.color10: base10
+st.color3: base3
+st.color11: base11
+st.color4: base4
+st.color12: base12
+st.color5: base5
+st.color13: base13
+st.color6: base6
+st.color14: base14
+st.color7: base7
+st.color15: base15
