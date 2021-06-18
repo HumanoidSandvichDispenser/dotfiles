@@ -14,3 +14,4 @@ feh
 sxiv
 xst
 ffmpeg
+xclip
