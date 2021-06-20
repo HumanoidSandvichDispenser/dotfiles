@@ -1,0 +1,23 @@
+/*
+ *
+ * Author  : Aditya Shakya
+ * Mail    : adi1090x@gmail.com
+ * Github  : @adi1090x
+ * Twitter : @adi1090x
+ *
+ */
+
+@import "rofi-menu.rasi"
+@import "colors.rasi"
+
+inputbar {
+	children: 						[ prompt, entry ];
+}
+
+element {
+    padding:                        8px;
+}
+
+listview {
+	lines:							10;
+}

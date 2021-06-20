@@ -1,0 +1,10 @@
+@import "rofi-menu.rasi"
+@import "colors.rasi"
+
+window {
+	width:							128px;
+}
+
+listview {
+    lines:                          2;
+}
