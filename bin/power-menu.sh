@@ -23,19 +23,19 @@ choice=$(echo -e "$options" | rofi -dmenu -theme ~/git/dotfiles/rofi-menu.rasi -
 echo $choice
 
 case $choice in
-	$lock)
-		qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock
-		;;
-	$sleep)
-		systemctl suspend
-		;;
-	$logout)
-		~/bin/confirmation-menu.sh "  Logout" " Cancel" " Logout" && logout
-		;;
-	$reboot)
-		~/bin/confirmation-menu.sh "  Reboot" " Cancel" " Reboot" && reboot
-		;;
-	$shutdown)
-		~/bin/confirmation-menu.sh "  Shut down" " Cancel" " Shut down" && shutdown now
-		;;
+    $lock)
+        qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock
+        ;;
+    $sleep)
+        systemctl suspend
+        ;;
+    $logout)
+        ~/bin/confirmation-menu.sh "  Logout" " Cancel" " Logout" && logout
+        ;;
+    $reboot)
+        ~/bin/confirmation-menu.sh "  Reboot" " Cancel" " Reboot" && reboot
+        ;;
+    $shutdown)
+        ~/bin/confirmation-menu.sh "  Shut down" " Cancel" " Shut down" && shutdown now
+        ;;
 esac
