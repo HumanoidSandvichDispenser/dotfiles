@@ -9,10 +9,10 @@ if ! pgrep -x "compton" > /dev/null; then
 fi
 
 if ! pgrep -x "polybar" > /dev/null; then
-    polybar -c ~/.config/polybar/config main
+    ~/.config/polybar/bar/launch.sh &
 fi
 
-# Some machines use dunst instead of the default daemon
+# Some machines use dunst instead of the default notification daemon
 if ! pgrep -x "dunst" > /dev/null && which "dunst" > /dev/null; then 
     dunst &
 fi
@@ -39,12 +39,11 @@ bspc config window_gap           8
 bspc config active_border_color  "#D5C4A1"
 bspc config normal_border_color  "#282828"
 bspc config focused_border_color  "#928374"
-if [[ $(hostname) == "manjaro" ]]; then
+if [[ $(hostname) == "manjaro" ]]; then # hostname "manjaro" has a status bar height of 48
     bspc config top_padding      48
 else
     bspc config top_padding      28
 fi
-bspc config border_radius 16
 
 bspc config split_ratio          0.55
 bspc config borderless_monocle   true
@@ -54,7 +53,7 @@ bspc config single_monocle       true
 bspc config ignore_ewmh_focus    true # window should lose focus when switching to another desktop
 
 bspc rule -a Gimp desktop='^8' state=floating follow=on
-bspc rule -a firefox desktop='^1' follow=on
+bspc rule -a firefox desktop='^1'
 bspc rule -a discord desktop='^4'
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
@@ -66,3 +65,5 @@ bspc rule -a plasmashell state=floating border=off focus=off
 bspc rule -a Zathura state=tiled
 bspc rule -a st-floating state=floating
 bspc rule -a st-dialog focus=on state=floating layer=above
+bspc rule -a st-dropdown sticky=on state=floating hidden=on rectangle=1600x256+160+400
+bspc rule -a minecraft-launcher state=floating rectangle=240x700+160+0 # don't ask what this is
