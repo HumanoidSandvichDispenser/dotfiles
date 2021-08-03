@@ -36,6 +36,6 @@ case $choice in
 		~/bin/confirmation-menu.sh "  Reboot" " Cancel" " Reboot" && reboot
 		;;
 	$shutdown)
-		~/bin/confirmation-menu.sh "  Shut down" " Cancel" " Shut down" && systemctl shutdown
+		~/bin/confirmation-menu.sh "  Shut down" " Cancel" " Shut down" && shutdown now
 		;;
 esac
