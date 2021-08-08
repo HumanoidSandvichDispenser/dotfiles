@@ -2,6 +2,8 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+source ~/git/dotfiles/common.sh
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -125,3 +127,5 @@ case $- in
 
 export PATH=$PATH:/mnt/c/Windows/System32
 alias hyper="cmd.exe /c hyper"
+export WINEPREFIX=/home/sandvich/.wine
+export MGFXC_WINE_PATH=/home/sandvich/.winemonogame

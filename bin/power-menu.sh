@@ -30,7 +30,7 @@ case $choice in
         systemctl suspend
         ;;
     $logout)
-        ~/bin/confirmation-menu.sh "  Logout" " Cancel" " Logout" && logout
+        ~/bin/confirmation-menu.sh "  Logout" " Cancel" " Logout" && systemctl stop lightdm
         ;;
     $reboot)
         ~/bin/confirmation-menu.sh "  Reboot" " Cancel" " Reboot" && reboot

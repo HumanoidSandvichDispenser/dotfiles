@@ -65,5 +65,5 @@ bspc rule -a plasmashell state=floating border=off focus=off
 bspc rule -a Zathura state=tiled
 bspc rule -a st-floating state=floating
 bspc rule -a st-dialog focus=on state=floating layer=above
-bspc rule -a st-dropdown sticky=on state=floating hidden=on rectangle=1600x256+160+400
-bspc rule -a minecraft-launcher state=floating rectangle=240x700+160+0 # don't ask what this is
+bspc rule -a st-dropdown sticky=on state=floating hidden=on rectangle=800x600+560+200
+bspc rule -a *:*:minecraft-launcher state=floating rectangle=240x700+160+0 # don't ask what this is

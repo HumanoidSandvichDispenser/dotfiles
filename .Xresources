@@ -58,9 +58,9 @@ st.termname:     st-256color
 st.borderless:        0
 
 ! --- The following options options can be reloaded via USR1 signal. ---
-st.font:              Iosevka SS07 Medium:pixelsize=14:antialias=true:autohint=true;
-st.fontalt0:          Twitter Color Emoji:pixelsize=14:antialias=true:autohint=true;
-st.fontalt1:          Iosevka Nerd Font:pixelsize=14:antialias=true:autohint=true
+st.font:              Iosevka SS07 Medium:pixelsize=16:antialias=true:autohint=true;
+st.fontalt0:          Twitter Color Emoji:pixelsize=16:antialias=true:autohint=true;
+st.fontalt1:          Iosevka Nerd Font:pixelsize=16:antialias=true:autohint=true
 
 ! window padding
 st.borderpx:          8

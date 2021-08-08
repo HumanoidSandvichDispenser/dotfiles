@@ -1,0 +1,4 @@
+Xft.dpi: 108
+st.font:              Iosevka SS07 Medium:pixelsize=16:antialias=true:autohint=true;
+st.fontalt0:          Twitter Color Emoji:pixelsize=16:antialias=true:autohint=true;
+st.fontalt1:          Iosevka Nerd Font:pixelsize=16:antialias=true:autohint=true

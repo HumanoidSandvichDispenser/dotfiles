@@ -5,84 +5,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Path to your oh-my-zsh installation.
-export ZSH="/home/sandvich/.oh-my-zsh"
-
-# Set package manager
-# Arch, Manjaro: pacman
-# Manjaro: pamac
-export PACKAGE_MANAGER="pacman"
-
-# If you installed the dotfiles to another directory, 
-# set $DOTFILES to that directory.
-export DOTFILES="$HOME/git/dotfiles"
-
-export TERMINAL=xst
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-[[ -f $DOTFILES/.p10k.zsh ]] && source $DOTFILES/.p10k.zsh
-
-# Autocomplete
-#[[ -d $HOME/git/zsh-autocomplete/ ]] && source $HOME/git/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-
-# User configuration
-export MANPATH="/usr/local/man:$MANPATH"
-export LANG=en_US.UTF-8
-
-# Functions
-checkUpdates() {
-	[ -f /var/tmp/updates.txt ] && echo $(</var/tmp/updates.txt) || echo 0
-}
-
-viewdoc() {
-	pandoc --to=pdf --pdf-engine=pdflatex -V geometry:margin=0.5in $1 | zathura -
-}
-
-youtubeaudio() {
-	if [ $# -eq 2 ]; then
-		youtube-dl -x --audio-format mp3 --output $2 $1
-	elif [ $# -eq 1 ]; then
-		youtube-dl -x --audio-format mp3 $1
-	fi
-}
-
-stminify() {
-	if [ $# -eq 1 ]; then
-		st -c st-floating $1
-	fi
-}
-
-type-clipboard() {
-	xdotool type "`xclip -selection c -o`"
-}
-
-oldify() {
-	if [[ "$1" == *.old ]]; then
-		newname=$(basename "$1" .old)
-		mv "$1" "$newname"
-	else
-		mv "$1" "$1.old"
-	fi
-}
-
-virtual-sink() {
-	pacmd load-module module-null-sink sink_name=VirtualMic
-	pacmd update-sink-proplist VirtualMic device.description=VirtualMic
-	pacmd load-module module-loopback source=VirtualMic
-}
-
 # Aliases and Exports
-export LC_ALL="en_US.UTF-8"
-export PATH=$PATH:$HOME/bin
-export PYTHONPATH=$PYTHONPATH:/usr/lib/python3.8/site-packages
-export VISUAL=nvim
-export EDITOR=nvim
-export CALCRC=$HOME/.calcrc
+export DOTFILES="$HOME/git/dotfiles"
+source $DOTFILES/common.sh
 
 # Color constants
 export RESTORE=$(echo -en '\033[0m')
@@ -136,12 +61,63 @@ export SUDO_PROMPT="${LGREEN}[sudo] ${RESTORE} Password for ${CYAN}%p$RESTORE
 alias edit=nvim
 alias qe=vim # Vim is quicker to load
 alias ncmpcpp="ncmpcpp -b ~/.config/ncmpcpp/keybinds"
-alias update="sudo pacman -Syu && checkUpdates.sh && updates=$(checkUpdates)"
-alias pacman_clear_cache="sudo pacman -Sc"
-alias pamac_clear_cache="pacman_clear_cache; paccache -r -vuk0; paccache -r -v"
 alias lock="qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock"
 alias vibrant="nvidia-settings -a 'DigitalVibrance=300'" # Nvidia only
-alias betty="~/git/betty/main.rb"
+alias crayon="mono $CRAYON_HOME/crayon.exe"
+alias overlay="pqiv --click-through --keep-above --transparent-background --hide-info-box"
+alias pepes="sxiv -P $PEPE_PATH" # requires my fork of sxiv
+
+# Set package manager
+export PACKAGE_MANAGER="pacman"
+
+# Set terminal emulator
+export TERMINAL=st
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+[[ -f $DOTFILES/.p10k.zsh ]] && source $DOTFILES/.p10k.zsh
+# Functions
+checkUpdates() {
+	[ -f /var/tmp/updates.txt ] && echo $(</var/tmp/updates.txt) || echo 0
+}
+
+viewdoc() {
+	pandoc --to=pdf --pdf-engine=pdflatex -V geometry:margin=0.5in $1 | zathura -
+}
+
+youtubeaudio() {
+	if [ $# -eq 2 ]; then
+		youtube-dl -x --audio-format mp3 --output $2 $1
+	elif [ $# -eq 1 ]; then
+		youtube-dl -x --audio-format mp3 $1
+	fi
+}
+
+stminify() {
+	if [ $# -eq 1 ]; then
+		st -c st-floating $1
+	fi
+}
+
+type-clipboard() {
+	xdotool type "`xclip -selection c -o`"
+}
+
+oldify() {
+	if [[ "$1" == *.old ]]; then
+		newname=$(basename "$1" .old)
+		mv "$1" "$newname"
+	else
+		mv "$1" "$1.old"
+	fi
+}
+
+virtual-sink() {
+	pacmd load-module module-null-sink sink_name=VirtualMic
+	pacmd update-sink-proplist VirtualMic device.description=VirtualMic
+	pacmd load-module module-loopback source=VirtualMic
+}
 
 # Commands to run on startup
 [[ $- == "i" ]] && stty -ixon
@@ -168,3 +144,5 @@ LS_COLORS="di=34;43:*rc=32"; export LS_COLORS
 
 # node.js version manager
 source /usr/share/nvm/init-nvm.sh
+
+eval "$(pyenv init -)"
