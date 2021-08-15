@@ -24,13 +24,13 @@ echo $choice
 
 case $choice in
     $lock)
-        qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock
+        slock -m "$(fortune)"
         ;;
     $sleep)
         systemctl suspend
         ;;
     $logout)
-        ~/bin/confirmation-menu.sh "  Logout" " Cancel" " Logout" && systemctl stop lightdm
+        ~/bin/confirmation-menu.sh "  Logout" " Cancel" " Logout" && bspc quit
         ;;
     $reboot)
         ~/bin/confirmation-menu.sh "  Reboot" " Cancel" " Reboot" && reboot

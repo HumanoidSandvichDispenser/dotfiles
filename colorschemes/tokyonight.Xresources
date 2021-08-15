@@ -23,7 +23,16 @@ colorscheme.name: "tokyonight"
 ! white
 #define base7 #acb0d0
 #define base15 #acb0d0
+! orange
+#define orange #ff9e64
+! alternative bg colors
+#define bg0_alt #1F202D
+#define bg1 #232433
+#define bg2 #2a2b3d
+#define bg3 #32344a
+#define bg4 #3b3d57
 
+*accent: base5
 *background: base0
 *foreground: base15
 *color0: base0
@@ -42,6 +51,12 @@ colorscheme.name: "tokyonight"
 *color14: base14
 *color7: base7
 *color15: base15
+*background-alt: bg0_alt
+*background1: bg1
+*background2: bg2
+*background3: bg3
+*background4: bg4
+*orange: orange
 
 st.background: base0
 st.foreground: base15

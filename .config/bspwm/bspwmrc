@@ -5,7 +5,7 @@ if ! pgrep -x "sxhkd" > /dev/null; then
 fi
 
 if ! pgrep -x "compton" > /dev/null; then
-    compton --backend glx --blur-background &
+    compton --backend glx &
 fi
 
 if ! pgrep -x "polybar" > /dev/null; then

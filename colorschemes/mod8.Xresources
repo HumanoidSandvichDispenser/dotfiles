@@ -1,38 +1,38 @@
-colorscheme.name: "gruvbox"
+colorscheme.name: "mod8"
 
-#define base0  #282828
-#define base8  #7C6F64
-! DarkRed + Red
-#define base1  #fb4934
-#define base9  #fb4934
-! DarkGreen + Green
-#define base2  #b8bb26
-#define base10 #b8bb26
-! DarkYellow + Yellow
-#define base3  #fabd2f
-#define base11 #fabd2f
-! DarkBlue + Blue
-#define base4  #83a598
-#define base12 #83a598
-! DarkMagenta + Magenta
-#define base5  #d3869b
-#define base13 #d3869b
-! DarkCyan + Cyan
-#define base6  #8ec07c
-#define base14 #8ec07c
-! LightGrey + White
-#define base7  #ebdbb2
-#define base15 #ebdbb2
-!orange
-#define orange #FE8019
+#define base0 #2b303b
+#define base8 #65737e
+! red
+#define base1 #bf616a
+#define base9 #bf616a
+! green
+#define base2 #a3be8c
+#define base10 #a3be8c
+! yellow
+#define base3 #ebcb8b
+#define base11 #ebcb8b
+! blue
+#define base4 #8fa1b3
+#define base12 #8fa1b3
+! magenta
+#define base5 #b48ead
+#define base13 #b48ead
+! cyan
+#define base6 #96b5b4
+#define base14 #96b5b4
+! white
+#define base7 #eff1f5
+#define base15 #eff1f5
+! orange
+#define orange #ab7967
 ! alternative bg colors
-#define bg0_alt #323130
-#define bg1 #3c3836
-#define bg2 #504945
-#define bg3 #665C54
-#define bg4 #7C6F64
+#define bg0_alt #323845
+#define bg1 #343d46
+#define bg2 #4f5b66
+#define bg3 #65737e
+#define bg4 #a7adba
 
-*accent: base2
+*accent: base4
 *background: base0
 *foreground: base15
 *color0: base0

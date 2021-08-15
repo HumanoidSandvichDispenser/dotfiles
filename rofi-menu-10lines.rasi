@@ -29,7 +29,7 @@ configuration {
 	sidebar-mode: 					false;
 }
 
-@import "colors.rasi"
+@import "rofi-colors.rasi"
 
 window {
     transparency:                   "real";
