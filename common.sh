@@ -1,4 +1,4 @@
-#! /bin/sed 2,5!d;s/^#.//
+#! /bin/sed 2,3!d;s/^#.//
 # This script must be sourced from within a shell
 # and not executed.
 export LC_ALL="en_US.UTF-8"

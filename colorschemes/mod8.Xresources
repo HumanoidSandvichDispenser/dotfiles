@@ -32,7 +32,7 @@ colorscheme.name: "mod8"
 #define bg3 #65737e
 #define bg4 #a7adba
 
-*accent: base4
+*accent: base6
 *background: base0
 *foreground: base15
 *color0: base0
