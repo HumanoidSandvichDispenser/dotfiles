@@ -9,7 +9,7 @@ if ! pgrep -x "compton" > /dev/null; then
 fi
 
 if ! pgrep -x "polybar" > /dev/null; then
-    ~/.config/polybar-config/config &
+    polybar -c ~/.config/polybar-config/config &
 fi
 
 # Some machines use dunst instead of the default notification daemon
