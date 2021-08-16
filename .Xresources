@@ -145,3 +145,7 @@ st.color6: base6
 st.color14: base14
 st.color7: base7
 st.color15: base15
+
+! slock configuration
+
+slock.font: -misc-open sans-medium-i-normal--0-0-0-0-p-0-ascii-0

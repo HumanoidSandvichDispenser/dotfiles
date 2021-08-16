@@ -1,5 +1,5 @@
 @import "rofi-menu.rasi"
-@import "colors.rasi"
+@import "rofi-colors.rasi"
 
 window {
 	width:							128px;

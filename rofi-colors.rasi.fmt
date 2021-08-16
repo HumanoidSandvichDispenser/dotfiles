@@ -1,0 +1,12 @@
+/* colors */
+
+* {{
+  al:    {--bg}FF;
+  bg:    {--bg}FF;
+  bg-transparent:    {--bg}AF;
+  bg1:   {--bg4}FF;
+  bg2:   {--accent}FF;
+  bg3:   {--accent}FF;
+  bg-gray:   {--bg4}FF;
+  fg:    {--fg}FF;
+}}

@@ -29,23 +29,23 @@ export LCYAN=$(echo -en '\033[01;36m')
 export WHITE=$(echo -en '\033[01;37m')
 
 if [ "$TERM" = "linux" ]; then
-    echo -en "\e]P0282828" #black
-    echo -en "\e]P8282828" #darkgrey
-    echo -en "\e]P1FB4934" #darkred
-    echo -en "\e]P9FB4934" #red
-    echo -en "\e]P2B8BB26" #darkgreen
-    echo -en "\e]PAB8BB26" #green
-    echo -en "\e]P3FABD2F" #brown
-    echo -en "\e]PBFABD2F" #yellow
-    echo -en "\e]P483A598" #darkblue
-    echo -en "\e]PC83A598" #blue
-    echo -en "\e]P5D3869B" #darkmagenta
-    echo -en "\e]PDD3869B" #magenta
-    echo -en "\e]P68EC07C" #darkcyan
-    echo -en "\e]PE8EC07C" #cyan
-    echo -en "\e]P7EBDBB2" #lightgrey
-    echo -en "\e]PFFBF1C7" #white
-    clear #for background artifacting
+    echo -en "\e]P0282828"
+    echo -en "\e]P8282828"
+    echo -en "\e]P1fB4934"
+    echo -en "\e]P9FB4934"
+    echo -en "\e]P2B8BB26"
+    echo -en "\e]PAB8BB26"
+    echo -en "\e]P3FABD2F"
+    echo -en "\e]PBFABD2F"
+    echo -en "\e]P483A598"
+    echo -en "\e]PC83A598"
+    echo -en "\e]P5D3869B"
+    echo -en "\e]PDD3869B"
+    echo -en "\e]P68EC07C"
+    echo -en "\e]PE8EC07C"
+    echo -en "\e]P7EBDBB2"
+    echo -en "\e]PFFBF1C7"
+    clear
 fi
 
 export LESS_TERMCAP_mb=$CYAN
@@ -56,7 +56,7 @@ export LESS_TERMCAP_so=$LRED
 export LESS_TERMCAP_ue=$RESTORE
 export LESS_TERMCAP_us=$BLUE
 
-export SUDO_PROMPT="${LGREEN}[sudo] ${RESTORE} Password for ${CYAN}%p$RESTORE: "
+export SUDO_PROMPT="${LGREEN}sudo:${RESTORE}  Password for ${CYAN}%p$RESTORE: "
 
 alias edit=nvim
 alias qe=vim # Vim is quicker to load
@@ -68,16 +68,23 @@ alias overlay="pqiv --click-through --keep-above --transparent-background --hide
 alias pepes="sxiv -P $PEPE_PATH" # requires my fork of sxiv
 
 # Set package manager
-export PACKAGE_MANAGER="pacman"
+export PACKAGE_MANAGER=pacman
 
 # Set terminal emulator
 export TERMINAL=st
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+
+# source plugins
+source $DOTFILES/.zsh/powerlevel10k/powerlevel10k.zsh-theme
+source $DOTFILES/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# plugin configuration
 [[ -f $DOTFILES/.p10k.zsh ]] && source $DOTFILES/.p10k.zsh
-# Functions
+export ZSH_AUTOSUGGEST_STRATEGY=(completion)
+
+# functions
 checkUpdates() {
 	[ -f /var/tmp/updates.txt ] && echo $(</var/tmp/updates.txt) || echo 0
 }
@@ -120,14 +127,6 @@ virtual-sink() {
 }
 
 # Commands to run on startup
-[[ $- == "i" ]] && stty -ixon
-updates=$(checkUpdates)
-if [ "$updates" != "1" -a "$updates" != "0" ]; then
-	echo -e "${CYAN}  $PACKAGE_MANAGER ${RESTORE}$updates available package updates. ${BLUE}'update' ${RESTORE}to install."
-elif [ "$updates" "==" "1" ]; then
-	echo "${CYAN}  $PACKAGE_MANAGER ${RESTORE}1 availabe package update. ${BLUE}'update' ${RESTORE}to install."
-fi
-
 setopt autocd
 
 # Options

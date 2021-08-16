@@ -8,7 +8,7 @@
  */
 
 @import "rofi-menu.rasi"
-@import "colors.rasi"
+@import "rofi-colors.rasi"
 
 inputbar {
 	children: 						[ prompt, entry ];
