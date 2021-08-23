@@ -144,4 +144,4 @@ LS_COLORS="di=34;43:*rc=32"; export LS_COLORS
 # node.js version manager
 source /usr/share/nvm/init-nvm.sh
 
-eval "$(pyenv init -)"
+#eval "$(pyenv init -)"

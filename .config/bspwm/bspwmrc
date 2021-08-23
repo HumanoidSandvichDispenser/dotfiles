@@ -50,7 +50,7 @@ bspc config borderless_monocle   true
 bspc config gapless_monocle      false
 bspc config single_monocle       true
 
-bspc config ignore_ewmh_focus    true # window should lose focus when switching to another desktop
+bspc config ignore_ewmh_focus    true # stop stealing focus
 
 bspc rule -a Gimp desktop='^8' state=floating follow=on
 bspc rule -a firefox desktop='^1'
