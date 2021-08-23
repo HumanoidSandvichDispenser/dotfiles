@@ -31,7 +31,8 @@ super + d
 
 # volume
 XF86Audio{Raise,Lower}Volume
-    amixer sset Master {5%+,5%-} unmute
+    pactl set-sink-volume @DEFAULT_SINK@ {+5%, -5%}
+    #amixer sset Master {5%+,5%-} unmute
 
 # mpc
 super + {less,greater}

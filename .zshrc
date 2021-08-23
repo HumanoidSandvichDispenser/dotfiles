@@ -6,8 +6,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Aliases and Exports
-export DOTFILES="$HOME/git/dotfiles"
-source $DOTFILES/common.sh
+#export DOTFILES="$HOME/git/dotfiles"
+#source $DOTFILES/common.sh
+source $HOME/.profile
 
 # Color constants
 export RESTORE=$(echo -en '\033[0m')
@@ -29,23 +30,23 @@ export LCYAN=$(echo -en '\033[01;36m')
 export WHITE=$(echo -en '\033[01;37m')
 
 if [ "$TERM" = "linux" ]; then
-    echo -en "\e]P0282828"
-    echo -en "\e]P8282828"
-    echo -en "\e]P1fB4934"
-    echo -en "\e]P9FB4934"
-    echo -en "\e]P2B8BB26"
-    echo -en "\e]PAB8BB26"
-    echo -en "\e]P3FABD2F"
-    echo -en "\e]PBFABD2F"
-    echo -en "\e]P483A598"
-    echo -en "\e]PC83A598"
-    echo -en "\e]P5D3869B"
-    echo -en "\e]PDD3869B"
-    echo -en "\e]P68EC07C"
-    echo -en "\e]PE8EC07C"
-    echo -en "\e]P7EBDBB2"
-    echo -en "\e]PFFBF1C7"
-    clear
+    echo -en "\e]P02B303B"
+    echo -en "\e]P82B303B"
+    echo -en "\e]P1BF616A"
+    echo -en "\e]P9BF616A"
+    echo -en "\e]P2A3BE8C"
+    echo -en "\e]PAA3BE8C"
+    echo -en "\e]P3EBCB8B"
+    echo -en "\e]PBEBCB8B"
+    echo -en "\e]P48FA1B3"
+    echo -en "\e]PC8FA1B3"
+    echo -en "\e]P5B48EAD"
+    echo -en "\e]PDB48EAD"
+    echo -en "\e]P696B5B4"
+    echo -en "\e]PE96B5B4"
+    echo -en "\e]P7EFF1F5"
+    echo -en "\e]PFEFF1F5"
+    #clear
 fi
 
 export LESS_TERMCAP_mb=$CYAN
@@ -76,54 +77,61 @@ export TERMINAL=st
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
+autoload -U compinit && compinit
+
 # source plugins
+source $DOTFILES/.zsh/zsh-completions/zsh-completions.plugin.zsh
 source $DOTFILES/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 source $DOTFILES/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # plugin configuration
-[[ -f $DOTFILES/.p10k.zsh ]] && source $DOTFILES/.p10k.zsh
+if [ "$TERM" = "linux" ]; then
+    [[ -f $DOTFILES/.p10k-tty.zsh ]] && source $DOTFILES/.p10k-tty.zsh
+else
+    [[ -f $DOTFILES/.p10k.zsh ]] && source $DOTFILES/.p10k.zsh
+fi
 export ZSH_AUTOSUGGEST_STRATEGY=(completion)
 
 # functions
 checkUpdates() {
-	[ -f /var/tmp/updates.txt ] && echo $(</var/tmp/updates.txt) || echo 0
+    [ -f /var/tmp/updates.txt ] && echo $(</var/tmp/updates.txt) || echo 0
 }
 
 viewdoc() {
-	pandoc --to=pdf --pdf-engine=pdflatex -V geometry:margin=0.5in $1 | zathura -
+    pandoc --to=pdf --pdf-engine=pdflatex -V geometry:margin=0.5in $1 | zathura -
 }
 
 youtubeaudio() {
-	if [ $# -eq 2 ]; then
-		youtube-dl -x --audio-format mp3 --output $2 $1
-	elif [ $# -eq 1 ]; then
-		youtube-dl -x --audio-format mp3 $1
-	fi
+    if [ $# -eq 2 ]; then
+        youtube-dl -x --audio-format mp3 --output $2 $1
+    elif [ $# -eq 1 ]; then
+        youtube-dl -x --audio-format mp3 $1
+    fi
 }
 
 stminify() {
-	if [ $# -eq 1 ]; then
-		st -c st-floating $1
-	fi
+    if [ $# -eq 1 ]; then
+        st -c st-floating $1
+    fi
 }
 
 type-clipboard() {
-	xdotool type "`xclip -selection c -o`"
+    xdotool type "`xclip -selection c -o`"
 }
 
 oldify() {
-	if [[ "$1" == *.old ]]; then
-		newname=$(basename "$1" .old)
-		mv "$1" "$newname"
-	else
-		mv "$1" "$1.old"
-	fi
+    if [[ "$1" == *.old ]]; then
+        newname=$(basename "$1" .old)
+        mv "$1" "$newname"
+    else
+        mv "$1" "$1.old"
+    fi
 }
 
 virtual-sink() {
-	pacmd load-module module-null-sink sink_name=VirtualMic
-	pacmd update-sink-proplist VirtualMic device.description=VirtualMic
-	pacmd load-module module-loopback source=VirtualMic
+    pacmd load-module module-null-sink sink_name=VirtualMic
+    pacmd update-sink-proplist VirtualMic device.description=VirtualMic
+    pacmd load-module module-loopback source=VirtualMic
 }
 
 # Commands to run on startup
@@ -145,3 +153,9 @@ LS_COLORS="di=34;43:*rc=32"; export LS_COLORS
 source /usr/share/nvm/init-nvm.sh
 
 eval "$(pyenv init -)"
+
+PATH="/home/sandvich/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/sandvich/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/sandvich/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/sandvich/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/sandvich/perl5"; export PERL_MM_OPT;

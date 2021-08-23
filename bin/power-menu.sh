@@ -27,7 +27,8 @@ case $choice in
         slock -m "$(fortune)"
         ;;
     $sleep)
-        systemctl suspend
+        systemctl suspend &
+        slock -m "$(fortune)"
         ;;
     $logout)
         ~/bin/confirmation-menu.sh "  Logout" " Cancel" " Logout" && bspc quit
