@@ -152,8 +152,6 @@ LS_COLORS="di=34;43:*rc=32"; export LS_COLORS
 # node.js version manager
 source /usr/share/nvm/init-nvm.sh
 
-eval "$(pyenv init -)"
-
 PATH="/home/sandvich/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/home/sandvich/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/home/sandvich/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;

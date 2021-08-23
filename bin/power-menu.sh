@@ -18,7 +18,7 @@ $logout
 $reboot
 $shutdown"
 
-choice=$(echo -e "$options" | rofi -dmenu -theme ~/git/dotfiles/rofi-menu.rasi -p "  Uptime $(uptime -p | cut -c 4-)")
+choice=$(echo -e "$options" | rofi -dmenu -theme $DOTFILES/rofi-menu.rasi -p "  Uptime $(uptime -p | cut -c 4-)")
 
 echo $choice
 

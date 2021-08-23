@@ -8,14 +8,14 @@ super + Return
 
 # program launcher
 super + space
-    ~/git/dotfiles/bin/drun.sh
+    drun.sh
 
 super + z
     zathura
 
 # power menu (sleep, shutdown, etc.)
 super + Escape
-    ~/bin/power-menu.sh
+    power-menu.sh
 
 # restart sxhkd
 super + shift + Escape
@@ -27,7 +27,7 @@ super + x
 
 # dropdown / scratchpad
 super + d
-    ~/bin/st-dropdown-toggle.sh
+    st-dropdown-toggle.sh
 
 # volume
 XF86Audio{Raise,Lower}Volume
@@ -43,16 +43,16 @@ super + shift + {less,greater}
 
 # snipping tool
 super + shift + s
-    sleep 0.2; scrot -sf '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
+    sleep 0.2; scrot-clip.sh
     #spectacle -{rbc,r} # does something
-
-# snipping tool with ocr
-super + shift + f
-    zsh ~/bin/clip_ocr.sh
 
 # scrot full screen
 super + Print
     sleep 0.2; scrot -p '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
+
+super + semicolon
+    lpass-menu.sh
+
 
 #
 # bspwm hotkeys

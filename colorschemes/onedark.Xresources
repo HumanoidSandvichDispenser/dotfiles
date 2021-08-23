@@ -32,7 +32,7 @@ colorscheme.name: "onedark"
 #define bg3 #586173
 #define bg4 #768299
 
-*accent: base1
+*accent: base4
 *background: base0
 *foreground: base15
 *color0: base0
