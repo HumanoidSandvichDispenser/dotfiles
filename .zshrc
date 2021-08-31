@@ -77,12 +77,16 @@ export TERMINAL=st
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
+# autoload
 autoload -U compinit && compinit
+autoload -U select-word-style
+select-word-style bash
 
 # source plugins
 source $DOTFILES/.zsh/zsh-completions/zsh-completions.plugin.zsh
 source $DOTFILES/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 source $DOTFILES/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $DOTFILES/.zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # plugin configuration
 if [ "$TERM" = "linux" ]; then
@@ -91,6 +95,7 @@ else
     [[ -f $DOTFILES/.p10k.zsh ]] && source $DOTFILES/.p10k.zsh
 fi
 export ZSH_AUTOSUGGEST_STRATEGY=(completion)
+export ZVM_KEYTIMEOUT=0.2
 
 # functions
 checkUpdates() {
@@ -144,8 +149,12 @@ HISTFILE=~/.zshrc
 # Keybinds
 bindkey -M vicmd "?" history-incremental-search-backward # https://github.com/dule/dotenv/blob/master/zshrc
 bindkey -M vicmd "/" history-incremental-search-forward
-bindkey -M viins 'jj' vi-cmd-mode
-bindkey -M vicmd 'u' undo
+bindkey -M viins "jj" vi-cmd-mode
+bindkey -M vicmd "u" undo
+bindkey "^H" backward-kill-word
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+export ZVM_VI_INSERT_ESCAPE_BINDKEY=jj
 
 LS_COLORS="di=34;43:*rc=32"; export LS_COLORS
 
