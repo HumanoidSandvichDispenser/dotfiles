@@ -42,13 +42,13 @@ super + shift + {less,greater}
     mpc --port 7700 {prev,next}
 
 # snipping tool
-super + shift + s
-    sleep 0.2; scrot-clip.sh
+super + {_, shift + }s
+    sleep 0.1; scrot-clip.sh {_,-f}
     #spectacle -{rbc,r} # does something
 
 # scrot full screen
 super + Print
-    sleep 0.2; scrot -p '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
+    sleep 0.1; maim -u | xclip -selection clipboard -t image/png
 
 super + semicolon
     lpass-menu.sh
