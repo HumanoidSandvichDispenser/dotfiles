@@ -1,7 +1,7 @@
-colorscheme.name: "gruvbox"
+colorscheme.name: "miramare"
 
 #define base0  #2A2426
-#define base8  #242021
+#define base8  #8a757c
 ! DarkRed + Red
 #define base1  #e68183
 #define base9  #e68183
