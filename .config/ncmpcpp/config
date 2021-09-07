@@ -50,8 +50,8 @@ state_flags_color = "cyan"
 player_state_color = "cyan"
 main_window_color = "cyan" 
 header_window_color = "cyan"
-current_item_prefix = "$(white_237)"
-current_item_suffix = "$(8_236)"
+current_item_prefix = "$(8_2)"
+current_item_suffix = "$(8_0)"
 current_item_inactive_column_prefix = "$(white)"
 current_item_inactive_column_suffix = $9
 

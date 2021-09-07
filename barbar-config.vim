@@ -57,21 +57,4 @@ let bufferline.no_name_title = v:null
 
 " Highlighting
 function! BarbarHighlight()
-    hi link BufferCurrent Pmenu
-    hi link BufferCurrentIndex Pmenu
-    hi link BufferCurrentMod Pmenu
-    hi link BufferCurrentTarget Pmenu
-    hi link BufferCurrentSign Pmenu
-    hi link BufferVisible Normal
-    hi link BufferVisibleIndex Normal
-    hi link BufferVisibleMod Normal
-    hi link BufferVisibleTarget Normal
-    hi link BufferVisibleSign Normal
-    hi link BufferInactive LineNr
-    hi link BufferInactiveIndex LineNr
-    hi link BufferInactiveMod LineNr
-    hi link BufferInactiveTarget LineNr
-    hi link BufferInactiveSign LineNr
-    hi link BufferTabpages VertSplit
-    hi link BufferTabpageFill VertSplit
 endfunction

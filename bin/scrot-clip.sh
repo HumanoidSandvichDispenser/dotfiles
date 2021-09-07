@@ -10,6 +10,9 @@
 # it is required for save file dialogs
 which zenity > /dev/null || (notify-send -a "$(basename $0)" "zenity not found"; exit 1)
 
+filename="/tmp/$(date +%Y-%m-%d_%H%M%S).png"
+color=$(convert-color.py $(xgetres accent))
+
 # get options
 while getopts ":f" opt; do
     case $opt in
@@ -40,26 +43,25 @@ if [ -n "$freeze" ]; then
         i=$((i+1))
     done
 
-    maim -s -b 4 -r invert | xclip -selection clipboard -t image/png
+    maim -sb 4 -r invert -l --color "$color,0.7" > $filename
 else
-    maim -s -b 4 --color "1,1,1" -l --color "1,1,1,0.3" | xclip -selection clipboard -t image/png
+    maim -sub 4 --color "$color" -l --color "$color,0.7" > $filename
 fi
-    
 
-
-kill $feh_pid
 # kill feh running in the background when finished
+kill $feh_pid
+
+xclip -selection clipboard -t image/png "$filename"
 
 action=$(dunstify --action="save,Save to File" --action="upload,Upload to imgbb" "Copied to clipboard")
 
 case "$action" in
     "save")
-        xclip -selection clipboard -t image/png > /tmp/clipboard.png
-        zenity --file-selection --save | xargs cp /tmp/clipboard.png
+        zenity --file-selection --confirm-overwrite --save | xargs cp "$filename"
         ;;
     "upload")
-        api_key=""
+        api_key=$(cat ~/Secrets/imgbb-api-key)
         name=$(rofi -dmenu -p " image name" -theme $DOTFILES/rofi-input-box.rasi)
-        [ -n "$name" ] && [ "$name" != "" ] && imgbb-upload.py $api_key /tmp/clipboard.png --name $name
+        [ -n "$name" ] && [ "$name" != "" ] && imgbb-upload.py "$api_key" "$filename" --name "$name"
         ;;
 esac

@@ -1,0 +1,38 @@
+colorscheme.name: "gruvbox"
+
+#define base0  #2A2426
+#define base8  #242021
+! DarkRed + Red
+#define base1  #e68183
+#define base9  #e68183
+! DarkGreen + Green
+#define base2  #87af87
+#define base10 #87af87
+! DarkYellow + Yellow
+#define base3  #d9bb80
+#define base11 #d9bb80
+! DarkBlue + Blue
+#define base4  #89beba
+#define base12 #89beba
+! DarkMagenta + Magenta
+#define base5  #d3a0bc
+#define base13 #d3a0bc
+! DarkCyan + Cyan
+#define base6  #87c095
+#define base14 #87c095
+! LightGrey + White
+#define base7  #e6d6ac
+#define base15 #e6d6ac
+!orange
+#define orange #e39b7b
+! alternative bg colors
+#define bg0_alt #322a2d
+#define bg1 #372f32
+#define bg2 #453a3e
+#define bg3 #53464b
+#define bg4 #605258
+#define bg_dark #242021
+
+#include "./common.Xresources"
+
+*accent: base10

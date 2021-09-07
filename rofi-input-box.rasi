@@ -1,0 +1,33 @@
+@import "rofi-menu-input.rasi"
+@import "rofi-colors.rasi"
+
+* {
+    font:                           "Iosevka Nerd Font 12";
+}
+
+window {
+    width:                          512px;
+}
+
+prompt {
+    background-color:               @al;
+    text-color:                     @fg;
+}
+
+entry {
+    background-color:               @al;
+    text-color:                     @fg;
+    placeholder-color:              @fg;
+}
+
+inputbar {
+    background-color:               @al;
+    text-color:                     @fg;
+    padding:                        8px;
+}
+
+listview {
+    padding:                        0;
+    lines:                          0;
+}
+

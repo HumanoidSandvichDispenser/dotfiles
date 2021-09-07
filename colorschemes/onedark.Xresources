@@ -1,7 +1,7 @@
 colorscheme.name: "onedark"
 
 #define base0 #282c34
-#define base8 #4e5173
+#define base8 #5c6370
 ! red
 #define base1 #E06C75
 #define base9 #E06C75
@@ -26,53 +26,13 @@ colorscheme.name: "onedark"
 ! orange
 #define orange #d19a66
 ! alternative bg colors
-#define bg0_alt #313640
-#define bg1 #393f4a
-#define bg2 #454c59
-#define bg3 #586173
-#define bg4 #768299
+#define bg0_alt #2d3139
+#define bg1 #31363f
+#define bg2 #373d48
+#define bg3 #434a56
+#define bg4 #4f5664
+#define bg_dark #1f2228
 
-*accent: base4
-*background: base0
-*foreground: base15
-*color0: base0
-*color8: base8
-*color1: base1
-*color9: base9
-*color2: base2
-*color10: base10
-*color3: base3
-*color11: base11
-*color4: base4
-*color12: base12
-*color5: base5
-*color13: base13
-*color6: base6
-*color14: base14
-*color7: base7
-*color15: base15
-*background-alt: bg0_alt
-*background1: bg1
-*background2: bg2
-*background3: bg3
-*background4: bg4
-*orange: orange
+#include "./common.Xresources"
 
-st.background: base0
-st.foreground: base15
-st.color0: base0
-st.color8: base8
-st.color1: base1
-st.color9: base9
-st.color2: base2
-st.color10: base10
-st.color3: base3
-st.color11: base11
-st.color4: base4
-st.color12: base12
-st.color5: base5
-st.color13: base13
-st.color6: base6
-st.color14: base14
-st.color7: base7
-st.color15: base15
+*accent: base12

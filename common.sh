@@ -3,8 +3,9 @@
 # and not executed.
 export LC_ALL="en_US.UTF-8"
 export CRAYON_HOME=$HOME/crayon/crayon-2.1.0-mono
-export PATH=$HOME/.pyenv/shims:$PATH:$HOME/bin:$CRAYON_HOME
-export PYTHONPATH=$PYTHONPATH:/usr/lib/python3.8/site-packages
+export PATH=$PATH:$HOME/bin:$CRAYON_HOME
+#export PATH=$HOME/.pyenv/shims:$PATH:$HOME/bin:$CRAYON_HOME
+#export PYTHONPATH=$PYTHONPATH:/usr/lib/python3.8/site-packages
 export VISUAL=nvim
 export EDITOR=nvim
 export CALCRC=$HOME/.calcrc
