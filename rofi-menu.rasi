@@ -10,9 +10,9 @@
  */
 
 configuration {
-    font:                           "Iosevka SS14,Iosevka Nerd Font 10";
+    font:                           "Iosevka Sandvich,Iosevka Nerd Font 10";
     show-icons:                     true;
-    drun-display-format:            "<span weight="800">{name}</span>[<span weight="500">&#10;{generic}</span>]";
+    drun-display-format:            "<span weight="800">{name}</span>[<span weight="400">&#10;{generic}</span>]";
     disable-history:                false;
     fullscreen:                     false;
     hide-scrollbar:                 true;

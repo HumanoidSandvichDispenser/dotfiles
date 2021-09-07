@@ -47,7 +47,7 @@ foreground = ${colors.foreground}
 line-size = 0
 line-color = #f00
 
-border-size = 8
+border-size = 0
 border-color = #00000000
 
 padding-left = 2
@@ -58,14 +58,14 @@ module-margin-right = 1
 module-margin-top = 1
 module-margin-bottom = 1
 
-font-0 = Iosevka SS07 Semibold:pixelsize=12;3
+font-0 = Iosevka Sandvich Semibold:pixelsize=12;3
 font-1 = Iosevka:size=12:antialias=true;3
 font-2 = siji:pixelsize=10;3
 font-3 = Iosevka:pixelsize=14;3
 
 modules-left = bspwm mpd
-modules-center = xwindow
-modules-right = pulseaudio cpu memory filesystem eth date
+modules-center = bspwm-mode xwindow
+modules-right = pulseaudio cpu memory filesystem ethdown ethup date
 
 ;tray-position = right
 ;tray-padding = 2
@@ -89,6 +89,7 @@ cursor-scroll = ns-resize
 
 [module/xwindow]
 type = internal/xwindow
+format-margin-left = 0
 label = %title:0:50:...%
 
 [module/xkeyboard]
@@ -155,6 +156,32 @@ label-active-padding = 1
 label-urgent-padding = 1
 label-occupied-padding = 1
 label-empty-padding = 1
+
+[module/bspwm-mode]
+type = internal/bspwm
+
+format-margin = 0
+
+format = <label-mode>
+
+label-tiled = " 﩯"
+label-tiled-foreground = ${colors.green}
+
+label-monocle = " "
+label-monocle-foreground = ${colors.red}
+
+label-fullscreen = " "
+label-fullscreen-foreground = ${colors.red}
+
+label-floating = " "
+label-floating-foreground = ${colors.cyan}
+
+label-locked = " "
+
+label-sticky = " "
+label-sticky-foreground = ${colors.yellow}
+
+label-private = " "
 
 [module/i3]
 type = internal/i3
@@ -356,20 +383,28 @@ ramp-signal-3 = 
 ramp-signal-4 = 
 ramp-signal-foreground = ${colors.foreground-alt}
 
-[module/eth]
+[module/ethdown]
 type = internal/network
 interface = enp3s0
 interval = 3.0
 
-format-connected-prefix = "爵 "
+format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.purple}
-label-connected = %downspeed% / %upspeed%
+label-connected = %downspeed%
 
 format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/ethup]
+type = internal/network
+interface = enp3s0
+interval = 3.0
+
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.purple}
+label-connected = %upspeed%
+
+format-disconnected =
+
 
 [module/date]
 type = internal/date

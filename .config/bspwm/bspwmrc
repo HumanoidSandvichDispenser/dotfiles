@@ -40,15 +40,15 @@ bspc config active_border_color  "#D5C4A1"
 bspc config normal_border_color  "#282828"
 bspc config focused_border_color  "#928374"
 if [[ $(hostname) == "manjaro" ]]; then # hostname "manjaro" has a status bar height of 48
-    bspc config top_padding      48
+    bspc config top_padding      40
 else
     bspc config top_padding      28
 fi
 
 bspc config split_ratio          0.55
 bspc config borderless_monocle   true
-bspc config gapless_monocle      false
-bspc config single_monocle       true
+bspc config gapless_monocle      true
+bspc config single_monocle       false
 
 bspc config ignore_ewmh_focus    true # stop stealing focus
 

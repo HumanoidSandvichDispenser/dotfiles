@@ -18,7 +18,9 @@ local function get_base_colors()
         bg2 = xresources.get("background2"),
         bg3 = xresources.get("background3"),
         bg4 = xresources.get("background4"),
+        bg_dark = xresources.get("background-dark"),
         fg = xresources.get("foreground"),
+        gray = xresources.get("color8"),
         red = xresources.get("color9"),
         green = xresources.get("color10"),
         yellow = xresources.get("color11"),
@@ -26,61 +28,8 @@ local function get_base_colors()
         purple = xresources.get("color13"),
         aqua = xresources.get("color14"),
         orange = xresources.get("orange"),
+        accent = xresources.get("accent")
     }
-    --[[
-    if colorscheme == "tokyonight" then
-        return {
-            bg0 = "#1a1b26",
-            bg0_alt = "#1F202D",
-            bg1 = "#232433",
-            bg2 = "#2a2b3d",
-            bg3 = "#32344a",
-            bg4 = "#3b3d57",
-            fg = "#a9b1d6",
-            red = "#F7768E",
-            yellow = "#E0AF68",
-            green = "#9ECE6A",
-            blue = "#7AA2F7",
-            purple = "#ad8ee6",
-            aqua = "#8ec07c",
-            orange = "#FF9E64",
-        }
-    elseif colorscheme == "gruvbox" then
-        return {
-            bg0 = "#282828",
-            bg0_alt = "#323130",
-            bg1 = "#3c3836",
-            bg2 = "#504945",
-            bg3 = "#665C54",
-            bg4 = "#7C6F64",
-            fg = "#FBF1C7",
-            red = "#FB4934",
-            green = "#B8BB26",
-            yellow = "#FABD2F",
-            blue = "#83A598",
-            purple = "#D3869B",
-            aqua = "#8EC07C",
-            orange = "#FE8019",
-        }
-    else
-        return {
-            bg0 = "#282828",
-            bg0_alt = "#323130",
-            bg1 = "#3c3836",
-            bg2 = "#504945",
-            bg3 = "#665C54",
-            bg4 = "#7C6F64",
-            fg = "#FBF1C7",
-            red = "#FB4934",
-            green = "#B8BB26",
-            yellow = "#FABD2F",
-            blue = "#83A598",
-            purple = "#D3869B",
-            aqua = "#8EC07C",
-            orange = "#FE8019",
-        }
-    end
-    ]]
 end
 
 local function get_highlight_info(name)
@@ -98,26 +47,24 @@ function highlight_lualine()
 
     local theme = {
         normal = {
-            a = {fg = base_colors.bg1, bg = base_colors.fg, gui = 'bold'},
-            b = {fg = base_colors.fg, bg = base_colors.bg3},
-            c = {fg = base_colors.fg, bg = base_colors.bg2}
+            a = { fg = base_colors.bg1, bg = base_colors.fg, gui = 'bold' },
+            b = { fg = base_colors.fg, bg = base_colors.bg3 },
+            c = { fg = base_colors.gray, bg = base_colors.bg1 }
         },
         insert = {
-            a = {fg = base_colors.bg0, bg = base_colors.green, gui = 'bold'},
-            b = {fg = base_colors.fg, bg = base_colors.bg3}
+            a = { fg = base_colors.bg0, bg = base_colors.green, gui = 'bold' },
         },
         visual = {
-            a = {fg = base_colors.bg0, bg = base_colors.purple, gui = 'bold'},
-            b = {fg = base_colors.fg, bg = base_colors.bg3}
+            a = { fg = base_colors.bg0, bg = base_colors.purple, gui = 'bold' },
         },
         replace = {
-            a = {fg = base_colors.bg0, bg = base_colors.red, gui = 'bold'},
-            b = {fg = base_colors.fg, bg = base_colors.bg3}
+            a = { fg = base_colors.bg0, bg = base_colors.red, gui = 'bold' },
         },
         inactive = {
-            a = {fg = base_colors.fg, bg = base_colors.bg1, gui = 'bold'},
-            b = {fg = base_colors.fg, bg = base_colors.bg1},
-            c = {fg = base_colors.fg, bg = base_colors.bg2}
+            a = { fg = base_colors.fg, bg = base_colors.fg, gui = 'bold' },
+            b = { fg = base_colors.fg, bg = base_colors.bg3 },
+            c = { fg = base_colors.fg, bg = base_colors.bg1 },
+            z = { fg = base_colors.fg, bg = base_colors.bg1 }
         }
     }
 
@@ -125,10 +72,11 @@ function highlight_lualine()
 end
 
 function highlight_overrides()
-    local base_colors = get_base_colors()
+    base_colors = get_base_colors()
+    BaseColors = base_colors
 
     command(string.format("hi Pmenu guibg=%s", base_colors.bg0_alt))
-    command(string.format("hi PmenuSel guifg=%s guibg=%s gui=italic", base_colors.fg, base_colors.bg1))
+    command(string.format("hi PmenuSel guifg=%s guibg=%s gui=italic", base_colors.bg0, base_colors.accent))
     command("hi Comment gui=italic")
 
     command(string.format("hi LineNr guibg=%s", base_colors.bg0))
@@ -172,13 +120,35 @@ function highlight_overrides()
     command(string.format("hi BufferInactiveTarget guifg=%s guibg=%s", base_colors.bg2, base_colors.bg0))
     command(string.format("hi BufferInactiveSign guifg=%s guibg=%s", base_colors.bg2, base_colors.bg0))
 
+    command(string.format("hi NvimTreeFolderIcon guifg=%s", base_colors.blue))
+    command(string.format("hi NvimTreeFolderName guifg=%s", base_colors.blue))
+    command(string.format("hi NvimTreeOpenedFolderName guifg=%s", base_colors.blue))
+    command(string.format("hi NvimTreeEmptyFolderName guifg=%s", base_colors.blue))
+    command(string.format("hi NvimTreeIndentMarker guifg=%s", base_colors.bg3))
+    command(string.format("hi NvimTreeRootFolder guifg=%s", base_colors.bg3))
+
+    --[[
+    command(string.format("hi NvimTreeVertSplit guifg=%s guibg=%s", base_colors.bg_dark, base_colors.bg_dark))
+    command(string.format("hi NvimTreeNormal guibg=%s", base_colors.bg_dark))
+    command(string.format("hi NvimTreeStatuslineNc guifg=%s guibg=%s", base_colors.bg0_alt, base_colors.bg0_alt))
+    ]]
+
     command(string.format("hi BufferTabpages guibg=%s", base_colors.bg0))
     command(string.format("hi BufferTabpageFill guibg=%s", base_colors.bg0))
 
-    highlight_lualine()
+    command(string.format("hi StartifyBracket guifg=%s", base_colors.bg0))
+    command(string.format("hi StartifyHeader guifg=%s", base_colors.accent))
+    command(string.format("hi StartifySection guifg=%s", base_colors.bg4))
+    command(string.format("hi StartifyNumber guifg=%s", base_colors.bg4))
+    command(string.format("hi StartifyFile guifg=%s gui=italic", base_colors.accent))
+    command(string.format("hi StartifyPath guifg=%s", base_colors.bg4))
+    command(string.format("hi StartifySlash guifg=%s", base_colors.bg4))
 end
+
+BaseColors = get_base_colors()
 
 return {
     highlight_overrides = highlight_overrides,
     highlight_lualine = highlight_lualine,
+    BaseColors = BaseColors
 }

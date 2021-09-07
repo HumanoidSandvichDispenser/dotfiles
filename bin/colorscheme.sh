@@ -18,8 +18,9 @@ xrdb -merge $DOTFILES/colorschemes/$1.Xresources
 
 echo "call SetColorscheme('$1')" > /var/tmp/colorscheme.vim
 
-# signal st to reload config
+# signal st and tabbed to reload config
 kill -USR1 $(pidof st)
+kill -USR1 $(pidof tabbed)
 
 # restart polybar
 polybar-msg cmd restart
