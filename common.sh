@@ -19,4 +19,4 @@ export LANG=en_US.UTF-8
 # If you installed the dotfiles to another directory, 
 # set $DOTFILES to that directory.
 export DOTFILES="$HOME/git/dotfiles"
-export WALLPAPERS="/share/wallpaper"
+export WALLPAPERS="/usr/share/backgrounds/sandvich"
