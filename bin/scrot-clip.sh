@@ -43,7 +43,7 @@ if [ -n "$freeze" ]; then
         i=$((i+1))
     done
 
-    maim -sb 4 -r invert -l --color "$color,0.7" > $filename
+    maim -sb 4 -r invert > $filename
 else
     maim -sub 4 --color "$color" -l --color "$color,0.7" > $filename
 fi

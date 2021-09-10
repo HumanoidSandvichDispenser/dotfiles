@@ -9,7 +9,8 @@ if ! pgrep -x "compton" > /dev/null; then
 fi
 
 if ! pgrep -x "polybar" > /dev/null; then
-    polybar -c ~/.config/polybar-config/config main &
+    polybar -c ~/.config/polybar-config/config minibar &
+    #[ "$(hostname)" = "manjaro"] && polybar -c ~/.config/polybar-config/config main & || polybar -c ~/.config/polybar-config/config minibar &
 fi
 
 # Some machines use dunst instead of the default notification daemon

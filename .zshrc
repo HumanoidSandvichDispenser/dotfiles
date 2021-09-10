@@ -144,7 +144,8 @@ setopt autocd
 
 # Options
 set -o vi # Enable vim keybinds in prompt
-HISTFILE=~/.zshrc
+export HISTFILE=~/.zshrc
+export HISTFILESIZE=1024
 
 # Keybinds
 bindkey -M vicmd "?" history-incremental-search-backward # https://github.com/dule/dotenv/blob/master/zshrc
