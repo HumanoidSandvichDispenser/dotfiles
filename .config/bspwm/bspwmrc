@@ -9,7 +9,11 @@ if ! pgrep -x "compton" > /dev/null; then
 fi
 
 if ! pgrep -x "polybar" > /dev/null; then
-    polybar -c ~/.config/polybar-config/config minibar &
+    if [ "$(hostname)" = "manjaro" ]; then
+        polybar -c ~/.config/polybar-config/config main &
+    else
+        polybar -c ~/.config/polybar-config/config minibar &
+    fi
     #[ "$(hostname)" = "manjaro"] && polybar -c ~/.config/polybar-config/config main & || polybar -c ~/.config/polybar-config/config minibar &
 fi
 
