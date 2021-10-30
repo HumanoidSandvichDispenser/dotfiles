@@ -47,3 +47,7 @@ format-file.py $DOTFILES/rofi-colors.rasi.fmt \
     --accent=$(get-xresource.sh "accent") \
     > $DOTFILES/rofi-colors.rasi
 
+nohup start-dunst.sh &
+
+dunstify -a "colorscheme.sh" "Colorscheme changed" "Successfully changed \
+colorscheme to $1"

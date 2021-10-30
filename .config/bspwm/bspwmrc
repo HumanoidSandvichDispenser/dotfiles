@@ -1,4 +1,15 @@
 #! /bin/sh
+#
+# bspwmrc
+# Copyright (C) 2021 sandvich <sandvich@sandvich-pc>
+#
+# Distributed under terms of the MIT license.
+#
+
+# set default color scheme before starting other programs
+colorscheme.sh gruvbox
+
+xrdb -merge ~/secrets.Xresources
 
 if ! pgrep -x "sxhkd" > /dev/null; then
     sxhkd &
@@ -19,7 +30,7 @@ fi
 
 # Some machines use dunst instead of the default notification daemon
 if ! pgrep -x "dunst" > /dev/null && which "dunst" > /dev/null; then 
-    dunst &
+    start-dunst.sh &
 fi
 
 if ! pgrep -x "mpd" > /dev/null; then
@@ -29,9 +40,6 @@ fi
 if ! pgrep -x "mpd-notification" > /dev/null && which "mpd-notification" > /dev/null; then
     mpd-notification -H localhost -p 7700 -t 2 &
 fi
-
-# set default color scheme
-colorscheme.sh gruvbox
 
 xcape -e "Super_L=Escape"
 
