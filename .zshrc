@@ -125,12 +125,14 @@ type-clipboard() {
 }
 
 oldify() {
-    if [[ "$1" == *.old ]]; then
-        newname=$(basename "$1" .old)
-        mv "$1" "$newname"
-    else
-        mv "$1" "$1.old"
-    fi
+    for file in $@; do
+        if [[ "$file" == *.old ]]; then
+            newname=$(basename "$file" .old)
+            mv "$file" "$newname"
+        else
+            mv "$file" "$file.old"
+        fi
+    done
 }
 
 virtual-sink() {
@@ -144,7 +146,7 @@ setopt autocd
 
 # Options
 set -o vi # Enable vim keybinds in prompt
-export HISTFILE=~/.zshrc
+export HISTFILE=~/.zsh_history
 export HISTFILESIZE=1024
 
 # Keybinds
