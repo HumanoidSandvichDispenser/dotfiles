@@ -53,6 +53,9 @@ super + Print
 super + semicolon
     lpass-menu.sh
 
+# clipboard manager
+super + v
+    clip-history.sh
 
 #
 # bspwm hotkeys

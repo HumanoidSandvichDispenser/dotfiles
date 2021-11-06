@@ -41,6 +41,10 @@ if ! pgrep -x "mpd-notification" > /dev/null && which "mpd-notification" > /dev/
     mpd-notification -H localhost -p 7700 -t 2 &
 fi
 
+if ! pgrep -x "clipman"; then
+    clipman &
+fi
+
 xcape -e "Super_L=Escape"
 
 # BSPWM Configuration
