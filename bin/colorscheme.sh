@@ -16,7 +16,7 @@ xrdb -merge $DOTFILES/colorschemes/$1.Xresources
 #    nvr --nostart --servername $path -cc "call SetColorscheme('$1')"
 #done
 
-echo "call SetColorscheme('$1')" > /var/tmp/colorscheme.vim
+echo "require('highlight-overrides').SetColorscheme('$1')" > /var/tmp/colorscheme.lua
 
 # signal st and tabbed to reload config
 kill -USR1 $(pidof st)
