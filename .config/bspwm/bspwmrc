@@ -49,7 +49,9 @@ xcape -e "Super_L=Escape"
 
 # BSPWM Configuration
 
+bspc monitor VIRTUAL1 -d alt
 bspc monitor -d web code misc discord game VI VII VIII
+bspc monitor primary -s VIRTUAL1
 
 bspc config border_width         4
 bspc config window_gap           8
