@@ -1,0 +1,30 @@
+{
+    "Italics": {
+        "prefix": [ "ita" ],
+        "body": [
+            "\\textit{$1}$2"
+        ],
+        "description": "Italic text"
+    },
+    "Bold": {
+        "prefix": [ "bf" ],
+        "body": [
+            "\\textbf{$1}$2"
+        ],
+        "description": "Boldface text"
+    },
+    "Normal text": {
+        "prefix": [ "rm" ],
+        "body": [
+            "\\textrm{$1}$2"
+        ],
+        "description": "Removes all text attributes. Makes normal text in math mode."
+    },
+    "Margin note": {
+        "prefix": [ "mnote" ],
+        "body": [
+            "\\marginnote{$1}$2"
+        ],
+        "description": "Note to display on the margin line"
+    }
+}
