@@ -112,7 +112,7 @@ font-2 = siji:pixelsize=10;3
 font-3 = Iosevka:pixelsize=14;3
 font-4 = Iosevka Nerd Font Mono:pixelsize=20;5
 
-modules-left = bspwm mpd
+modules-left = bspwm
 modules-center = bspwm-mode xwindow
 modules-right = pulseaudio-mini battery cpu memory filesystem date
 
