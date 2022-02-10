@@ -6,6 +6,8 @@
 -- Distributed under terms of the MIT license.
 --
 
+vim.o.runtimepath = vim.o.runtimepath..',~/.local/share/nvim/site/pack/packer/start/himalaya/vim'
+
 local packer = require("packer")
 local util = require("packer.util")
 local use = packer.use
@@ -213,7 +215,6 @@ use({
         require("treesitter-config")
     end
 })
-
 -- Other Utilities
 
 use("ryanoasis/vim-devicons") -- Icons
@@ -237,6 +238,15 @@ use({
 })
 
 use("dstein64/nvim-scrollview")
+
+use({
+    "soywod/himalaya",
+    config = function()
+        vim.g.himalaya_mailbox_picker = "fzf"
+    end
+}) -- email
+
+use("junegunn/vim-easy-align")
 
 -- delayed lazy loading
 vim.fn.timer_start(100, function()
