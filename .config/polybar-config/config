@@ -29,11 +29,8 @@ purple = ${xrdb:color13}
 cyan = ${xrdb:color14}
 
 [bar/main]
-;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
 height = 40
-;offset-x = 1%
-;offset-y = 1%
 radius = 0
 fixed-center = false
 
@@ -59,17 +56,11 @@ font-1 = Iosevka:size=12:antialias=true;3
 font-2 = siji:pixelsize=10;3
 font-3 = Iosevka:pixelsize=14;3
 
-modules-left = bspwm mpd
+modules-left = bspwm
 modules-center = bspwm-mode xwindow
-modules-right = pulseaudio cpu memory filesystem ethdown ethup date
+modules-right = pulseaudio cpu memory filesystem date
 
-;tray-position = right
-;tray-padding = 2
-;tray-background = #0063ff
-
-;wm-restack = bspwm
-;wm-restack = i3
-
+wm-restack = bspwm
 override-redirect = true
 
 enable-ipc = true
@@ -77,11 +68,16 @@ enable-ipc = true
 scroll-up = bspc desktop -f prev
 scroll-down = bspc desktop -f next
 
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
-
 cursor-click = pointer
 cursor-scroll = ns-resize
+
+[bar/alt]
+inherit = bar/main
+monitor = DVI-D-0
+
+modules-left = mpd
+modules-center = bspwm-mode xwindow
+modules-right = temperature ethdown ethup date
 
 [bar/minibar]
 width = 100%
@@ -116,13 +112,6 @@ modules-left = bspwm
 modules-center = bspwm-mode xwindow
 modules-right = pulseaudio-mini battery cpu memory filesystem date
 
-;tray-position = right
-;tray-padding = 2
-;tray-background = #0063ff
-
-;wm-restack = bspwm
-;wm-restack = i3
-
 override-redirect = true
 
 enable-ipc = true
@@ -145,17 +134,14 @@ label = %title:0:50:...%
 type = internal/xkeyboard
 blacklist-0 = num lock
 
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
 
 label-layout = %layout%
-label-layout-underline = ${colors.secondary}
 
 label-indicator-padding = 2
 label-indicator-margin = 1
 label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
 
 [module/filesystem-prefix]
 type = custom/text
@@ -586,7 +572,8 @@ animation-discharging-framerate = 1000
 
 [module/temperature]
 type = internal/temperature
-thermal-zone = 0
+thermal-zone = 2
+base-temperature = 20
 warn-temperature = 60
 
 format = <ramp> <label>
@@ -594,12 +581,14 @@ format-warn = <ramp> <label-warn>
 
 label = %temperature-c%
 label-warn = %temperature-c%
-label-warn-foreground = ${colors.secondary}
+label-warn-foreground = ${colors.alert}
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
+ramp-0 =  
+ramp-1 =  
+ramp-2 =  
+ramp-3 = 
+ramp-4 = 
+ramp-foreground = ${colors.red}
 
 [module/powermenu-script]
 type = custom/text
