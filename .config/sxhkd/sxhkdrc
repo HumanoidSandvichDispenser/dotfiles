@@ -50,12 +50,17 @@ super + {_, shift + }s
 super + Print
     sleep 0.1; maim -u | xclip -selection clipboard -t image/png
 
-super + semicolon
-    lpass-menu.sh
+super + p
+    killall pavucontrol || pavucontrol
 
 # clipboard manager
 super + v
     clip-history.sh
+
+# toggle main bar
+super + slash
+    echo "cmd:toggle" > /tmp/ipc-mainbar
+    #polybar-msg cmd toggle
 
 #
 # bspwm hotkeys
@@ -89,8 +94,8 @@ super + g
 #
 
 # set the window state
-super + {t,shift + t,f}
-    bspc node -t {tiled,pseudo_tiled,floating}
+super + {t,shift + t,f, shift + f}
+    bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
 super + ctrl + {m,x,y,z}
@@ -108,8 +113,8 @@ super + {_,shift + }{Left,Down,Up,Right}
     bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
-super + {p,b,comma,period}
-    bspc node -f @{parent,brother,first,second}
+#super + {p,b,comma,period}
+#    bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous node in the current desktop
 super + {_,shift + }c
@@ -119,9 +124,9 @@ super + {_,shift + }c
 super + bracket{left,right}
     bspc desktop -f {prev,next}.local
 
-# focus the last node/desktop
-super + {grave,Tab}
-    bspc {node,desktop} -f last
+# focus the last desktop
+super + Tab
+    bspc desktop -f last
 
 # focus the older or newer node in the focus history
 super + {o,i}
@@ -130,8 +135,12 @@ super + {o,i}
     bspc wm -h on
 
 # focus or send to the given desktop
-super + {_,shift + }{1-9,0}
-    bspc {desktop -f,node -d} '^{1-9,10}'
+super + {_,shift + }{1-9}
+    bspc {desktop -f,node -d} {web,code,misc,discord,game,VI,VII,VIII}
+
+# focus or send to the desktop of the alternative monitor
+super + {_,shift + } grave
+    bspc {desktop -f,node -d} alt
 
 #
 # preselect
