@@ -26,5 +26,30 @@
             "\\marginnote{$1}$2"
         ],
         "description": "Note to display on the margin line"
+    },
+    "Enumerate": {
+        "prefix": [ "enum" ],
+        "body": [
+            "\\begin{enumerate}",
+            "\t$1",
+            "\\end{enumerate}"
+        ],
+        "description": "Enumerate environment"
+    },
+    "Item": {
+        "prefix": [ "it" ],
+        "body": [
+            "\\item "
+        ],
+        "description": "Environment item"
+    },
+    "Begin": {
+        "prefix": [ "begin" ],
+        "body": [
+            "\\begin{$1}",
+            "\t$2",
+            "\\end{$1}"
+        ],
+        "description": "Begins and ends an environment"
     }
 }
