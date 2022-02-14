@@ -9,8 +9,6 @@
 # set default color scheme before starting other programs
 colorscheme.sh gruvbox
 
-xrdb -merge ~/secrets.Xresources
-
 if ! pgrep -x "sxhkd" > /dev/null; then
     sxhkd &
 fi
@@ -22,6 +20,9 @@ fi
 if ! pgrep -x "polybar" > /dev/null; then
     if [ "$(hostname)" = "manjaro" ]; then
         polybar -c ~/.config/polybar-config/config main &
+        ln -s /tmp/polybar_mqueue.$! /tmp/ipc-mainbar # for sending msg by name
+        polybar -c ~/.config/polybar-config/config alt &
+        ln -s /tmp/polybar_mqueue.$! /tmp/ipc-altbar
     else
         polybar -c ~/.config/polybar-config/config minibar &
     fi
@@ -49,15 +50,14 @@ xcape -e "Super_L=Escape"
 
 # BSPWM Configuration
 
-bspc monitor VIRTUAL1 -d alt
-bspc monitor -d web code misc discord game VI VII VIII
-bspc monitor primary -s VIRTUAL1
+bspc monitor primary -d web code misc discord game VI VII VIII
+bspc monitor any -d alt
 
 bspc config border_width         4
 bspc config window_gap           8
-bspc config active_border_color  "#D5C4A1"
-bspc config normal_border_color  "#282828"
-bspc config focused_border_color  "#928374"
+#bspc config active_border_color  "#D5C4A1"
+#bspc config normal_border_color  "#282828"
+#bspc config focused_border_color  "#928374"
 if [[ $(hostname) == "manjaro" ]]; then # hostname "manjaro" has a status bar height of 48
     bspc config top_padding      40
 else
@@ -71,10 +71,10 @@ bspc config single_monocle       false
 
 bspc config ignore_ewmh_focus    true # stop stealing focus
 
-bspc rule -a Gimp desktop='^8' state=floating follow=on
-bspc rule -a firefox desktop='^1'
-bspc rule -a discord desktop='^4'
-bspc rule -a element desktop='^4'
+bspc rule -a Gimp desktop=VI state=floating follow=on
+bspc rule -a firefox desktop=web
+bspc rule -a discord desktop=discord
+bspc rule -a element desktop=discord
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
@@ -87,3 +87,4 @@ bspc rule -a st-floating state=floating
 bspc rule -a st-dialog focus=on state=floating layer=above
 bspc rule -a st-dropdown sticky=on state=floating hidden=on rectangle=800x600+560+200
 bspc rule -a *:*:minecraft-launcher state=floating rectangle=240x700+160+0 # don't ask what this is
+bspc rule -a Pavucontrol state=floating follow=on
