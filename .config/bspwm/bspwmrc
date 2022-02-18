@@ -54,13 +54,14 @@ bspc monitor primary -d web code misc discord game VI VII VIII
 bspc monitor any -d alt
 
 bspc config border_width         4
-bspc config window_gap           8
 #bspc config active_border_color  "#D5C4A1"
 #bspc config normal_border_color  "#282828"
 #bspc config focused_border_color  "#928374"
 if [[ $(hostname) == "manjaro" ]]; then # hostname "manjaro" has a status bar height of 48
+    bspc config window_gap       8
     bspc config top_padding      40
 else
+    bspc config window_gap       4
     bspc config top_padding      28
 fi
 
@@ -88,3 +89,4 @@ bspc rule -a st-dialog focus=on state=floating layer=above
 bspc rule -a st-dropdown sticky=on state=floating hidden=on rectangle=800x600+560+200
 bspc rule -a *:*:minecraft-launcher state=floating rectangle=240x700+160+0 # don't ask what this is
 bspc rule -a Pavucontrol state=floating follow=on
+bspc rule -a Emacs state=tiled
