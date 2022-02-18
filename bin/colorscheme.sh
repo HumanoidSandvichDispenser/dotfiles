@@ -26,8 +26,8 @@ kill -USR1 $(pidof tabbed)
 polybar-msg cmd restart
 
 inactive_border=$(get-xresource.sh "background")
-active_border=$(get-xresource.sh "background3")
-focused_border=$(get-xresource.sh "background4")
+active_border=$(get-xresource.sh "background4")
+focused_border=$(get-xresource.sh "foreground")
 
 background=$(xgetres "background")
 background_alt=$(xgetres "background-alt")
@@ -50,7 +50,7 @@ bspc config normal_border_color $inactive_border
 bspc config active_border_color $active_border
 bspc config focused_border_color $focused_border
 
-feh --bg-scale $WALLPAPERS/$1.png
+feh --bg-scale $WALLPAPERS/$1.png --bg-scale $WALLPAPERS/$1.png
 echo "slock.image: $WALLPAPERS/$1.png" > /var/tmp/wallpaper.Xresources && xrdb -merge /var/tmp/wallpaper.Xresources
 
 format-file.py $DOTFILES/rofi-colors.rasi.fmt \
