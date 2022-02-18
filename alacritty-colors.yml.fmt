@@ -1,0 +1,59 @@
+# vim:set ft=yaml
+
+font:
+  normal:
+    family: Iosevka Sandvich
+    style: Regular
+
+  bold:
+    family: Iosevka Sandvich
+    style: Bold
+
+  italic:
+    family: Iosevka Sandvich
+    style: Italic
+
+  bold_italic:
+    family: Iosevka Sandvich
+    style: Bold Italic
+
+  size: 12
+
+window:
+  padding:
+    x: 4
+    y: 4
+  dynamic_padding: true
+
+colors:
+  # Default colors
+  primary:
+    background: "{--bg}"
+    foreground: "{--fg}"
+
+  # Cursor colors
+  cursor:
+   text: "{--fg}"
+   cursor: "{--fg}"
+
+  # Normal colors
+  normal:
+    black:   "{--bg}"
+    red:     "{--red}"
+    green:   "{--green}"
+    yellow:  "{--yellow}"
+    blue:    "{--blue}"
+    magenta: "{--magenta}"
+    cyan:    "{--cyan}"
+    white:   "{--fg}"
+
+  # Bright colors
+  bright:
+    black:   "{--gray}"
+    red:     "{--red}"
+    green:   "{--green}"
+    yellow:  "{--yellow}"
+    blue:    "{--blue}"
+    magenta: "{--magenta}"
+    cyan:    "{--cyan}"
+    white:   "{--fg}"
