@@ -1,4 +1,4 @@
-/* colors */
+/* vim:set ft=css */
 
 * {{
   al:    {--bg}FF;

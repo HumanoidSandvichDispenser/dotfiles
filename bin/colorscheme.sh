@@ -64,7 +64,7 @@ format-file.py $DOTFILES/rofi-colors.rasi.fmt \
     --accent=$(get-xresource.sh "accent") \
     > $DOTFILES/rofi-colors.rasi
 
-format-file.py ~/.config/alacritty/alacritty.yml.fmt \
+format-file.py $DOTFILES/alacritty-colors.yml.fmt \
     --bg=$background \
     --fg=$foreground \
     --red=$red \
