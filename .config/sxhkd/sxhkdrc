@@ -3,8 +3,8 @@
 #
 
 # terminal emulator
-super + Return
-    st
+super + {_,shift + }Return
+    {alacritty, st}
 
 # program launcher
 super + space
@@ -12,6 +12,9 @@ super + space
 
 super + z
     zathura
+
+super + e
+    emacs
 
 # power menu (sleep, shutdown, etc.)
 super + Escape
