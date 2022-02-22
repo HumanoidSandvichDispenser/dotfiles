@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + {_,shift + }Return
-    {alacritty, st}
+    {st, alacritty}
 
 # program launcher
 super + space
