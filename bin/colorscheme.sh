@@ -16,7 +16,8 @@ xrdb -merge $DOTFILES/colorschemes/$1.Xresources
 #    nvr --nostart --servername $path -cc "call SetColorscheme('$1')"
 #done
 
-echo "autocmd VimEnter * PackerLoad $1" > /var/tmp/colorscheme.vim
+#echo "autocmd VimEnter * PackerLoad $1" > /var/tmp/colorscheme.vim
+echo "colorscheme $1" > /var/tmp/colorscheme.vim
 
 # signal st and tabbed to reload config
 kill -USR1 $(pidof st)
