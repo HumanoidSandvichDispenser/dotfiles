@@ -67,6 +67,10 @@ alias vibrant="nvidia-settings -a 'DigitalVibrance=300'" # Nvidia only
 alias crayon="mono $CRAYON_HOME/crayon.exe"
 alias overlay="pqiv --click-through --keep-above --transparent-background --hide-info-box"
 alias pepes="sxiv -P $PEPE_PATH" # requires my fork of sxiv
+alias sunvim="sudo -E nvim"
+alias ssh-socks="ssh -D 8090 -CN"
+alias ssh-pi="ssh sandvich.cloudns.nz -p 2200"
+alias du-sweep="du -sk * | sort -nr | head -10"
 
 # Set package manager
 export PACKAGE_MANAGER=pacman
