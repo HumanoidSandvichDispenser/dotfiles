@@ -7,7 +7,7 @@
 #
 
 # set default color scheme before starting other programs
-colorscheme.sh gruvbox
+colorscheme.sh onedark
 
 if ! pgrep -x "sxhkd" > /dev/null; then
     sxhkd &
@@ -51,7 +51,10 @@ xcape -e "Super_L=Escape"
 # BSPWM Configuration
 
 bspc monitor primary -d web code misc discord game VI VII VIII
-bspc monitor any -d alt
+
+if [ "$(hostname)" = "manjaro" ]; then
+    bspc monitor any -d alt
+fi
 
 bspc config border_width         4
 #bspc config active_border_color  "#D5C4A1"
