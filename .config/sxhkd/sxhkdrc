@@ -13,8 +13,9 @@ super + space
 super + z
     zathura
 
-super + e
-    emacs
+# start an emacs client, or restart the emacs daemon
+super + {_,shift +} e
+    {emacsclient --create-frame, systemctl --user restart emacs}
 
 # power menu (sleep, shutdown, etc.)
 super + Escape
