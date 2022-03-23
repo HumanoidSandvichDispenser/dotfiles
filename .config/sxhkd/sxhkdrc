@@ -61,6 +61,10 @@ super + p
 super + v
     clip-history.sh
 
+# show image in clipboard with sxiv
+super + shift + v
+    view-clipboard-image.sh
+
 # toggle main bar
 super + slash
     echo "cmd:toggle" > /tmp/ipc-mainbar
