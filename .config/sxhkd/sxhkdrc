@@ -13,8 +13,9 @@ super + space
 super + z
     zathura
 
-super + e
-    emacs
+# start an emacs client, or restart the emacs daemon
+super + {_,shift +} e
+    {emacsclient --create-frame, systemctl --user restart emacs}
 
 # power menu (sleep, shutdown, etc.)
 super + Escape
@@ -59,6 +60,10 @@ super + p
 # clipboard manager
 super + v
     clip-history.sh
+
+# show image in clipboard with sxiv
+super + shift + v
+    view-clipboard-image.sh
 
 # toggle main bar
 super + slash
