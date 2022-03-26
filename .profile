@@ -1,7 +1,7 @@
 export LC_ALL="en_US.UTF-8"
 export CRAYON_HOME=$HOME/crayon/crayon-2.1.0-mono
-export PATH=$HOME/.pyenv/shims:$PATH:$HOME/bin:$CRAYON_HOME:$HOME/.local/share/gem/ruby/3.0.0/bin
-export PYTHONPATH=$PYTHONPATH:/usr/lib/python3.8/site-packages
+export PATH=$PATH:$HOME/bin:$CRAYON_HOME:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.local/bin
+export PYTHONPATH=$PYTHONPATH:/usr/lib/python3.8/site-packages:/home/sandvich/git/python-modules
 export VISUAL=nvim
 export EDITOR=nvim
 export CALCRC=$HOME/.calcrc
@@ -19,4 +19,4 @@ export DOTFILES="$HOME/git/dotfiles"
 export WALLPAPERS="/usr/share/backgrounds/sandvich"
 export NVIM="$DOTFILES/.config/nvim"
 
-setxkbmap -option caps:super
+[ $DISPLAY ] && setxkbmap -option caps:super && xset r rate 300 50
