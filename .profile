@@ -1,6 +1,7 @@
 export LC_ALL="en_US.UTF-8"
 export CRAYON_HOME=$HOME/crayon/crayon-2.1.0-mono
 export PATH=$PATH:$HOME/bin:$CRAYON_HOME:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.local/bin
+export PATH="$PATH:/home/sandvich/.dotnet/tools"
 export PYTHONPATH=$PYTHONPATH:/usr/lib/python3.8/site-packages:/home/sandvich/git/python-modules
 export VISUAL=nvim
 export EDITOR=nvim
