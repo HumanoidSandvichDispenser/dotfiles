@@ -9,6 +9,7 @@ export CALCRC=$HOME/.calcrc
 export WINEPATH=$HOME/.wine
 export MGFXC_WINE_PATH=$HOME/.winemonogame
 export PEPE_PATH=$HOME/mnt/pepes
+export MSBuildSDKsPath="/usr/share/dotnet/sdk/$(dotnet --version)/Sdks"
 
 # User configuration
 export MANPATH=/usr/local/man:$MANPATH
@@ -18,6 +19,6 @@ export LANG=en_US.UTF-8
 # set $DOTFILES to that directory.
 export DOTFILES="$HOME/git/dotfiles"
 export WALLPAPERS="/usr/share/backgrounds/sandvich"
-export NVIM="$DOTFILES/.config/nvim"
+export NVIMPATH="$DOTFILES/.config/nvim"
 
 [ $DISPLAY ] && setxkbmap -option caps:super && xset r rate 300 50
