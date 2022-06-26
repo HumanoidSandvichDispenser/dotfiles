@@ -23,6 +23,8 @@ if ! pgrep -x "polybar" > /dev/null; then
         ln -s /tmp/polybar_mqueue.$! /tmp/ipc-mainbar # for sending msg by name
         polybar -c ~/.config/polybar-config/config alt &
         ln -s /tmp/polybar_mqueue.$! /tmp/ipc-altbar
+    elif [ "$(hostname)" = "artix" ]; then
+        polybar -c ~/.config/polybar-config/config artix &
     else
         polybar -c ~/.config/polybar-config/config minibar &
     fi
@@ -60,7 +62,9 @@ bspc config border_width         4
 #bspc config active_border_color  "#D5C4A1"
 #bspc config normal_border_color  "#282828"
 #bspc config focused_border_color  "#928374"
-if [[ $(hostname) == "manjaro" ]]; then # hostname "manjaro" has a status bar height of 48
+
+# manjaro and artix machines have a status bar height of 48
+if [[ $(hostname) == "manjaro" ]] || [[ $(hostname) == "artix" ]]; then
     bspc config window_gap       8
     bspc config top_padding      40
 else
@@ -93,3 +97,4 @@ bspc rule -a st-dropdown sticky=on state=floating hidden=on rectangle=800x600+56
 bspc rule -a *:*:minecraft-launcher state=floating rectangle=240x700+160+0 # don't ask what this is
 bspc rule -a Pavucontrol state=floating follow=on
 bspc rule -a Emacs state=tiled
+bspc rule -a chatterino split_ratio=0.8
