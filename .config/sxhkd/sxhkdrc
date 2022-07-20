@@ -148,7 +148,7 @@ super + {o,i}
 
 # focus or send to the given desktop
 super + {_,shift + }{1-9}
-    bspc {desktop -f,node -d} {web,code,misc,discord,game,VI,VII,VIII}
+    bspc {desktop -f,node -d} {web,work,misc,chat,game,VI,VII,VIII}
 
 # focus or send to the desktop of the alternative monitor
 super + {_,shift + } grave

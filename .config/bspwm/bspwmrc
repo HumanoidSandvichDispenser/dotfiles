@@ -9,6 +9,8 @@
 # set default color scheme before starting other programs
 colorscheme.sh onedark
 
+hostname=$(hostname)
+
 if ! pgrep -x "sxhkd" > /dev/null; then
     sxhkd &
 fi
@@ -18,12 +20,12 @@ if ! pgrep -x "compton" > /dev/null; then
 fi
 
 if ! pgrep -x "polybar" > /dev/null; then
-    if [ "$(hostname)" = "manjaro" ]; then
+    if [ "$hostname" = "manjaro" ] || [[ "$hostname" =~ .*top ]]; then
         polybar -c ~/.config/polybar-config/config main &
         ln -s /tmp/polybar_mqueue.$! /tmp/ipc-mainbar # for sending msg by name
         polybar -c ~/.config/polybar-config/config alt &
         ln -s /tmp/polybar_mqueue.$! /tmp/ipc-altbar
-    elif [ "$(hostname)" = "artix" ]; then
+    elif [ "$hostname" = "artix" ]; then
         polybar -c ~/.config/polybar-config/config artix &
     else
         polybar -c ~/.config/polybar-config/config minibar &
@@ -52,9 +54,9 @@ xcape -e "Super_L=Escape"
 
 # BSPWM Configuration
 
-bspc monitor primary -d web code misc discord game VI VII VIII
+bspc monitor primary -d web work misc chat game VI VII VIII
 
-if [ "$(hostname)" = "manjaro" ]; then
+if [ "$hostname" = "manjaro" ] || [[ "$hostname" =~ .*top ]]; then
     bspc monitor any -d alt
 fi
 
@@ -63,8 +65,8 @@ bspc config border_width         4
 #bspc config normal_border_color  "#282828"
 #bspc config focused_border_color  "#928374"
 
-# manjaro and artix machines have a status bar height of 48
-if [[ $(hostname) == "manjaro" ]] || [[ $(hostname) == "artix" ]]; then
+# desktop and manjaro and artix machines have a status bar height of 48
+if [[ "$hostname" == "manjaro" ]] || [[ "$hostname" == "artix" ]] || [[ "$hostname" =~ .*top ]]; then
     bspc config window_gap       8
     bspc config top_padding      40
 else

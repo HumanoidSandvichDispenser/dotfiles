@@ -75,7 +75,7 @@ cursor-scroll = ns-resize
 inherit = bar/main
 monitor = DVI-D-0
 
-modules-left = mpd
+modules-left = filesystem-root filesystem-home filesystem-extra
 modules-center = bspwm-mode xwindow
 modules-right = temperature ethdown ethup date
 
@@ -171,13 +171,52 @@ label-mounted = %free%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
+[module/filesystem-root]
+type = internal/fs
+interval = 20
+
+mount-0 = /
+
+format-mounted-prefix = "/: "
+format-mounted-prefix-foreground = ${colors.green}
+
+label-mounted = %free%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground}
+
+[module/filesystem-home]
+type = internal/fs
+interval = 20
+
+mount-0 = /home
+
+format-mounted-prefix = "/home: "
+format-mounted-prefix-foreground = ${colors.green}
+
+label-mounted = %free%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground}
+
+[module/filesystem-extra]
+type = internal/fs
+interval = 20
+
+mount-0 = /home/sandvich/mnt
+
+format-mounted-prefix = "~/mnt: "
+format-mounted-prefix-foreground = ${colors.green}
+
+label-mounted = %free%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground}
+
 [module/bspwm]
 type = internal/bspwm
 
 ws-icon-0 = web;
-ws-icon-1 = code;
+ws-icon-1 = work;
 ws-icon-2 = misc;
-ws-icon-3 = discord;
+ws-icon-3 = chat;
 ws-icon-4 = game;
 ws-icon-5 = VI;
 ws-icon-6 = VII;
@@ -296,9 +335,9 @@ enable-scroll = false
 ; icon-6 = VII;
 ; icon-7 = VIII;
 icon-0 = web;
-icon-1 = code;
+icon-1 = work;
 icon-2 = misc;
-icon-3 = discord;ﭮ
+icon-3 = chat;ﭮ
 icon-4 = game;
 icon-5 = VI;
 icon-6 = VII;
