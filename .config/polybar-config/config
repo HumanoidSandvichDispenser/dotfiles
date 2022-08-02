@@ -54,7 +54,7 @@ module-margin-bottom = 1
 font-0 = Iosevka Sandvich Semibold:pixelsize=12;3
 font-1 = Iosevka:size=12:antialias=true;3
 font-2 = siji:pixelsize=10;3
-font-3 = Iosevka:pixelsize=14;3
+font-3 = Iosevka:pixelsize=14;13
 
 modules-left = bspwm
 modules-center = bspwm-mode xwindow
@@ -78,6 +78,15 @@ monitor = DVI-D-0
 modules-left = filesystem-root filesystem-home filesystem-extra
 modules-center = bspwm-mode xwindow
 modules-right = temperature ethdown ethup date
+
+[bar/artix]
+inherit = bar/main
+
+font-0 = Iosevka Sandvich:size=12;4
+font-1 = Iosevka:size=24:antialias=true;6
+font-2 = siji:pixelsize=10;3
+font-3 = Iosevka Nerd Font:pixelsize=14;3
+modules-right = pulseaudio battery cpu memory filesystem date
 
 [bar/minibar]
 width = 100%
@@ -516,11 +525,11 @@ bar-volume-foreground-4 = ${colors.green}
 bar-volume-foreground-5 = ${colors.green}
 bar-volume-gradient = false
 bar-volume-indicator = ""
-bar-volume-indicator-font = 2
+bar-volume-indicator-font = 1
 bar-volume-fill = ━
-bar-volume-fill-font = 2
+bar-volume-fill-font = 1
 bar-volume-empty = ━
-bar-volume-empty-font = 2
+bar-volume-empty-font = 1
 bar-volume-empty-foreground = ${colors.foreground-mute}
 
 ramp-volume-0 = "奄"

@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /usr/bin/env sh
 #
 # bspwmrc
 # Copyright (C) 2021 sandvich <sandvich@sandvich-pc>
@@ -26,6 +26,11 @@ if ! pgrep -x "polybar" > /dev/null; then
         polybar -c ~/.config/polybar-config/config alt &
         ln -s /tmp/polybar_mqueue.$! /tmp/ipc-altbar
     elif [ "$hostname" = "artix" ]; then
+        # if a monitor is connected, use the low DPI polybar
+        # otherwise use high DPI
+        (xrandr | grep "HDMI-1 connected") && \
+            polybar -c ~/.config/polybar-config/config artixmonitor || \
+            polybar -c ~/.config/polybar-config/config artix
         polybar -c ~/.config/polybar-config/config artix &
     else
         polybar -c ~/.config/polybar-config/config minibar &
