@@ -10,7 +10,8 @@
 # it is required for save file dialogs
 which zenity > /dev/null || (notify-send -a "$(basename $0)" "zenity not found"; exit 1)
 
-filename="/tmp/$(date +%Y-%m-%d_%H%M%S).png"
+mkdir -p /tmp/scrot
+filename="/tmp/scrot/$(date +%Y-%m-%d_%H%M%S).png"
 color=$(convert-color.py $(xgetres accent))
 
 # get options

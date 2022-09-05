@@ -11,6 +11,8 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 
 DEFAULT_SESSION=bspwm
 
+init=$(basename $(readlink $(which init)))
+
 # merge in defaults and keymaps
 
 if [ -f $sysresources ]; then
@@ -23,6 +25,11 @@ fi
 
 if [ -f "$userresources" ]; then
     xrdb -merge "$userresources"
+fi
+
+# high dpi display
+if [ "$(hostname)" = "artix" ]; then
+    xrdb -merge ~/git/dotfiles/highdpi.Xresources
 fi
 
 if [ -f "$usermodmap" ]; then
@@ -65,5 +72,9 @@ get_session(){
 
 # my manjaro machine has a dual monitor setup
 [ "$(hostname)" = "manjaro"  ] && xrandr --output DP-1 --primary --right-of DVI-D-0
+
+# start emacs headless if we're on openrc
+#[ "$init" = "openrc-init" ] && /etc/init.d/emacs.sandvich start
+emacs --daemon &
 
 exec $(get_session)
