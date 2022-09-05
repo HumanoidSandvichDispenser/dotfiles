@@ -2,7 +2,7 @@
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+    [ "$TERM" != "dumb" ] && source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 # Aliases and Exports
@@ -86,16 +86,26 @@ autoload -U compinit && compinit
 autoload -U select-word-style
 select-word-style bash
 
-# source plugins
-source $DOTFILES/.zsh/zsh-completions/zsh-completions.plugin.zsh
-source $DOTFILES/.zsh/powerlevel10k/powerlevel10k.zsh-theme
-source $DOTFILES/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $DOTFILES/.zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+if [ "$TERM" = "dumb" ]; then
+    # emacs tramp fix
+    unsetopt zle
+    unsetopt prompt_cr
+    unsetopt prompt_subst
+    unfunction precmd
+    unfunction preexec
+    PS1='$ '
+else
+    # source plugins if we are actually in a terminal
+    source $DOTFILES/.zsh/zsh-completions/zsh-completions.plugin.zsh
+    source $DOTFILES/.zsh/powerlevel10k/powerlevel10k.zsh-theme
+    source $DOTFILES/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+    source $DOTFILES/.zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+fi
 
 # plugin configuration
 if [ "$TERM" = "linux" ]; then
     [[ -f $DOTFILES/.p10k-tty.zsh ]] && source $DOTFILES/.p10k-tty.zsh
-else
+elif [ "$TERM" != "dumb" ]; then
     [[ -f $DOTFILES/.p10k.zsh ]] && source $DOTFILES/.p10k.zsh
 fi
 export ZSH_AUTOSUGGEST_STRATEGY=(completion)

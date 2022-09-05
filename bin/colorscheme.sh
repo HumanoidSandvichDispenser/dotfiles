@@ -54,30 +54,38 @@ bspc config focused_border_color $focused_border
 feh --bg-scale $WALLPAPERS/$1.png --bg-scale $WALLPAPERS/$1.png
 echo "slock.image: $WALLPAPERS/$1.png" > /var/tmp/wallpaper.Xresources && xrdb -merge /var/tmp/wallpaper.Xresources
 
-format-file.py $DOTFILES/rofi-colors.rasi.fmt \
-    --al=$background \
-    --bg=$background \
-    --bg1=$background1 \
-    --bg2=$background2 \
-    --bg3=$background3 \
-    --bg4=$background4 \
-    --fg=$foreground \
-    --accent=$(get-xresource.sh "accent") \
-    > $DOTFILES/rofi-colors.rasi
+format-file.py $DOTFILES/fmt/rofi-colors.rasi.fmt \
+               --al=$background \
+               --bg=$background \
+               --bg1=$background1 \
+               --bg2=$background2 \
+               --bg3=$background3 \
+               --bg4=$background4 \
+               --fg=$foreground \
+               --accent=$accent \
+               > $DOTFILES/rofi-colors.rasi
 
-format-file.py $DOTFILES/alacritty-colors.yml.fmt \
-    --bg=$background \
-    --fg=$foreground \
-    --red=$red \
-    --green=$green \
-    --yellow=$yellow \
-    --blue=$blue \
-    --magenta=$magenta \
-    --cyan=$cyan \
-    --gray=$gray \
-    > ~/.config/alacritty/alacritty.yml
+mkdir -p ~/.config/alacritty
+format-file.py $DOTFILES/fmt/alacritty-colors.yml.fmt \
+               --bg=$background \
+               --fg=$foreground \
+               --red=$red \
+               --green=$green \
+               --yellow=$yellow \
+               --blue=$blue \
+               --magenta=$magenta \
+               --cyan=$cyan \
+               --gray=$gray \
+               > ~/.config/alacritty/alacritty.yml
 
-nohup start-dunst.sh &
-
-dunstify -a "colorscheme.sh" "Colorscheme changed" "Successfully changed \
-colorscheme to $1"
+mkdir -p ~/.config/wired
+format-file.py $DOTFILES/fmt/wired.ron.fmt \
+               --bg=$background \
+               --bg-dark=$background_dark \
+               --bg4=$background4 \
+               --fg=$foreground \
+               --red=$red \
+               --green=$green \
+               --blue=$blue \
+               --accent=$accent \
+               > ~/.config/wired/wired.ron

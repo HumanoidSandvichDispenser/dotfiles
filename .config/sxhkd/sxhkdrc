@@ -14,8 +14,12 @@ super + z
     zathura
 
 # start an emacs client, or restart the emacs daemon
-super + {_,shift +} e
-    {emacsclient --create-frame, systemctl --user restart emacs}
+#super + {_,shift +} e
+    #{emacsclient --create-frame, systemctl --user restart emacs}
+
+# just start up emacs normally
+super + e
+    emacs
 
 # power menu (sleep, shutdown, etc.)
 super + Escape
@@ -125,8 +129,8 @@ super + {_,shift + }{Left,Down,Up,Right}
     bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
-#super + {p,b,comma,period}
-#    bspc node -f @{parent,brother,first,second}
+#super + {p,b}
+#    bspc node -f @{parent,brother}
 
 # focus the next/previous node in the current desktop
 super + {_,shift + }c
@@ -194,5 +198,5 @@ super + {Left,Down,Up,Right}
 #super + shift + {Left,Down,Up,Right}
     #euclid_mover {west,south,north,east}
 
-super + n
+super + period
     rofi -show emoji
