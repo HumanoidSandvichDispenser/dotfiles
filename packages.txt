@@ -10,9 +10,14 @@ pulseaudio
 python
 feh
 sxiv
-xst
 ffmpeg
 xclip
 xgetres
 fzf
 nvim-packer-git
+typescript-language-server
+bash-language-server
+lua-language-server
+nodejs-vls
+texlab
+bitwarden-rofi

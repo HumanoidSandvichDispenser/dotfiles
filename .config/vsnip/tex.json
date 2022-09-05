@@ -36,6 +36,15 @@
         ],
         "description": "Enumerate environment"
     },
+    "Itemize": {
+        "prefix": [ "itz" ],
+        "body": [
+            "\\begin{itemize}",
+            "\t$1",
+            "\\end{itemize}"
+        ],
+        "description": "Itemize environment"
+    },
     "Item": {
         "prefix": [ "it" ],
         "body": [

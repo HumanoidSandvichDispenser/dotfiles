@@ -64,6 +64,6 @@ get_session(){
 }
 
 # my manjaro machine has a dual monitor setup
-[ "$(hostname)" = "manjaro"  ] && xrandr --output DP-1 --primary --right-of DVI-D-0
+([ "$(hostname)" = "manjaro"  ] || [[ "$hostname" =~ .*top ]]) && xrandr --output DP-1 --primary --right-of DVI-D-0
 
 exec $(get_session)

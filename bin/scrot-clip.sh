@@ -31,7 +31,7 @@ while getopts ":f" opt; do
 done
 
 if [ -n "$freeze" ]; then
-    maim -u | feh - -xF &
+    maim -u | feh - --no-xinerama -xF &
 
     feh_pid=$!
 
@@ -43,13 +43,13 @@ if [ -n "$freeze" ]; then
         i=$((i+1))
     done
 
-    maim -sb 4 -r invert > $filename
+    maim -sb 2 -r invert > $filename
+    kill $feh_pid
 else
-    maim -sub 4 --color "$color" -l --color "$color,0.7" > $filename
+    maim -sub 2 --color "$color" -l --color "$color,0.5" > $filename
 fi
 
 # kill feh running in the background when finished
-kill $feh_pid
 
 xclip -selection clipboard -t image/png "$filename"
 
