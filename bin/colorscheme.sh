@@ -62,7 +62,7 @@ format-file.py $DOTFILES/fmt/rofi-colors.rasi.fmt \
                --bg3=$background3 \
                --bg4=$background4 \
                --fg=$foreground \
-               --accent=$(get-xresource.sh "accent") \
+               --accent=$accent \
                > $DOTFILES/rofi-colors.rasi
 
 mkdir -p ~/.config/alacritty
