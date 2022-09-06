@@ -39,7 +39,7 @@ if ! pgrep -x "polybar" > /dev/null; then
 fi
 
 # Some machines use wired instead of the default notification daemon
-if ! pgrep -x "wired" > /dev/null && which "dunst" > /dev/null; then
+if ! pgrep -x "wired" > /dev/null && which "wired" > /dev/null; then
     wired &
 fi
 
