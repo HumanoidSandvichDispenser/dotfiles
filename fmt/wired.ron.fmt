@@ -15,7 +15,7 @@
     replacing_resets_timeout: true,
 
     timeout: 10000, // 3 sec timeout
-    idle_threshold: 600, // 600 sec = 10 min
+    idle_threshold: 60, // 600 sec = 10 min
     unpause_on_input: true,
 
     // min_window_width: 0,
@@ -121,7 +121,7 @@
 
         (
             name: "buttonbox",
-            parent: "notif_body",
+            parent: "body",
             offset: (x: 12, y: 0),
             hook: (parent_anchor: BL, self_anchor: TL),
             render_criteria: [ ActionOther(0) ],
@@ -154,13 +154,13 @@
             params: ButtonBlock((
                 text: "%a",
                 font: "Iosevka Sandvich 12",
-                action: OtherAction(2),
+                action: OtherAction(0),
                 padding: (left: 8.0, right: 8.0, top: 4.0, bottom: 4.0),
                 border_width: 2.0,
                 border_rounding: 0.0,
                 fill_rounding: 0.0,
                 text_color: (hex: "{--bg4}"),
-                text_color_hovered: (hex: "{--bg-dark}"),
+                text_color_hovered: (hex: "{--fg}"),
                 border_color: (hex: "{--bg4}"),
                 border_color_hovered: (hex: "{--bg4}"),
                 background_color: (hex: "{--bg}"),
@@ -181,13 +181,13 @@
             params: ButtonBlock((
                 text: "%a",
                 font: "Iosevka Sandvich 12",
-                action: OtherAction(2),
+                action: OtherAction(1),
                 padding: (left: 8.0, right: 8.0, top: 4.0, bottom: 4.0),
                 border_width: 2.0,
                 border_rounding: 0.0,
                 fill_rounding: 0.0,
                 text_color: (hex: "{--bg4}"),
-                text_color_hovered: (hex: "{--bg-dark}"),
+                text_color_hovered: (hex: "{--fg}"),
                 border_color: (hex: "{--bg4}"),
                 border_color_hovered: (hex: "{--bg4}"),
                 background_color: (hex: "{--bg}"),
@@ -214,7 +214,7 @@
                 border_rounding: 0.0,
                 fill_rounding: 0.0,
                 text_color: (hex: "{--bg4}"),
-                text_color_hovered: (hex: "{--bg-dark}"),
+                text_color_hovered: (hex: "{--fg}"),
                 border_color: (hex: "{--bg4}"),
                 border_color_hovered: (hex: "{--bg4}"),
                 background_color: (hex: "{--bg}"),

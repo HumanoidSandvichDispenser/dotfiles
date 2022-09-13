@@ -47,22 +47,23 @@ if [ -n "$freeze" ]; then
     maim -sb 2 -r invert > $filename
     kill $feh_pid
 else
-    maim -sub 2 --color "$color" -l --color "$color,0.5" > $filename
+    maim -sub 2 --color "$color" -l --color "$color,0.5" > $filename || exit 1
 fi
 
 # kill feh running in the background when finished
 
 xclip -selection clipboard -t image/png "$filename"
 
-action=$(dunstify --action="save,Save to File" --action="upload,Upload to imgbb" "Copied to clipboard")
+#action=$(dunstify --action="save,Save to File" --action="upload,Upload to imgbb" "Copied to clipboard")
+action=$(notify-send --action="Save to file" "Copied image to clipboard" -i "$filename")
 
 case "$action" in
-    "save")
+    0)
         zenity --file-selection --confirm-overwrite --save | xargs cp "$filename"
         ;;
-    "upload")
-        api_key=$(cat ~/Secrets/imgbb-api-key)
-        name=$(rofi -dmenu -p " image name" -theme $DOTFILES/rofi-input-box.rasi)
-        [ -n "$name" ] && [ "$name" != "" ] && imgbb-upload.py "$api_key" "$filename" --name "$name"
-        ;;
+#    1)
+#        api_key=$(cat ~/Secrets/imgbb-api-key)
+#        name=$(rofi -dmenu -p " image name" -theme $DOTFILES/rofi-input-box.rasi)
+#        [ -n "$name" ] && [ "$name" != "" ] && imgbb-upload.py "$api_key" "$filename" --name "$name"
+#        ;;
 esac
