@@ -51,7 +51,7 @@ super + shift + {less,greater}
 
 # snipping tool
 super + {_, shift + }s
-    sleep 0.1; scrot-clip.sh {_,-f}
+    scrot-clip.sh {_,-f}
     #spectacle -{rbc,r} # does something
 
 # scrot full screen

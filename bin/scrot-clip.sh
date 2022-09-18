@@ -37,12 +37,19 @@ if [ -n "$freeze" ]; then
     feh_pid=$!
 
     i=0
-    while [ -z "$(xdotool search --pid "$feh_pid")" ]; do
+    window_id=""
+    while true; do
+        window_id="$(xdotool search --pid "$feh_pid")"
+        [ -z $window_id ] || break # exit loop if feh has a window
         sleep 0.05
         [ "$i" -eq "20" ] && (notify-send -a "$(basename $0)" "Could not start feh"; exit 1)
         echo "waiting for feh..."
         i=$((i+1))
     done
+
+    bspc node $window_id -t floating
+    xdotool windowsize $window_id 100% 100%
+    xdotool windowmove $window_id -4 -4
 
     maim -sb 2 -r invert > $filename
     kill $feh_pid
