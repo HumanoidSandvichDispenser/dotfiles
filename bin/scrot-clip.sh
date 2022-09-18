@@ -32,7 +32,7 @@ while getopts ":f" opt; do
 done
 
 if [ -n "$freeze" ]; then
-    maim -u | feh - --no-xinerama -xF &
+    maim -u | feh - --no-xinerama -x &
 
     feh_pid=$!
 
