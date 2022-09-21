@@ -42,6 +42,11 @@ XF86Audio{Raise,Lower}Volume
     pactl set-sink-volume @DEFAULT_SINK@ {+5%, -5%}
     #amixer sset Master {5%+,5%-} unmute
 
+# brightness
+XF86MonBrightness{Down,Up}
+    sudo brightnessctl s {5%-,+5%}; \
+    notify-send "Brightness" -h "int:value:$(sudo brightnessctl -g)" -h 'string:wired-tag:brightness'
+
 # mpc
 super + {less,greater}
     mpc --port 7700 seek {-,+}00:00:10
