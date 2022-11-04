@@ -17,9 +17,10 @@ super + z
 #super + {_,shift +} e
     #{emacsclient --create-frame, systemctl --user restart emacs}
 
-# just start up emacs normally
+# start up emacs if a server is not already up, otherwise just create
+# a new frame
 super + e
-    emacs
+    pidof emacs && emacsclient -c || emacs
 
 # power menu (sleep, shutdown, etc.)
 super + Escape

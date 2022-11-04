@@ -88,8 +88,8 @@ bspc config ignore_ewmh_focus    true # stop stealing focus
 
 bspc rule -a Gimp desktop=VI state=floating follow=on
 bspc rule -a firefox desktop=web
-bspc rule -a discord desktop=discord
-bspc rule -a element desktop=discord
+bspc rule -a discord desktop=chat
+bspc rule -a element desktop=chat
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off

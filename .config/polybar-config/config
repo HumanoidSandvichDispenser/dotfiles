@@ -88,6 +88,14 @@ font-2 = siji:pixelsize=10;3
 font-3 = Iosevka Nerd Font:pixelsize=14;3
 modules-right = pulseaudio battery cpu memory filesystem date
 
+[bar/artixmonitor]
+inherit = bar/artix
+
+font-0 = Iosevka Sandvich:size=12;3
+font-1 = Iosevka:size=20:antialias=true;5
+font-2 = siji:pixelsize=10;3
+font-3 = Iosevka Nerd Font:pixelsize=14;3
+
 [bar/minibar]
 width = 100%
 height = 28
@@ -261,7 +269,7 @@ label-floating-foreground = ${colors.cyan}
 
 label-locked = " "
 
-label-sticky = " "
+label-sticky = " "
 label-sticky-foreground = ${colors.yellow}
 
 label-private = " "
