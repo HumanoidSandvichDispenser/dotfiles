@@ -47,6 +47,7 @@ if [ -n "$freeze" ]; then
         i=$((i+1))
     done
 
+    sleep 0.1
     bspc node $window_id -t floating
     xdotool windowsize $window_id 100% 100%
     xdotool windowmove $window_id -4 -4
