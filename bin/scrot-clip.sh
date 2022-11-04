@@ -52,7 +52,7 @@ if [ -n "$freeze" ]; then
     xdotool windowsize $window_id 100% 100%
     xdotool windowmove $window_id -4 -4
 
-    maim -sb 2 -r invert > $filename
+    maim -sb 2 > $filename
     kill $feh_pid
 else
     maim -sub 2 --color "$color" -l --color "$color,0.5" > $filename || exit 1

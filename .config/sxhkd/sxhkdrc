@@ -17,9 +17,10 @@ super + z
 #super + {_,shift +} e
     #{emacsclient --create-frame, systemctl --user restart emacs}
 
-# just start up emacs normally
+# start up emacs if a server is not already up, otherwise just create
+# a new frame
 super + e
-    emacs
+    pidof emacs && emacsclient -c || emacs
 
 # power menu (sleep, shutdown, etc.)
 super + Escape
@@ -41,6 +42,11 @@ super + d
 XF86Audio{Raise,Lower}Volume
     pactl set-sink-volume @DEFAULT_SINK@ {+5%, -5%}
     #amixer sset Master {5%+,5%-} unmute
+
+# brightness
+XF86MonBrightness{Down,Up}
+    sudo brightnessctl s {5%-,+5%}; \
+    notify-send "Brightness" -h "int:value:$(sudo brightnessctl -g)" -h 'string:wired-tag:brightness'
 
 # mpc
 super + {less,greater}
