@@ -77,7 +77,7 @@ monitor = DVI-D-0
 
 modules-left = filesystem-root filesystem-home filesystem-extra
 modules-center = bspwm-mode xwindow
-modules-right = temperature ethdown ethup date
+modules-right = updates temperature ethdown ethup date
 
 [bar/artix]
 inherit = bar/main
@@ -229,7 +229,7 @@ label-active-foreground = ${colors.primary}
 label-occupied = %icon%
 label-occupied-foreground = ${colors.foreground}
 
-label-urgent =  %name% 
+label-urgent =  %name%
 label-urgent-foreground = ${colors.alert}
 
 label-empty = %icon%
@@ -377,7 +377,7 @@ label-occupied-foreground = ${colors.foreground}
 ;   %icon%
 ;   %index%
 ; Default: %icon%  %name%
-label-urgent =   %name% 
+label-urgent =   %name%
 label-urgent-foreground = ${colors.alert}
 
 ; Available tokens:
@@ -601,20 +601,20 @@ format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
 
-ramp-capacity-0 =  
-ramp-capacity-1 =  
-ramp-capacity-2 =  
-ramp-capacity-3 =  
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
 ramp-capacity-foreground = ${colors.cyan}
 
-animation-charging-0 =  
-animation-charging-1 =  
-animation-charging-2 =  
-animation-charging-3 =  
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
 animation-charging-foreground = ${colors.green}
 animation-charging-framerate = 750
 
-animation-discharging-0 = 
+animation-discharging-0 =
 animation-discharging-foreground = ${colors.foreground-alt}
 animation-discharging-framerate = 1000
 
@@ -631,9 +631,9 @@ label = %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.alert}
 
-ramp-0 =  
-ramp-1 =  
-ramp-2 =  
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
 ramp-3 = 
 ramp-4 = 
 ramp-foreground = ${colors.red}
@@ -676,6 +676,16 @@ menu-2-0 = power off
 menu-2-0-exec = sudo poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
+
+[module/updates]
+type = custom/script
+
+label = %output%
+
+format-prefix = " "
+format-prefix-foreground = ${colors.cyan}
+
+exec = cat /var/tmp/updates.txt
 
 [settings]
 screenchange-reload = true
