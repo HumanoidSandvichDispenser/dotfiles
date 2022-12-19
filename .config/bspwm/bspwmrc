@@ -7,7 +7,7 @@
 #
 
 # set default color scheme before starting other programs
-colorscheme.sh onedark
+#colorscheme.sh onedark
 
 hostname=$(cat /etc/hostname)
 
@@ -105,3 +105,6 @@ bspc rule -a *:*:minecraft-launcher state=floating rectangle=240x700+160+0 # don
 bspc rule -a Pavucontrol state=floating follow=on
 bspc rule -a Emacs state=tiled
 bspc rule -a chatterino split_ratio=0.8
+
+# external rules
+bspc config external_rules_command "$DOTFILES/.config/bspwm/external-rules.sh"

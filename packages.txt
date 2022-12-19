@@ -21,3 +21,4 @@ lua-language-server
 nodejs-vls
 texlab
 bitwarden-rofi
+xtitle
