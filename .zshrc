@@ -6,8 +6,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Aliases and Exports
-#export DOTFILES="$HOME/git/dotfiles"
-#source $DOTFILES/common.sh
 source $HOME/.profile
 
 # Color constants
@@ -69,14 +67,15 @@ alias overlay="pqiv --click-through --keep-above --transparent-background --hide
 alias pepes="sxiv -P $PEPE_PATH" # requires my fork of sxiv
 alias sunvim="sudo -E nvim"
 alias ssh-socks="ssh -D 8090 -CN"
-alias ssh-pi="ssh sandvich.cloudns.nz -p 2200"
+alias ll="ls -l"
+alias la="ls -la"
 alias du-sweep="du -sk * | sort -nr | head -10"
 
 # Set package manager
 export PACKAGE_MANAGER=pacman
 
 # Set terminal emulator
-export TERMINAL=st
+export TERMINAL=alacritty
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
@@ -108,14 +107,11 @@ if [ "$TERM" = "linux" ]; then
 elif [ "$TERM" != "dumb" ]; then
     [[ -f $DOTFILES/.p10k.zsh ]] && source $DOTFILES/.p10k.zsh
 fi
+
 export ZSH_AUTOSUGGEST_STRATEGY=(completion)
 export ZVM_KEYTIMEOUT=0.2
 
 # functions
-checkUpdates() {
-    [ -f /var/tmp/updates.txt ] && echo $(</var/tmp/updates.txt) || echo 0
-}
-
 viewdoc() {
     pandoc --to=pdf --pdf-engine=pdflatex -V geometry:margin=0.5in $1 | zathura -
 }
@@ -155,6 +151,10 @@ virtual-sink() {
     pacmd load-module module-loopback source=VirtualMic
 }
 
+venv() {
+    source ${1:-venv}/bin/activate
+}
+
 # Commands to run on startup
 setopt autocd
 
@@ -166,7 +166,7 @@ export HISTFILESIZE=1024
 # Keybinds
 bindkey -M vicmd "?" history-incremental-search-backward # https://github.com/dule/dotenv/blob/master/zshrc
 bindkey -M vicmd "/" history-incremental-search-forward
-bindkey -M viins "jj" vi-cmd-mode
+#bindkey -M viins "jj" vi-cmd-mode
 bindkey -M vicmd "u" undo
 bindkey "^H" backward-kill-word
 bindkey "^[[1;5C" forward-word
