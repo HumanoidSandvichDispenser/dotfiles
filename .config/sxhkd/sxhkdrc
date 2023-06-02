@@ -4,7 +4,11 @@
 
 # terminal emulator
 super + {_,shift + }Return
-    {st, alacritty}
+    {alacritty, ~/bin/spawn-alacritty.sh}
+
+# different terminal emulator
+super + /
+    st
 
 # program launcher
 super + space
@@ -24,11 +28,11 @@ super + e
 
 # power menu (sleep, shutdown, etc.)
 super + Escape
-    power-menu.sh
+    ~/bin/power-menu.sh
 
 # restart sxhkd
 super + shift + Escape
-    pkill -USR1 -x sxhkd
+    pkill -USR1 -x sxhkd && notify-send "sxhkd restarted"
 
 # xkill click to kill
 super + x
@@ -36,7 +40,12 @@ super + x
 
 # dropdown / scratchpad
 super + d
-    st-dropdown-toggle.sh
+	~/bin/bspwm-dropdown.sh class st-dropdown tabbed -N st-dropdown st -w
+    #st-dropdown-toggle.sh
+
+# emacs scratchpad
+super + shift + d
+	~/bin/bspwm-dropdown.sh title emacs-scratchpad emacsclient --no-wait --create-frame "--frame-parameters='(quote (name . \"scratchemacs-frame\"))'"
 
 # volume
 XF86Audio{Raise,Lower}Volume

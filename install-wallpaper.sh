@@ -10,7 +10,5 @@
 
 echo "Creating directories..."
 sudo mkdir -p $WALLPAPERS
-echo "Changing permissions..."
-sudo chmod 777 $WALLPAPERS
 echo "Copying wallpapers..."
-cp $DOTFILES/wallpaper/* $WALLPAPERS
+sudo cp $DOTFILES/wallpaper/* $WALLPAPERS
