@@ -7,7 +7,9 @@
 #
 
 # set default color scheme before starting other programs
-#colorscheme.sh onedark
+
+[ -f /var/tmp/colorscheme ] && colorscheme.sh $(cat /var/tmp/colorscheme) || \
+    colorscheme.sh onedark
 
 hostname=$(cat /etc/hostname)
 
@@ -17,6 +19,10 @@ fi
 
 if ! pgrep -x "compton" > /dev/null; then
     compton --backend glx &
+fi
+
+if ! pgrep -x "dinit" > /dev/null; then
+    dinit &
 fi
 
 if ! pgrep -x "polybar" > /dev/null; then
@@ -38,22 +44,23 @@ if ! pgrep -x "polybar" > /dev/null; then
     #[ "$hostname" = "manjaro"] && polybar -c ~/.config/polybar-config/config main & || polybar -c ~/.config/polybar-config/config minibar &
 fi
 
+# TOOD: for other machines use service init files
 # Some machines use wired instead of the default notification daemon
-if ! pgrep -x "wired" > /dev/null && which "wired" > /dev/null; then
-    wired &
-fi
+#if ! pgrep -x "wired" > /dev/null && which "wired" > /dev/null; then
+#    wired &
+#fi
 
-if ! pgrep -x "mpd" > /dev/null; then
-    mpd &
-fi
+#if ! pgrep -x "mpd" > /dev/null; then
+#    mpd &
+#fi
 
-if ! pgrep -x "mpd-notification" > /dev/null && which "mpd-notification" > /dev/null; then
-    mpd-notification -H localhost -p 7700 -t 2 &
-fi
+#if ! pgrep -x "mpd-notification" > /dev/null && which "mpd-notification" > /dev/null; then
+#    mpd-notification -H localhost -p 7700 -t 2 &
+#fi
 
-if ! pgrep -x "clipman"; then
-    clipman &
-fi
+#if ! pgrep -x "clipman"; then
+#    clipman &
+#fi
 
 xcape -e "Super_L=Escape"
 
