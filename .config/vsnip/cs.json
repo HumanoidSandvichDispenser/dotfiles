@@ -1,0 +1,10 @@
+{
+    "Summary": {
+        "prefix": [ "sum" ],
+        "body": [
+            "/// <summary>",
+            "/// $1",
+            "/// </summary>"
+        ]
+    }
+}
