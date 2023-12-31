@@ -1,0 +1,55 @@
+# vim:ft=toml
+
+[font]
+size = 12
+
+  [font.normal]
+  family = "Iosevka Sandvich Nerd Font"
+  style = "Regular"
+
+  [font.bold]
+  family = "Iosevka Sandvich Nerd Font"
+  style = "Bold"
+
+  [font.italic]
+  family = "Iosevka Sandvich Nerd Font"
+  style = "Italic"
+
+  [font.bold_italic]
+  family = "Iosevka Sandvich Nerd Font"
+  style = "Bold Italic"
+
+[window]
+dynamic_padding = true
+
+  [window.padding]
+  x = 8
+  y = 8
+
+[colors.primary]
+background = "{--bg}"
+foreground = "{--fg}"
+
+[colors.cursor]
+text = "{--fg}"
+cursor = "{--fg}"
+
+[colors.normal]
+black = "{--bg}"
+red = "{--red}"
+green = "{--green}"
+yellow = "{--yellow}"
+blue = "{--blue}"
+magenta = "{--magenta}"
+cyan = "{--cyan}"
+white = "{--fg}"
+
+[colors.bright]
+black = "{--gray}"
+red = "{--red}"
+green = "{--green}"
+yellow = "{--yellow}"
+blue = "{--blue}"
+magenta = "{--magenta}"
+cyan = "{--cyan}"
+white = "{--fg}"
