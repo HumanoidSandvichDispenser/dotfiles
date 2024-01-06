@@ -67,7 +67,7 @@ format-file.py $DOTFILES/fmt/rofi-colors.rasi.fmt \
                > $DOTFILES/rofi-colors.rasi
 
 mkdir -p ~/.config/alacritty
-format-file.py $DOTFILES/fmt/alacritty-colors.yml.fmt \
+format-file.py $DOTFILES/fmt/alacritty-colors.toml.fmt \
                --bg=$background \
                --fg=$foreground \
                --red=$red \
@@ -77,7 +77,7 @@ format-file.py $DOTFILES/fmt/alacritty-colors.yml.fmt \
                --magenta=$magenta \
                --cyan=$cyan \
                --gray=$gray \
-               > ~/.config/alacritty/alacritty.yml
+               > ~/.config/alacritty/alacritty.toml
 
 mkdir -p ~/.config/wired
 format-file.py $DOTFILES/fmt/wired.ron.fmt \

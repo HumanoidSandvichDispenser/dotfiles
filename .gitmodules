@@ -10,3 +10,6 @@
 [submodule ".zsh/zsh-vi-mode"]
 	path = .zsh/zsh-vi-mode
 	url = https://github.com/jeffreytse/zsh-vi-mode
+[submodule ".zsh/zsh-cdr"]
+	path = .zsh/zsh-cdr
+	url = https://github.com/willghatch/zsh-cdr
