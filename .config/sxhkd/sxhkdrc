@@ -12,7 +12,7 @@ super + /
 
 # program launcher
 super + space
-    drun.sh
+    ~/bin/drun.sh
 
 super + z
     zathura
@@ -40,7 +40,7 @@ super + x
 
 # dropdown / scratchpad
 super + d
-	~/bin/bspwm-dropdown.sh class st-dropdown tabbed -N st-dropdown st -w
+	~/bin/bspwm-dropdown.sh class st-dropdown tabbed -N st-dropdown alacritty --embed
     #st-dropdown-toggle.sh
 
 # emacs scratchpad
@@ -66,7 +66,7 @@ super + shift + {less,greater}
 
 # snipping tool
 super + {_, shift + }s
-    scrot-clip.sh {_,-f}
+    ~/bin/scrot-clip.sh {_,-f}
     #spectacle -{rbc,r} # does something
 
 # scrot full screen
