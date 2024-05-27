@@ -1,4 +1,4 @@
-#! /usr/bin/env sh
+#! /usr/bin/env bash
 #
 # bspwmrc
 # Copyright (C) 2021 sandvich <sandvich@sandvich-pc>
@@ -8,8 +8,10 @@
 
 # set default color scheme before starting other programs
 
-[ -f /var/tmp/colorscheme ] && colorscheme.sh $(cat /var/tmp/colorscheme) || \
-    colorscheme.sh onedark
+source ~/.profile
+
+[ -f /var/tmp/colorscheme ] && ~/bin/colorscheme.sh $(cat /var/tmp/colorscheme) || \
+    ~/bin/colorscheme.sh onedark
 
 hostname=$(cat /etc/hostname)
 
@@ -18,7 +20,7 @@ if ! pgrep -x "sxhkd" > /dev/null; then
 fi
 
 if ! pgrep -x "compton" > /dev/null; then
-    compton --backend glx &
+    compton --backend glx --no-fading-openclose &
 fi
 
 if ! pgrep -x "dinit" > /dev/null; then
@@ -44,7 +46,7 @@ if ! pgrep -x "polybar" > /dev/null; then
     #[ "$hostname" = "manjaro"] && polybar -c ~/.config/polybar-config/config main & || polybar -c ~/.config/polybar-config/config minibar &
 fi
 
-# TOOD: for other machines use service init files
+# TODO: for other machines use service init files
 # Some machines use wired instead of the default notification daemon
 #if ! pgrep -x "wired" > /dev/null && which "wired" > /dev/null; then
 #    wired &
@@ -62,7 +64,7 @@ fi
 #    clipman &
 #fi
 
-xcape -e "Super_L=Escape"
+#xcape -e "Super_L=Escape"
 
 # BSPWM Configuration
 
@@ -115,3 +117,5 @@ bspc rule -a chatterino split_ratio=0.8
 
 # external rules
 bspc config external_rules_command "$DOTFILES/.config/bspwm/external-rules.sh"
+
+echo "BSPWM config read $(date)" > /tmp/bspwm-success.log
